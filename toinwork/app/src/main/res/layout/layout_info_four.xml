@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout style="@style/info_style">
+
+            <TextView
+                android:id="@+id/tv10"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="装修程度：" />
+
+            <EditText
+                android:id="@+id/et_level"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/img_arrow6"
+                android:layout_toRightOf="@+id/tv10"
+                android:layout_toStartOf="@+id/img_arrow6"
+                android:editable="false"
+                android:focusable="false"
+                android:hint="请选择装修程度"></EditText>
+
+            <ImageView
+                android:id="@+id/img_arrow6"
+                style="@style/more_tag" />
+        </RelativeLayout>
+
+        <View style="@style/line" />
+
+        <RelativeLayout style="@style/info_style">
+
+            <TextView
+                android:id="@+id/tv11"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="配套设施：" />
+
+            <EditText
+                android:id="@+id/et_facility"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/img_arrow7"
+                android:layout_toRightOf="@+id/tv11"
+                android:layout_toStartOf="@+id/img_arrow7"
+                android:editable="false"
+                android:focusable="false"
+                android:hint="请选择配套设施"></EditText>
+
+            <ImageView
+                android:id="@+id/img_arrow7"
+                style="@style/more_tag" />
+        </RelativeLayout>
+
+        <View style="@style/line" />
+
+        <LinearLayout style="@style/liner">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="当前经营：" />
+
+            <EditText
+                android:id="@+id/et_manage"
+                style="@style/edittext"
+                android:hint="请输入当前经营"></EditText>
+        </LinearLayout>
+
+        <View style="@style/line" />
+
+        <RelativeLayout style="@style/info_style">
+
+            <TextView
+                android:id="@+id/tv13"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="适合经营：" />
+
+            <EditText
+                android:id="@+id/et_goal"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/img_arrow9"
+                android:layout_toRightOf="@+id/tv13"
+                android:layout_toStartOf="@+id/img_arrow9"
+                android:editable="false"
+                android:focusable="false"
+                android:hint="请选择适合经营"></EditText>
+
+            <ImageView
+                android:id="@+id/img_arrow9"
+                style="@style/more_tag" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/liner">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="标题：" />
+
+            <EditText
+                android:id="@+id/et_title"
+                style="@style/edittext"
+                android:hint="30字以内"
+                android:maxLength="30"></EditText>
+        </LinearLayout>
+
+        <View style="@style/line" />
+
+        <LinearLayout style="@style/liner1">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="铺源描述：" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_describe"
+                    style="@style/edittext"
+                    android:layout_height="70dp"
+                    android:gravity="top"
+                    android:hint="500字以内"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="vertical"
+                    android:fadeScrollbars="false"
+                    android:maxLength="500"></EditText>
+
+                <TextView
+                    android:id="@+id/tv_prompt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:text="还剩500个字符"
+                    android:textColor="@color/gray_title"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

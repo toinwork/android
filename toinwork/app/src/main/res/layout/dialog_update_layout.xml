@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="@dimen/dialog_width"
+              android:layout_height="wrap_content"
+              android:minWidth="@dimen/dialog_width"
+              android:minHeight="@dimen/dialog_height"
+              android:background="@drawable/dialog_confirm_bg_shape"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/comment_textSize"
+        android:textColor="@color/gray"
+        android:text="悦时尚V1.2诚邀您体验"/>
+
+    <TextView
+        android:id="@+id/tv_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/comment_textSize"
+        android:text="欢迎使用4月15日最新体验版"
+        android:paddingLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_update_log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/comment_textSize"
+        android:text="1.重大bug改进\r\n2.界面重大改变\r\n3.功能更加丰富\r\n4.优化技师预约功能\r\n5.分享送豪礼功能\r\n6.抢红包功能"
+        android:padding="10dp"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:progressDrawable="@drawable/layer_list_download_progress"
+        android:background="@android:color/transparent"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_left_btn_confirm"
+            android:gravity="center"
+            android:text="暂不升级"
+            android:textColor="@drawable/selector_confirm_btn_text_color"
+            android:textSize="@dimen/comment_textSize"/>
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_right_btn_confirm"
+            android:gravity="center"
+            android:text="现在升级"
+            android:textColor="@drawable/selector_confirm_btn_text_color"
+            android:textSize="@dimen/comment_textSize"/>
+    </LinearLayout>
+
+</LinearLayout>

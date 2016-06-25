@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/title_money"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="租金：　　" />
+
+        <EditText
+            android:id="@+id/et_rent_money"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/money"
+            android:layout_toRightOf="@+id/title_money"
+            android:layout_toStartOf="@+id/money"
+            android:hint="请输入租金"
+            android:inputType="numberDecimal" ></EditText>
+
+        <TextView
+            android:id="@+id/money"
+            style="@style/tv_info"
+            android:text="元/㎡.天" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <LinearLayout style="@style/liner">
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="含物业费：　" />
+
+        <RadioGroup
+            android:id="@+id/rg_fee"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/rb_fee_is"
+                style="@style/radio_style"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_fee_no"
+                style="@style/radio_style"
+                android:text="否"
+                android:checked="true"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="30dp" />
+
+        <RelativeLayout  style="@style/info_style">
+
+            <TextView
+                android:id="@+id/title_money1"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="　物业费：" />
+
+            <EditText
+                android:id="@+id/et_fee"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/money1"
+                android:layout_toRightOf="@+id/title_money1"
+                android:layout_toStartOf="@+id/money1"
+                android:hint="请输入物业费"
+                android:inputType="numberDecimal"></EditText>
+
+            <TextView
+                android:id="@+id/money1"
+                style="@style/tv_info"
+                android:text="元/㎡.月" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/tv1"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="建筑面积：" />
+
+        <EditText
+            android:id="@+id/et_area"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_1"
+            android:layout_toRightOf="@+id/tv1"
+            android:layout_toStartOf="@+id/tv_1"
+            android:hint="请输入建筑面积"
+            android:inputType="numberDecimal"></EditText>
+
+        <TextView
+            android:id="@+id/tv_1"
+            style="@style/tv_info"
+            android:text="㎡" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/tv2"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="门头宽度：" />
+
+        <EditText
+            android:id="@+id/et_breadth"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_2"
+            android:layout_toRightOf="@+id/tv2"
+            android:layout_toStartOf="@+id/tv_2"
+            android:hint="请输入门头宽度"
+            android:inputType="numberDecimal"></EditText>
+
+        <TextView
+            android:id="@+id/tv_2"
+            style="@style/tv_info"
+            android:text="m" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/tv3"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="层高：　　" />
+
+        <EditText
+            android:id="@+id/et_tall"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_3"
+            android:layout_toRightOf="@+id/tv3"
+            android:layout_toStartOf="@+id/tv_3"
+            android:hint="请输入层高"
+            android:inputType="numberDecimal"></EditText>
+
+        <TextView
+            android:id="@+id/tv_3"
+            style="@style/tv_info"
+            android:text="m" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <LinearLayout style="@style/liner">
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="楼层：　　" />
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="第" />
+
+        <EditText
+            android:id="@+id/et_floor1"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_bg"
+            android:gravity="center_horizontal"
+            android:textSize="14sp"
+            android:maxLength="3"
+            android:inputType="number"/>
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="层" />
+
+        <TextView
+            style="@style/a_title_style"
+            android:layout_marginLeft="30dp"
+            android:text="共" />
+
+        <EditText
+            android:id="@+id/et_floor2"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_bg"
+            android:gravity="center_horizontal"
+            android:textSize="14sp"
+            android:maxLength="3"
+            android:inputType="number" />
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="层" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/liner">
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="所属项目：" />
+
+        <EditText
+            android:id="@+id/et_project"
+            style="@style/edittext"
+            android:hint="请输入所属项目"></EditText>
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+    <LinearLayout style="@style/liner">
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="商铺地址：" />
+
+        <EditText
+            android:id="@+id/et_address"
+            style="@style/edittext"
+            android:hint="请输入商铺地址"></EditText>
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="所在区域：" />
+
+        <EditText
+            android:id="@+id/et_range"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/img_arrow1"
+            android:layout_toRightOf="@+id/textView"
+            android:layout_toStartOf="@+id/img_arrow1"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="请选择商铺所在区域"></EditText>
+
+        <ImageView
+            android:id="@+id/img_arrow1"
+            style="@style/more_tag" />
+    </RelativeLayout>
+
+</LinearLayout>

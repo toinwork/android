@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/tv4"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="支付方式：" />
+
+        <EditText
+            android:id="@+id/et_pay"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/img_arrow2"
+            android:layout_toRightOf="@+id/tv4"
+            android:layout_toStartOf="@+id/img_arrow2"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="请选择支付方式"></EditText>
+
+        <ImageView
+            android:id="@+id/img_arrow2"
+            style="@style/more_tag" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/tv5"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="商铺类型：" />
+
+        <EditText
+            android:id="@+id/et_type"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/img_arrow3"
+            android:layout_toRightOf="@+id/tv5"
+            android:layout_toStartOf="@+id/img_arrow3"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="请选择商铺类型"></EditText>
+
+        <ImageView
+            android:id="@+id/img_arrow3"
+            style="@style/more_tag" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/tv6"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="商铺状态：" />
+
+        <EditText
+            android:id="@+id/et_state"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/img_arrow4"
+            android:layout_toRightOf="@+id/tv6"
+            android:layout_toStartOf="@+id/img_arrow4"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="请选择商铺状态"></EditText>
+
+        <ImageView
+            android:id="@+id/img_arrow4"
+            style="@style/more_tag" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <LinearLayout style="@style/liner">
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="是否转让：　" />
+
+        <RadioGroup
+            android:id="@+id/rg_t"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/rb_t_is"
+                style="@style/radio_style"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_t_no"
+                style="@style/radio_style"
+                android:checked="true"
+                android:text="否" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_transfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="30dp" />
+
+        <RelativeLayout style="@style/info_style">
+
+            <TextView
+                android:id="@+id/tv7"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="　转让费：" />
+
+            <EditText
+                android:id="@+id/et_transfer"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tv_7"
+                android:layout_toRightOf="@+id/tv7"
+                android:layout_toStartOf="@+id/tv_7"
+                android:hint="请输入转让费"
+                android:inputType="numberDecimal"></EditText>
+
+            <TextView
+                android:id="@+id/tv_7"
+                style="@style/tv_info"
+                android:text="万元" />
+        </RelativeLayout>
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="30dp" />
+
+        <RelativeLayout style="@style/info_style"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv14"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="合同时间：" />
+
+            <EditText
+                android:id="@+id/et_contract"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/img_arrow11"
+                android:layout_toRightOf="@+id/tv14"
+                android:layout_toStartOf="@+id/img_arrow11"
+                android:editable="false"
+                android:hint="请输入合同结束时间"></EditText>
+
+            <ImageView
+                android:id="@+id/img_arrow11"
+                style="@style/more_tag" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/info_style">
+
+        <TextView
+            android:id="@+id/tv8"
+            style="@style/a_title_style"
+            android:layout_centerVertical="true"
+            android:text="租期：　　" />
+
+        <EditText
+            android:id="@+id/et_rent"
+            style="@style/edittext"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/img_arrow5"
+            android:layout_toRightOf="@+id/tv8"
+            android:layout_toStartOf="@+id/img_arrow5"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="请选择租期"></EditText>
+
+        <ImageView
+            android:id="@+id/img_arrow5"
+            style="@style/more_tag" />
+    </RelativeLayout>
+
+    <View style="@style/line" />
+
+    <LinearLayout style="@style/liner">
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="是否出售：　" />
+
+        <RadioGroup
+            android:id="@+id/rg_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/rb_sell_is"
+                style="@style/radio_style"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_sell_no"
+                style="@style/radio_style"
+                android:checked="true"
+                android:text="否" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_sell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="30dp" />
+
+        <RelativeLayout style="@style/info_style">
+
+            <TextView
+                android:id="@+id/tv9"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="出售价格：" />
+
+            <EditText
+                android:id="@+id/et_sell_money"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tv_9"
+                android:layout_toRightOf="@+id/tv9"
+                android:layout_toStartOf="@+id/tv_9"
+                android:hint="请输入出售价格"
+                android:inputType="numberDecimal"></EditText>
+
+            <TextView
+                android:id="@+id/tv_9"
+                style="@style/tv_info"
+                android:text="万元" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+    <LinearLayout style="@style/liner">
+
+        <TextView
+            style="@style/a_title_style"
+            android:text="是否可分割：" />
+
+        <RadioGroup
+            android:id="@+id/rg_partition"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/rb_partition_is"
+                style="@style/radio_style"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_partition_no"
+                style="@style/radio_style"
+                android:checked="true"
+                android:text="否" />
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout style="@style/info_style">
+
+            <TextView
+                android:id="@+id/tv12"
+                style="@style/a_title_style"
+                android:layout_centerVertical="true"
+                android:text="房东姓名：" />
+
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/edittext"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv12"
+                android:hint="请填写姓名"
+                android:inputType="textPersonName"
+                android:layout_centerInParent="true"></EditText>
+
+        </RelativeLayout>
+
+
+        <View style="@style/line" />
+
+        <LinearLayout style="@style/liner">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="手机号码：" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                style="@style/edittext"
+                android:hint="请输入手机号码"
+                android:inputType="phone"></EditText>
+        </LinearLayout>
+
+        <View style="@style/line" />
+
+        <LinearLayout style="@style/liner">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="房东性别：　" />
+
+            <RadioGroup
+                android:id="@+id/rg_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/rb_sex_man"
+                    style="@style/radio_style"
+                    android:checked="true"
+                    android:text="男" />
+
+                <RadioButton
+                    android:id="@+id/rb_sex_woman"
+                    style="@style/radio_style"
+                    android:text="女" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <View style="@style/line" />
+
+        <LinearLayout style="@style/liner">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="紧急电话：" />
+
+            <EditText
+                android:id="@+id/et_urgency_phone"
+                style="@style/edittext"
+                android:hint="请输入紧急电话"
+                android:inputType="phone"></EditText>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/liner">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="房产证" />
+
+        </LinearLayout>
+
+        <com.toin.work.widget.NoScrollGridView
+            android:id="@+id/gv_house"
+            style="@style/gd_style"
+            android:numColumns="2"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/liner">
+
+            <TextView
+                style="@style/a_title_style"
+                android:text="身份证" />
+
+        </LinearLayout>
+
+        <com.toin.work.widget.NoScrollGridView
+            android:id="@+id/gv_identity"
+            style="@style/gd_style"
+            android:numColumns="2"/>
+    </LinearLayout>
+</LinearLayout>

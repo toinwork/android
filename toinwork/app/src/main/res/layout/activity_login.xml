@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/action_color"
+    android:fitsSystemWindows="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.toin.work.widget.circleImageView.CircleImageView
+        android:id="@+id/img_header"
+        android:layout_width="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/dp_60"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10" />
+
+    <LinearLayout
+        android:id="@+id/ll_username"
+        android:layout_below="@+id/img_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_60"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawablePadding="@dimen/dp_5"
+            android:hint="输入您的账号ID"
+            android:padding="@dimen/dp_10"
+            android:singleLine="true"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/text_size_14" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_password"
+        android:layout_below="@+id/ll_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_30"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawablePadding="@dimen/dp_5"
+            android:hint="输入您的密码"
+            android:inputType="textPassword"
+            android:padding="@dimen/dp_10"
+            android:singleLine="true"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/text_size_14" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@+id/ll_password"
+        android:id="@+id/tv_login"
+        style="@style/common_button_two"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_50"
+        android:text="@string/login" />
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:text="Copyright @ Toinwork"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_14"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
