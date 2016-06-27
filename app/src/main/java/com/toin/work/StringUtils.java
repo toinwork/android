@@ -12,4 +12,8 @@ public class StringUtils {
     public static final String TITLE_HELP_CENTER = "帮助中心";
     public static final String TITLE_ABOUT_US = "关于我们";
     public static final String TITLE_CHANGE_PWD = "修改密码";
+
+
+    //访问接口时显示文案
+    public static final String API_LOGIN = "登录中...";
 }

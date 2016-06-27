@@ -43,4 +43,6 @@
     <string name="copy_url">复制链接</string>
     <string name="no_store">暂无数据</string>
     <string name="study">研发计划</string>
+    <string name="not_read">未读</string>
+    <string name="read">已读</string>
 </resources>

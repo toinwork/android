@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  * Created by hb on 16/4/22.
  */
-public abstract class BasePresenter<E, T> {
+public abstract class BasePresenter<E extends BaseInterator, T extends BaseView> {
     public Context context;
     public E mInterator;
     public T mView;
@@ -21,5 +21,17 @@ public abstract class BasePresenter<E, T> {
 
     public void onDestroy() {
         mRxManage.clear();
+    }
+
+    public void onFinish() {
+        if (mView != null) {
+            mView.hideProgress();
+        }
+    }
+
+    public void onError() {
+        if (mView != null) {
+            mView.hideProgress();
+        }
     }
 }

@@ -80,6 +80,8 @@
         <activity android:name=".ui.setting.AboutUsActivity" />
         <!--帮助中心-->
         <activity android:name=".ui.setting.HelpCenterActivity" />
+        <!--消息-->
+        <activity android:name=".ui.message.MessageActivity" />
 
         <!-- 友盟 ###################################################### start-->
 

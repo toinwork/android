@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.toin.work.App;
 import com.toin.work.api.ApiName;
 import com.toin.work.api.ZmallFactory;
+import com.toin.work.contract.LoginContract;
 import com.toin.work.models.UserModel;
 import com.toin.work.base.utils.MD5;
 import com.toin.work.base.utils.SharedPreferencesUtil;
@@ -25,7 +26,7 @@ import static com.toin.work.contract.LoginContract.Interactor;
 /**
  * Created by hb on 16/4/6.
  */
-public class LoginInteractor implements Interactor {
+public class LoginInteractor implements LoginContract.Interactor {
 
     @Override
     public void checkLogin(String userName, String password,
@@ -54,11 +55,11 @@ public class LoginInteractor implements Interactor {
     public Subscription login(final String username, final String password,
                               final OnLoginFinishedListener listener) {
         // Mock login. I'm creating a handler to delay the answer a couple of seconds
-        if (username.equals("hanb") && password.equals("111111")) {
-            listener.onSuccess();
-        }
+//        if (username.equals("hanb") && password.equals("111111")) {
+//            listener.onSuccess();
+//        }
         Map<String, Object> params = new HashMap<>();
-        params.put("account", username);
+        params.put("email", username);
         params.put("passwd", MD5.toMD5(password).toUpperCase(Locale.CHINA));
         return ZmallFactory.getBaseApiSingleton1(ApiName.LOGIN, params).login(params)
                 .map(resultJson -> resultJson.result).subscribeOn(Schedulers.newThread())
@@ -70,7 +71,7 @@ public class LoginInteractor implements Interactor {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        listener.onError();
                     }
 
                     @Override

@@ -1,7 +1,6 @@
 package com.toin.work.presenter;
 
-import android.os.Handler;
-
+import com.toin.work.StringUtils;
 import com.toin.work.contract.LoginContract;
 
 /**
@@ -13,15 +12,7 @@ public class LoginPresenter extends LoginContract.Presenter implements
     @Override
     public void login(String userName, String password) {
         if (mView != null) {
-            mView.showProgress();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (mView != null) {
-                        mView.hideProgress();
-                    }
-                }
-            }, 1500);
+            mView.showProgress(StringUtils.API_LOGIN);
         }
         mRxManage.add(mInterator.login(userName, password, this));
     }
@@ -60,13 +51,6 @@ public class LoginPresenter extends LoginContract.Presenter implements
             mView.hideProgress();
             mView.navigateToHome();
             mView.finishActivity();
-        }
-    }
-
-    @Override
-    public void onFinish() {
-        if (mView != null) {
-            mView.hideProgress();
         }
     }
 }

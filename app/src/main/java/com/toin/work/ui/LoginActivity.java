@@ -12,7 +12,6 @@ import com.toin.work.base.BaseActivity;
 import com.toin.work.contract.LoginContract;
 import com.toin.work.interactor.LoginInteractor;
 import com.toin.work.presenter.LoginPresenter;
-import com.toin.work.widget.dialog.LoadingDialog;
 
 import butterknife.Bind;
 
@@ -25,7 +24,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     @Bind(R.id.tv_login)
     TextView              loginTv;
 
-    private LoadingDialog dialog;
     private String        userName = null;
     private String        passWord = null;
 
@@ -77,29 +75,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     }
 
     @Override
-    public void finishActivity() {
-        finish();
-    }
-
-    @Override
-    public void hideProgress() {
-        if (dialog != null) {
-            dialog.dismiss();
-        }
-    }
-
-    @Override
-    public void showProgress() {
-        if (dialog == null) {
-            dialog = new LoadingDialog(this);
-        }
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setMessage("登录中...");
-        dialog.show();
-    }
-
-    @Override
     public void setClickable() {
         loginTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_login_action));
         loginTv.setTextColor(getResources().getColor(R.color.action_color));
@@ -130,4 +105,5 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     public void onClick(View v) {
         mPresenter.login(idEt.getText().toString().trim(), pwdEt.getText().toString().trim());
     }
+
 }

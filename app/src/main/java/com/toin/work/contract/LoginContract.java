@@ -1,5 +1,6 @@
 package com.toin.work.contract;
 
+import com.toin.work.api.BaseApiFinishListener;
 import com.toin.work.base.BaseInterator;
 import com.toin.work.base.BasePresenter;
 import com.toin.work.base.BaseView;
@@ -12,14 +13,10 @@ import rx.Subscription;
 public interface LoginContract {
     interface Interactor extends BaseInterator{
 
-        interface OnLoginFinishedListener {
+        interface OnLoginFinishedListener extends BaseApiFinishListener{
             void setClickable();
 
             void setUnClickable();
-
-            void onSuccess();
-
-            void onFinish();
         }
 
         void checkLogin(String userName, String password, OnLoginFinishedListener listener);
@@ -30,11 +27,6 @@ public interface LoginContract {
     }
 
     interface View extends BaseView{
-        void finishActivity();
-
-        void hideProgress();
-
-        void showProgress();
 
         void setClickable();
 

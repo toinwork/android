@@ -197,7 +197,7 @@
     <!-- 按钮灰色文字禁用色-->
     <color name="btn_text_disable_color">#66808080</color>
 
-    <color name="mask_color">#66000000</color>
+    <color name="mask_color">#00000000</color>
 
 
 </resources>

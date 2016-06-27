@@ -18,9 +18,11 @@ import com.toin.work.Navigation;
 import com.toin.work.R;
 import com.toin.work.base.utils.DensityUtil;
 import com.toin.work.base.utils.TUtil;
+import com.toin.work.ui.message.MessageActivity;
 import com.toin.work.ui.setting.MineInfoActivity;
 import com.toin.work.ui.setting.SettingActivity;
 import com.toin.work.ui.workplace.WorkPlaceActivity;
+import com.toin.work.widget.dialog.LoadingDialog;
 import com.toin.work.widget.xcSlideView.XCSlideView;
 
 import java.util.List;
@@ -32,9 +34,10 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity<T extends BasePresenter, E extends BaseInterator> extends
         FragmentActivity {
-    public T           mPresenter;
-    public E           mInterator;
-    public XCSlideView leftSlideView;
+    public T              mPresenter;
+    public E              mInterator;
+    public XCSlideView    leftSlideView;
+    private LoadingDialog dialog;
 
     protected abstract int initLayout();
 
@@ -72,30 +75,32 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseIntera
         leftSlideView = XCSlideView.create(this, XCSlideView.Positon.LEFT);
         leftSlideView.setMenuView(this, mineView);
         leftSlideView.setMenuWidth(DensityUtil.getScreenWidthAndHeight(this)[0] * 7 / 9);
-        leftSlideView.findViewById(R.id.tv_workplace).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Navigation.goPage(BaseActivity.this, WorkPlaceActivity.class);
-                        finish();
-                    }
-                });
-        leftSlideView.findViewById(R.id.img_header).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.goPage(BaseActivity.this, MineInfoActivity.class);
-            }
-        });
-
-        leftSlideView.findViewById(R.id.tv_setting).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.goPage(BaseActivity.this, SettingActivity.class);
-            }
-        });
+        setOnClickListener(R.id.tv_workplace, WorkPlaceActivity.class, true);
+        setOnClickListener(R.id.tv_message, MessageActivity.class, true);
+        setOnClickListener(R.id.img_header, MineInfoActivity.class, false);
+        setOnClickListener(R.id.tv_setting, SettingActivity.class, false);
         initView();
         initPresenter();
         initData();
+    }
+
+    /**
+     * 页面跳转
+     *
+     * @param ids
+     * @param cls
+     * @param flag
+     */
+    private void setOnClickListener(int ids, Class cls, boolean flag) {
+        leftSlideView.findViewById(ids).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.goPage(BaseActivity.this, cls);
+                if (flag) {
+                    finish();
+                }
+            }
+        });
     }
 
     @Override
@@ -235,6 +240,26 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseIntera
             e.printStackTrace();
         }
 
+    }
+
+    public void hideProgress() {
+        if (dialog != null) {
+            dialog.dismiss();
+        }
+    }
+
+    public void showProgress(String msg) {
+        if (dialog == null) {
+            dialog = new LoadingDialog(this);
+        }
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setMessage(msg);
+        dialog.show();
+    }
+
+    public void finishActivity() {
+        finish();
     }
 
 }

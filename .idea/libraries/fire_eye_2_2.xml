@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="fire-eye-2.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.yoojia/fire-eye/2.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.yoojia/fire-eye/2.2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.yoojia/fire-eye/2.2/a0d62f5859c730198a07fc3fbc46aade5336a631/fire-eye-2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

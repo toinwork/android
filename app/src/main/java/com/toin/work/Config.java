@@ -1,9 +1,9 @@
 package com.toin.work;
 
 public class Config {
-    public static final boolean MDEBUG = Boolean.parseBoolean("true");
+    public static final boolean MDEBUG        = Boolean.parseBoolean("true");
     /** 环境——动态配置项 */
-    public static ProgramMode   mode          = ProgramMode.PRGRAM_PRODUCT_MODE;
+    public static ProgramMode   mode          = ProgramMode.PROGRAM_TEST_MODE;
     /** 是否调试 */
     public static final boolean DEBUG         = !(mode == ProgramMode.PRGRAM_PRODUCT_MODE);
 
@@ -11,7 +11,7 @@ public class Config {
     /** 域名 */
     public static String        API_AGENT     = "";
     public static String        API_AGENT_TWO = "";
-    public static String        apiVersion    = "v1/";
+    public static String        apiVersion    = "api/v1/";
     public static String        VERSION       = "1.0.0";
 
     public static String        appSecurity   = "";
@@ -19,17 +19,17 @@ public class Config {
     static {
         switch (mode) {
             case PRGRAM_PRODUCT_MODE:
-                API_AGENT = "http://api.isspu.com/";
+                API_AGENT = "http://tiw.upadd.cn/";
                 break;
             case PRGRAM_PREPRODUCT_MODE:
-                API_AGENT = "http://api.isspu.com/";
+                API_AGENT = "http://tiw.upadd.cn/";
                 break;
             case PROGRAM_TEST_MODE:
                 //                API_AGENT = "http://120.26.86.129/";
-                API_AGENT = "http://testapi.isspu.com//";
+                API_AGENT = "http://tiw.upadd.cn/";
                 break;
             case PROGRAM_DEV_MODE:
-                API_AGENT = "http://testapi.isspu.com/";
+                API_AGENT = "http://tiw.upadd.cn/";
                 break;
         }
     }
