@@ -18,6 +18,7 @@
         android:showDividers="middle">
 
         <RelativeLayout
+            android:id="@+id/rl_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
@@ -32,7 +33,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/comment_textSize" />
 
-            <com.toin.work.widget.circleImageView.CircleImageView
+            <com.toin.glp.widget.circleImageView.CircleImageView
                 android:id="@+id/img_header"
                 android:layout_width="@dimen/circle_header_img"
                 android:layout_height="@dimen/circle_header_img"

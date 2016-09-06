@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_action_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:divider="@drawable/vertical_line"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/designation" />
+
+            <TextView
+                style="@style/style_company_info"
+                android:layout_toRightOf="@+id/tv_name"
+                android:text="fxe" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_organize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_organize"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/organize" />
+
+            <TextView
+                style="@style/style_company_info"
+                android:layout_toRightOf="@+id/tv_organize"
+                android:text="xm123" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

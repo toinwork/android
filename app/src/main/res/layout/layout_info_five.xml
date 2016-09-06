@@ -19,7 +19,7 @@
 
         </LinearLayout>
 
-        <com.toin.work.widget.NoScrollGridView
+        <com.toin.glp.widget.NoScrollGridView
             android:id="@+id/gv_inside"
             style="@style/gd_style"
             android:numColumns="3"/>
@@ -40,7 +40,7 @@
 
         </LinearLayout>
 
-        <com.toin.work.widget.NoScrollGridView
+        <com.toin.glp.widget.NoScrollGridView
             android:id="@+id/gv_outer"
             style="@style/gd_style"
             android:numColumns="3"/>
@@ -61,7 +61,7 @@
 
         </LinearLayout>
 
-        <com.toin.work.widget.NoScrollGridView
+        <com.toin.glp.widget.NoScrollGridView
             android:id="@+id/gv_plane"
             style="@style/gd_style"
             android:numColumns="3"/>

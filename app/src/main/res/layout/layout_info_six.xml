@@ -107,7 +107,7 @@
 
         </LinearLayout>
 
-        <com.toin.work.widget.NoScrollGridView
+        <com.toin.glp.widget.NoScrollGridView
             android:id="@+id/gv_house"
             style="@style/gd_style"
             android:numColumns="2"/>
@@ -128,7 +128,7 @@
 
         </LinearLayout>
 
-        <com.toin.work.widget.NoScrollGridView
+        <com.toin.glp.widget.NoScrollGridView
             android:id="@+id/gv_identity"
             style="@style/gd_style"
             android:numColumns="2"/>

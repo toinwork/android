@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Toinwork</string>
+    <string name="company_information">企业资料</string>
+    <string name="change_password">修改密码</string>
+    <string name="organize">组织机构代码</string>
     <string name="action_settings">Settings</string>
     <string name="workplace">工作区</string>
     <string name="message">消息</string>
@@ -11,11 +14,11 @@
     <string name="no_data">没有数据</string>
     <string name="domain_intro">Toinwork是一款开源的服务端程序，APP客户端是为了更好的协作而诞生，所以请您设置自己的服务器域名。</string>
     <string name="name">姓名</string>
+    <string name="designation">名称</string>
     <string name="sex">性别</string>
     <string name="job">职务</string>
     <string name="mobile">手机</string>
     <string name="face">头像</string>
-    <string name="change_password">修改密码</string>
     <string name="feedback">反馈我们</string>
     <string name="help_center">帮助中心</string>
     <string name="about_us">关于我们</string>
@@ -45,4 +48,18 @@
     <string name="study">研发计划</string>
     <string name="not_read">未读</string>
     <string name="read">已读</string>
+
+
+    <string name="gridview_demo">GridViewDemo</string>
+    <string name="normal_listview_demo">NormalListViewDemo</string>
+    <string name="normal_recyclerview_demo">NormalRecyclerViewDemo</string>
+    <string name="swipe_listview_demo">SwipeListViewDemo</string>
+    <string name="swipe_recyclerview_demo">SwipeRecyclerViewDemo</string>
+    <string name="staggeredgrid_demo">StaggeredGridDemo</string>
+    <string name="scrollview_demo">ScrollViewDemo</string>
+    <string name="normalview_demo">NormalViewDemo</string>
+    <string name="webview_demo">WebViewDemo</string>
+    <string name="sticky_nav_demo">StickyNavDemo</string>
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
 </resources>

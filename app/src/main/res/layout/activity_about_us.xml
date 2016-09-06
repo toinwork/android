@@ -7,4 +7,5 @@
     android:orientation="vertical">
 
     <include layout="@layout/layout_action_title_mine" />
+
 </LinearLayout>
