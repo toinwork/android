@@ -3,6 +3,7 @@ package com.toin.glp.ui.account;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.toin.glp.R;
+import com.toin.glp.StringUtils;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.utils.GlpUtils;
@@ -58,7 +59,7 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        setActionTitle("账单");
+        setActionTitle(StringUtils.TAB_TAG_ACCOUNT);
         for (int i = 0; i < 10; i++) {
             dataList.add("item" + i);
         }

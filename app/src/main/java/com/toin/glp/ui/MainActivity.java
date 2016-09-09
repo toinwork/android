@@ -12,6 +12,7 @@ import com.toin.glp.base.BaseActivity;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.tools.STTabManager;
 import com.toin.glp.ui.account.AccountFragment;
+import com.toin.glp.ui.home.HomeFragment;
 import com.toin.glp.ui.message.MessageFragment;
 import com.toin.glp.ui.mine.MineFragment;
 import com.toin.glp.widget.FlowRadioGroup;
@@ -25,6 +26,10 @@ import butterknife.Bind;
  */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
+    private String       TAB_HOME      = StringUtils.TAB_TAG_HOME;
+    private String       TAB_ACCOUNT   = StringUtils.TAB_TAG_ACCOUNT;
+    private String       TAB_MESSAGE   = StringUtils.TAB_TAG_MESSAGE;
+    private String       TAB_MINE      = StringUtils.TAB_TAG_MINE;
     @Bind(R.id.rg_action_bar_bottom)
     FlowRadioGroup       mRadioGroup;
     @Bind(R.id.tv_message_count)
@@ -42,11 +47,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        setOnClick(R.id.rb_account, R.id.rb_message, R.id.rb_mine);
+        setOnClick(R.id.rb_home, R.id.rb_account, R.id.rb_message, R.id.rb_mine);
         tabManager = new STTabManager(this, android.R.id.tabcontent);
-        tabManager.addTab(StringUtils.TAB_TAG_ACCOUNT, AccountFragment.class);
-        tabManager.addTab(StringUtils.TAB_TAG_MESSAGE, MessageFragment.class);
-        tabManager.addTab(StringUtils.TAB_TAG_MINE, MineFragment.class);
+        tabManager.addTab(TAB_HOME, HomeFragment.class);
+        tabManager.addTab(TAB_ACCOUNT, AccountFragment.class);
+        tabManager.addTab(TAB_MESSAGE, MessageFragment.class);
+        tabManager.addTab(TAB_MINE, MineFragment.class);
         checkedMain();
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -61,8 +67,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void checkedMain() {
-        tabManager.setTabSelection(StringUtils.TAB_TAG_ACCOUNT);
-        RadioButton button = (RadioButton) mRadioGroup.findViewById(R.id.rb_account);
+        tabManager.setTabSelection(TAB_HOME);
+        RadioButton button = (RadioButton) mRadioGroup.findViewById(R.id.rb_home);
         button.setChecked(true);
     }
 
@@ -89,15 +95,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.rb_home:
+                tabManager.setTabSelection(TAB_HOME);
+                break;
             case R.id.rb_account:
-                tabManager.setTabSelection(StringUtils.TAB_TAG_ACCOUNT);
+                tabManager.setTabSelection(TAB_ACCOUNT);
                 break;
             case R.id.rb_message:
-                tabManager.setTabSelection(StringUtils.TAB_TAG_MESSAGE);
+                tabManager.setTabSelection(TAB_MESSAGE);
                 break;
             case R.id.rb_mine:
                 //                if (Navigation.checkLogin(this)) {
-                tabManager.setTabSelection(StringUtils.TAB_TAG_MINE);
+                tabManager.setTabSelection(TAB_MINE);
                 //                } else {
                 //                    checkedMain();
                 //                }

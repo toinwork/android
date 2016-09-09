@@ -4,6 +4,7 @@ package com.toin.glp;
  * Created by hb on 16/6/25.
  */
 public class StringUtils {
+    public static final String TAB_TAG_HOME       = "主页";
     public static final String TAB_TAG_ACCOUNT    = "账单";
     public static final String TAB_TAG_MESSAGE    = "消息";
     public static final String TAB_TAG_MINE       = "我的";

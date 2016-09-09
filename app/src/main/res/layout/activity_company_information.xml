@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_action_title" />
+    <include layout="@layout/layout_action_title_mine" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,37 +19,139 @@
 
 
         <RelativeLayout
-            android:id="@+id/rl_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/_tv_name"
                 style="@style/style_company_info"
                 android:layout_alignParentLeft="true"
                 android:text="@string/designation" />
 
             <TextView
-                style="@style/style_company_info"
-                android:layout_toRightOf="@+id/tv_name"
+                android:id="@+id/tv_name"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_name"
                 android:text="fxe" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_organize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_organize"
+                android:id="@+id/_tv_organize_code"
                 style="@style/style_company_info"
                 android:layout_alignParentLeft="true"
-                android:text="@string/organize" />
+                android:text="@string/organize_code" />
 
             <TextView
-                style="@style/style_company_info"
-                android:layout_toRightOf="@+id/tv_organize"
+                android:id="@+id/tv_organize_code"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_organize_code"
                 android:text="xm123" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/_tv_tax_number"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/tax_number" />
+
+            <TextView
+                android:id="@+id/tv_tax_number"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_tax_number"
+                android:text="xm123" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/_tv_address"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/address" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_address"
+                android:text="xm123" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/_tv_corporate"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/corporate" />
+
+            <TextView
+                android:id="@+id/tv_corporate"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_corporate"
+                android:text="hanbin" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/_tv_model"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/model" />
+
+            <TextView
+                android:id="@+id/tv_model"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_model"
+                android:text="规模" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/_tv_industry"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/industry" />
+
+            <TextView
+                android:id="@+id/tv_industry"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_industry"
+                android:text="android开发" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/_tv_contact"
+                style="@style/style_company_info"
+                android:layout_alignParentLeft="true"
+                android:text="@string/contact" />
+
+            <TextView
+                android:id="@+id/tv_contact"
+                style="@style/style_company_info_two"
+                android:layout_toRightOf="@+id/_tv_contact"
+                android:text="18757110824" />
         </RelativeLayout>
 
 

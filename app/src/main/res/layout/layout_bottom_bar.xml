@@ -8,6 +8,12 @@
     android:orientation="horizontal">
 
     <RadioButton
+        android:id="@+id/rb_home"
+        style="@style/foot_bar"
+        android:checked="false"
+        android:drawableTop="@drawable/menu_home_seletor" />
+
+    <RadioButton
         android:id="@+id/rb_account"
         style="@style/foot_bar"
         android:drawableTop="@drawable/menu_account_seletor" />
@@ -36,8 +42,8 @@
     <RadioButton
         android:id="@+id/rb_mine"
         style="@style/foot_bar"
-        android:drawableTop="@drawable/menu_mine_seletor"
-        android:checked="false" />
+        android:checked="false"
+        android:drawableTop="@drawable/menu_mine_seletor" />
 
 
 </com.toin.glp.widget.FlowRadioGroup>
