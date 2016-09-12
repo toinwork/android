@@ -28,8 +28,8 @@ public interface BaseApi {
      * @return
      */
     @FormUrlEncoded
-    @POST(ApiName.LOGIN)
-    Observable<ResultJson<UserModel>> login(@FieldMap Map<String, Object> params);
+    @POST("member.do")
+    Observable<UserModel> login(@FieldMap Map<String, Object> params);
 
     /**
      * 登出

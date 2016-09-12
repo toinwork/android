@@ -3,14 +3,12 @@ package com.toin.glp.interactor;
 import android.text.TextUtils;
 
 import com.toin.glp.App;
-import com.toin.glp.api.ApiName;
-import com.toin.glp.api.ZmallFactory;
-import com.toin.glp.contract.LoginContract;
-import com.toin.glp.models.UserModel;
+import com.toin.glp.api.ApiFactory;
 import com.toin.glp.base.utils.MD5;
 import com.toin.glp.base.utils.SharedPreferencesUtil;
 import com.toin.glp.base.utils.T;
-import com.toin.glp.base.utils.UserCache;
+import com.toin.glp.contract.LoginContract;
+import com.toin.glp.models.UserModel;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -61,9 +59,12 @@ public class LoginInteractor implements LoginContract.Interactor {
         Map<String, Object> params = new HashMap<>();
         params.put("email", username);
         params.put("passwd", MD5.toMD5(password).toUpperCase(Locale.CHINA));
-        return ZmallFactory.getBaseApiSingleton1(ApiName.LOGIN, params).login(params)
-                .map(resultJson -> resultJson.result).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<UserModel>() {
+        ApiFactory factory = new ApiFactory();
+        return factory.get_weijin().getBaseApiSingleton().login(params)
+                .map(userModel -> userModel)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<UserModel>() {
                     @Override
                     public void onCompleted() {
                         listener.onFinish();
@@ -77,11 +78,11 @@ public class LoginInteractor implements LoginContract.Interactor {
                     @Override
                     public void onNext(UserModel userModel) {
                         T.showShort("登录成功");
-                        App.token = userModel.getToken();
-                        App.account = userModel.getAccount();
-                        UserCache.getInstance().saveUserInfo(userModel);
-                        SharedPreferencesUtil.saveIntValue(App.context, "account",
-                                userModel.getAccount());
+                        //                        App.token = userModel.getToken();
+                        //                        App.account = userModel.getAccount();
+                        //                        UserCache.getInstance().saveUserInfo(userModel);
+                        //                        SharedPreferencesUtil.saveIntValue(App.context, "account",
+                        //                                userModel.getAccount());
                         listener.onSuccess();
                     }
                 });

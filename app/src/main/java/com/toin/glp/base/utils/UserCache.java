@@ -46,10 +46,10 @@ public class UserCache {
             return;
         }
         this.userModel = userModel;
-        SharedPreferencesUtil.saveIntValue(appContext, ACCOUNT, userModel.getAccount());
-        SharedPreferencesUtil.saveStringValue(appContext, TOKEN, userModel.getToken());
-        SharedPreferencesUtil.saveStringValue(appContext, MOBILE, userModel.getMobile());
-        SharedPreferencesUtil.saveStringValue(appContext, UNAME, userModel.getUname());
+//        SharedPreferencesUtil.saveIntValue(appContext, ACCOUNT, userModel.getAccount());
+//        SharedPreferencesUtil.saveStringValue(appContext, TOKEN, userModel.getToken());
+//        SharedPreferencesUtil.saveStringValue(appContext, MOBILE, userModel.getMobile());
+//        SharedPreferencesUtil.saveStringValue(appContext, UNAME, userModel.getUname());
     }
 
     /**
@@ -64,10 +64,10 @@ public class UserCache {
             String token = SharedPreferencesUtil.getStringValue(appContext, TOKEN);
             String mobile = SharedPreferencesUtil.getStringValue(appContext, MOBILE);
             String uname = SharedPreferencesUtil.getStringValue(appContext, UNAME);
-            userModel.setToken(token);
-            userModel.setAccount(account);
-            userModel.setMobile(mobile);
-            userModel.setUname(uname);
+//            userModel.setToken(token);
+//            userModel.setAccount(account);
+//            userModel.setMobile(mobile);
+//            userModel.setUname(uname);
         }
         return userModel;
     }
@@ -77,9 +77,9 @@ public class UserCache {
      */
     public void clearUser() {
         UserModel user = getUser();
-        user.setToken("");
-        user.setUname("");
-        user.setMobile("");
+//        user.setToken("");
+//        user.setUname("");
+//        user.setMobile("");
         saveUserInfo(user);
     }
 }

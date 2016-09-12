@@ -12,4 +12,14 @@
         android:layout_height="200dp"
         app:canLoop="true" />
 
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:text="112"
+        android:padding="@dimen/dp_10" />
+
 </LinearLayout>

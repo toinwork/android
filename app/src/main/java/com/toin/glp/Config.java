@@ -9,27 +9,28 @@ public class Config {
 
     /** 接口信息 */
     /** 域名 */
-    public static String        API_AGENT     = "";
-    public static String        API_AGENT_TWO = "";
-    public static String        apiVersion    = "api/v1/";
-    public static String        VERSION       = "1.0.0";
+    public static String        API_WEIJIN    = "";
+    public static String        API_FINANCING = "";
+    public static String        VERSION       = "1.0";
 
-    public static String        appSecurity   = "";
 
     static {
         switch (mode) {
             case PRGRAM_PRODUCT_MODE:
-                API_AGENT = "http://tiw.upadd.cn/";
+                API_FINANCING = "http://203.114.247.185:8888/scf/appdata/service.do";
+                API_WEIJIN = "http://func109.vfinance.cn/appserver/gateway/member.do";
                 break;
             case PRGRAM_PREPRODUCT_MODE:
-                API_AGENT = "http://tiw.upadd.cn/";
+                API_FINANCING = "http://203.114.247.185:8888/scf/appdata/service.do";
+                API_WEIJIN = "http://func109.vfinance.cn/appserver/gateway/member.do";
                 break;
             case PROGRAM_TEST_MODE:
-                //                API_AGENT = "http://120.26.86.129/";
-                API_AGENT = "http://tiw.upadd.cn/";
+                API_FINANCING = "http://203.114.247.185:8888/scf/appdata/service.do";
+                API_WEIJIN = "http://func109.vfinance.cn/appserver/gateway/";
                 break;
             case PROGRAM_DEV_MODE:
-                API_AGENT = "http://tiw.upadd.cn/";
+                API_FINANCING = "http://203.114.247.185:8888/scf/appdata/service.do";
+                API_WEIJIN = "http://func109.vfinance.cn/appserver/gateway/member.do";
                 break;
         }
     }

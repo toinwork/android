@@ -46,7 +46,7 @@
                 android:layout_width="@dimen/action_height"
                 android:layout_height="match_parent"
                 android:background="@drawable/action_back_selector"
-                android:src="@mipmap/share"
+                android:src="@mipmap/setting"
                 android:visibility="invisible" />
 
             <TextView

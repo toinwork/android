@@ -12,16 +12,17 @@ import com.toin.glp.tools.singleFactory.MoreManager;
  */
 public class LocalImageHolderView implements Holder<String> {
     private ImageView imageView;
+
     @Override
     public View createView(Context context) {
         imageView = new ImageView(context);
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         return imageView;
     }
 
     @Override
     public void UpdateUI(Context context, final int position, String data) {
-//        imageView.setImageResource(data);
-        MoreManager.getImageLoader().displayImage(data,imageView);
+        //        imageView.setImageResource(data);
+        MoreManager.getImageLoader().displayImage(data, imageView);
     }
 }

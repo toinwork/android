@@ -2,12 +2,7 @@ package com.toin.glp;
 
 import android.app.Application;
 import android.graphics.Bitmap;
-import android.text.TextUtils;
 
-import com.toin.glp.models.DataModel;
-import com.toin.glp.models.UserModel;
-import com.toin.glp.base.utils.STUtils;
-import com.toin.glp.base.utils.UserCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -17,7 +12,10 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.umeng.socialize.PlatformConfig;
+import com.toin.glp.base.utils.STUtils;
+import com.toin.glp.base.utils.UserCache;
+import com.toin.glp.models.DataModel;
+import com.toin.glp.models.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,27 +60,19 @@ public class App extends Application {
         context = this;
         UserCache.getInstance().setAppContext(context);
         UserModel userModel = UserCache.getInstance().getUser();
-        if (!TextUtils.isEmpty(userModel.getToken()) && userModel.getAccount() != -1) {
-            token = userModel.getToken();
-            account = userModel.getAccount();
-        }
+//        if (!TextUtils.isEmpty(userModel.getToken()) && userModel.getAccount() != -1) {
+//            token = userModel.getToken();
+//            account = userModel.getAccount();
+//        }
         // 工具类初始化
         STUtils.init(this);
         //用于检测内存溢出的
         refWatcher = LeakCanary.install(this);
-        initUmeng();
     }
 
     public static void logout() {
         account = 0;
         token = "";
-    }
-
-    private void initUmeng() {
-        //微信,新浪,QQ
-        PlatformConfig.setWeixin(Config.WXAppID, Config.WXAppSecret);
-        PlatformConfig.setSinaWeibo(Config.SINAAppID, Config.SINAAppSecret);
-        PlatformConfig.setQQZone(Config.QQAppID, Config.QQAppSecret);
     }
 
     public static RefWatcher getRefWatcher() {

@@ -2,7 +2,7 @@ package com.toin.glp.base;
 
 import android.support.annotation.NonNull;
 
-import com.sina.weibo.sdk.utils.LogUtil;
+import com.toin.glp.base.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
