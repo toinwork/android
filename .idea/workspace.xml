@@ -10,205 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7e33a02-a864-45cd-88aa-c44f8feb2440" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/account_back.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/account_back2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/account_info.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/account_info2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/account_money.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/account_money2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/auto_repay.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/bill.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/blank1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/blank2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/enter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/home_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/home_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/home_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/home_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_1_n.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_1_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_2_n.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_2_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_3_n.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_3_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_4_n.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_4_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/login_delete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/login_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/month.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/personal_icon_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/personal_icon_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/personal_icon_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/personal_icon_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/personal_title.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/repay.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/splash.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/BaseExitActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/AesUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/DensityUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/Hex.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/ObjectUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/SHA256.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/StringUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/contract/ForgetPasswordContract.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/contract/MineContract.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/contract/RegisterContract.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/interactor/MineInteractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/interactor/RegisterInteractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/CompanyInfoModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/CompanyMemberInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/UserInfoModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/account/AccountsDetailModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/account/AccountsModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/account/MessageListModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/account/MessageModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/account/RepayPlanModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/account/SetMessageModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/presenter/MinePresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/presenter/RegisterPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/ForgetPasswordActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/RegisterActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/account/AccountDetailActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/account/RepaymentPlanActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/home/BusinessIntroductionActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/EditActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/utils/CrashHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/utils/OnSendMessageFinishedListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/utils/SendMessageUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/color_cursor.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_benqi.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_cancel.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_mine_left.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_mine_right.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_red_point.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_transparent.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_account_detail.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_business_introduction.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_repay_plan.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_message.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_repay_plan.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title_black.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title_mine_black.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/libs/mta-sdk-1.6.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/libs/open_sdk_r5509.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/contract/DomainContract.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/DataModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/FlagModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/ImgDateModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/ImgEntitys.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/ImgModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/InfoModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/RangeModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/ResultJson.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/ResultList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/StoreListModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/StoreModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/ViewMiddleView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/extendTabView/ExpandTabView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/extendTabView/TextAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/extendTabView/ViewBaseAction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/extendTabView/ViewLeft.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/extendTabView/ViewMiddle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/extendTabView/ViewRight.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/choose_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/menu/navigation_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/choose_item_selected.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/choosebar_line.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/umeng_socialize_oauth_check_off.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/umeng_socialize_oauth_check_on.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/umeng_socialize_share_music.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/umeng_socialize_share_pic.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/umeng_socialize_share_video.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/action_back_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/background.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/contact.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/copy.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/empty_back.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_bianji.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/message.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/mine.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/mine_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/right.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/toinwork.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/key.jks" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/interactor/DomainInteractor.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/interactor/ForgetPasswordInteractor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/presenter/DomainPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/presenter/ForgetPasswordPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_choice.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_account.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/cancle.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/cancel.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/action_back.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/action_back.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/app-release.apk" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/proguard-rules.pro" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/App.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/Navigation.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/Navigation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/StringUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/StringUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/ApiFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/ApiFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/ApiName.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/ApiName.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/BaseApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/BaseApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/GlpFinancingFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/api/GlpFinancingFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/BaseActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/BaseActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/BaseFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/BaseFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/TUtil.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/TUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/UserCache.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/base/utils/UserCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/contract/LoginContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/contract/LoginContract.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/interactor/LoginInteractor.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/interactor/LoginInteractor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/BaseResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/BaseResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/UserModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/models/UserModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/presenter/LoginPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/presenter/LoginPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/SplashActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/account/AccountFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/account/AccountFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/home/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/home/HomeFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/message/MessageFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/message/MessageFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/message/MessageNotReadFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/message/MessageNotReadFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/message/MessageReadFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/message/MessageReadFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/AboutUsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/AboutUsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/ChangePasswordActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/ChangePasswordActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/CompanyInformationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/CompanyInformationActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/FeedbackActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/FeedbackActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/MineFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/MineFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/MineInfoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/mine/MineInfoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/adapter/CommonAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toin/glp/widget/adapter/CommonAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/invest_header_bg_shape.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/invest_header_bg_shape.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/menu_account_seletor.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_account_seletor.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/menu_home_seletor.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_home_seletor.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/menu_message_seletor.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_message_seletor.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/menu_mine_seletor.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_mine_seletor.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_login_action.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_login_action.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/subtitle_left_bg_shape.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/subtitle_left_bg_shape.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/subtitle_right_bg_shape.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/subtitle_right_bg_shape.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_company_information.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_company_information.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_feedback.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_feedback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_message.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_message.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_mine_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_mine_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_msg_read.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_msg_read.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title_mine.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title_mine.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title_submit.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_action_title_submit.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom_bar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom_bar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="glp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -262,11 +65,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AccountFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/account/AccountFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52024925">
+            <state vertical-scroll-proportion="0.0">
               <caret line="99" column="78" selection-start-line="99" selection-start-column="78" selection-end-line="99" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/home/HomeFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.65732086">
+              <caret line="51" column="102" selection-start-line="48" selection-start-column="7" selection-end-line="51" selection-end-column="102" />
               <folding />
             </state>
           </provider>
@@ -1953,8 +1766,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="124" />
-    <option name="y" value="26" />
+    <option name="x" value="239" />
+    <option name="y" value="36" />
     <option name="width" value="1280" />
     <option name="height" value="731" />
   </component>
@@ -2184,7 +1997,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="account" />
+              <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2518,7 +2331,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="124" y="26" width="1280" height="731" extended-state="0" />
+    <frame x="239" y="36" width="1280" height="731" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284553" sideWeight="0.49676898" order="6" side_tool="false" content_ui="tabs" />
@@ -2653,14 +2466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="1210" column="49" selection-start-line="1210" selection-start-column="42" selection-end-line="1210" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/home/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8854167">
-          <caret line="71" column="96" selection-start-line="71" selection-start-column="96" selection-end-line="71" selection-end-column="96" />
           <folding />
         </state>
       </provider>
@@ -3115,8 +2920,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/account/AccountFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52024925">
+        <state vertical-scroll-proportion="0.0">
           <caret line="99" column="78" selection-start-line="99" selection-start-column="78" selection-end-line="99" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toin/glp/ui/home/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65732086">
+          <caret line="51" column="102" selection-start-line="48" selection-start-column="7" selection-end-line="51" selection-end-column="102" />
           <folding />
         </state>
       </provider>
