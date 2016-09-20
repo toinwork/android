@@ -20,15 +20,18 @@ import com.toin.glp.widget.dialog.LoadingDialog;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by hb on 16/3/29.
  */
 public abstract class BaseActivity<T extends BasePresenter, E extends BaseInterator> extends
         FragmentActivity {
-    public T              mPresenter;
-    public E              mInterator;
-    private LoadingDialog dialog;
+    private CompositeSubscription mCompositeSubscription;
+    public T                      mPresenter;
+    public E                      mInterator;
+    private LoadingDialog         dialog;
 
     protected abstract int initLayout();
 
@@ -75,6 +78,9 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseIntera
         /** 内存泄露监测 */
         RefWatcher refWatcher = App.getRefWatcher();
         refWatcher.watch(this);
+        if (this.mCompositeSubscription != null) {
+            this.mCompositeSubscription.unsubscribe();
+        }
     }
 
     /**
@@ -190,7 +196,14 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseIntera
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    public void addSubscription(Subscription s) {
+        if (this.mCompositeSubscription == null) {
+            this.mCompositeSubscription = new CompositeSubscription();
+        }
+
+        this.mCompositeSubscription.add(s);
     }
 
     public void hideProgress() {

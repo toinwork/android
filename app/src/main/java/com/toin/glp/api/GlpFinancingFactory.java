@@ -28,7 +28,7 @@ public class GlpFinancingFactory {
     }
 
     //接口参数不变
-    public BaseApi getBaseApiSingleton(String url) {
+    public BaseApi getBaseApiSingleton() {
         if (mRetrofit == null) {
             synchronized (Retrofit.class) {
                 if (mRetrofit == null) {
@@ -47,7 +47,7 @@ public class GlpFinancingFactory {
     }
 
     //接口参数不变
-    public BaseApi getBaseApiSingleton1(String url) {
+    public BaseApi getBaseApiSingleton1() {
         if (mRetrofit == null) {
             synchronized (Retrofit.class) {
                 if (mRetrofit == null) {
@@ -66,7 +66,7 @@ public class GlpFinancingFactory {
     }
 
     //接口参数不变
-    public BaseApi getSendFileAPISingleton(String url, Map<String, Object> params, File files) {
+    public BaseApi getSendFileAPISingleton(Map<String, Object> params, File files) {
         if (params == null) {
             params = new HashMap<String, Object>();
         }

@@ -13,23 +13,18 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.toin.glp.base.utils.STUtils;
+import com.toin.glp.base.utils.SharedPreferencesUtil;
 import com.toin.glp.base.utils.UserCache;
-import com.toin.glp.models.DataModel;
-import com.toin.glp.models.UserModel;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.toin.glp.utils.CrashHandler;
 
 /**
  * Created by hb on 16/3/28.
  */
 public class App extends Application {
     public static Application context;
-    public static int         account    = 0;
-    public static String      token      = "";
-    public static String      domain     = "";
+    public static String      token = "";
+    public static String      phone = "";
     private static App        instance;
-    private List<DataModel>   statusList = new ArrayList<>();
 
     /* 内存泄露工具 */
     private RefWatcher        refWatcher;
@@ -37,6 +32,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
         instance = this;
         init();
         initImageLoader(this);
@@ -47,23 +44,11 @@ public class App extends Application {
         return instance;
     }
 
-    public List<DataModel> getStatusList() {
-        return statusList;
-    }
-
-    public void setStatusList(List<DataModel> list) {
-        statusList.clear();
-        statusList.addAll(list);
-    }
-
     private void init() {
         context = this;
         UserCache.getInstance().setAppContext(context);
-        UserModel userModel = UserCache.getInstance().getUser();
-//        if (!TextUtils.isEmpty(userModel.getToken()) && userModel.getAccount() != -1) {
-//            token = userModel.getToken();
-//            account = userModel.getAccount();
-//        }
+        token = UserCache.getToken(this);
+        phone = SharedPreferencesUtil.getStringValue(this, "phone");
         // 工具类初始化
         STUtils.init(this);
         //用于检测内存溢出的
@@ -71,7 +56,6 @@ public class App extends Application {
     }
 
     public static void logout() {
-        account = 0;
         token = "";
     }
 

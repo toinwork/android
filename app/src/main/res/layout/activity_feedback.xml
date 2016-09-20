@@ -8,16 +8,32 @@
 
     <include layout="@layout/layout_action_title_mine" />
 
-    <EditText
-        android:id="@+id/et_email"
-        style="@style/common_edittext"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_50"
-        android:hint="@string/hint_email"
-        android:singleLine="true" />
+        android:layout_marginTop="@dimen/dp_30"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/edit_forward_text"
+            android:text="@string/email" />
+
+        <EditText
+            android:id="@+id/et_email"
+            style="@style/common_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/tv_email"
+            android:hint="@string/hint_email"
+            android:singleLine="true" />
+    </RelativeLayout>
+
 
     <EditText
         android:id="@+id/et_content"
@@ -25,16 +41,17 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_150"
         android:layout_marginTop="@dimen/dp_30"
+        android:background="@drawable/edit_bg"
         android:hint="@string/hint_feedback" />
 
     <Button
         android:id="@+id/btn_commit"
+        style="@style/common_button_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/common_button_two"
         android:layout_marginLeft="@dimen/dp_20"
         android:layout_marginRight="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_50"
-        android:text="@string/commit"/>
+        android:text="@string/commit" />
 
 </LinearLayout>

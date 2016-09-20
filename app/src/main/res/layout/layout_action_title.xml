@@ -18,6 +18,5 @@
         android:textSize="@dimen/action_title"
         android:textStyle="bold" />
 
-    <View style="@style/line" />
 
 </LinearLayout>

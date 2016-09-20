@@ -3,7 +3,7 @@ package com.toin.glp.base.utils;
 import java.lang.reflect.ParameterizedType;
 
 /**
- * Created by baixiaokang on 16/4/30.
+ * Created by hb on 16/4/30.
  */
 public class TUtil {
     public static <T> T getT(Object o, int i) {

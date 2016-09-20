@@ -3,18 +3,23 @@ package com.toin.glp.presenter;
 import com.toin.glp.StringUtils;
 import com.toin.glp.contract.LoginContract;
 
+import rx.Subscription;
+
 /**
- * Created by hb on 16/4/6.
+ * 登录 Created by hb on 16/4/6.
  */
 public class LoginPresenter extends LoginContract.Presenter implements
         LoginContract.Interactor.OnLoginFinishedListener {
 
     @Override
-    public void login(String userName, String password) {
+    public void login(String userName, String password, String code) {
         if (mView != null) {
             mView.showProgress(StringUtils.API_LOGIN);
         }
-        mRxManage.add(mInterator.login(userName, password, this));
+        Subscription s = mInterator.login(userName, password, code, this);
+        if (s != null) {
+            mRxManage.add(s);
+        }
     }
 
     @Override
@@ -32,7 +37,6 @@ public class LoginPresenter extends LoginContract.Presenter implements
     @Override
     public void setClickable() {
         if (mView != null) {
-            mView.setClickable();
             mView.hideProgress();
         }
     }
@@ -40,8 +44,14 @@ public class LoginPresenter extends LoginContract.Presenter implements
     @Override
     public void setUnClickable() {
         if (mView != null) {
-            mView.setUnClickable();
             mView.hideProgress();
+        }
+    }
+
+    @Override
+    public void showVerifyCode(String code) {
+        if (mView != null) {
+            mView.showVerifyCode(code);
         }
     }
 
@@ -51,6 +61,13 @@ public class LoginPresenter extends LoginContract.Presenter implements
             mView.hideProgress();
             mView.navigateToHome();
             mView.finishActivity();
+        }
+    }
+
+    @Override
+    public void onError() {
+        if (mView != null) {
+            mView.hideProgress();
         }
     }
 }

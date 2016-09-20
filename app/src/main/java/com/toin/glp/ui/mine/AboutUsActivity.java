@@ -17,7 +17,7 @@ public class AboutUsActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initView() {
-
+        setOnClick(R.id.btn_back);
     }
 
     @Override

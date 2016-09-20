@@ -63,6 +63,11 @@ public class MessageFragment extends BaseFragment implements RadioGroup.OnChecke
     }
 
     @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.rb_msg_not_read://未读

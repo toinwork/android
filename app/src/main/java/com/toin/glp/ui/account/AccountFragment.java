@@ -1,33 +1,60 @@
 package com.toin.glp.ui.account;
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
+import com.squareup.okhttp.RequestBody;
+import com.toin.glp.App;
+import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
+import com.toin.glp.api.ApiFactory;
 import com.toin.glp.base.BaseFragment;
-import com.toin.glp.base.utils.T;
+import com.toin.glp.base.utils.TypeTranUtils;
+import com.toin.glp.models.account.AccountsModel;
+import com.toin.glp.models.account.AccountsModel.ResponseBodyEntity.AccountModel;
+import com.toin.glp.ui.LoginActivity;
 import com.toin.glp.utils.GlpUtils;
 import com.toin.glp.widget.ZmRefreshListener;
 import com.toin.glp.widget.adapter.CommonAdapter;
 import com.toin.glp.widget.adapter.ViewHolder;
 import com.toin.glp.widget.autoloadListView.AutoLoadListView;
+import com.toin.glp.widget.autoloadListView.LoadingFooter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * 账单 Created by hb on 16/6/25.
  */
-public class AccountFragment extends BaseFragment {
+public class AccountFragment extends BaseFragment implements View.OnClickListener {
 
     @Bind(R.id.swipe_refresh)
-    SwipeRefreshLayout            mSwipeRefreshLayout;
+    SwipeRefreshLayout                  mSwipeRefreshLayout;
     @Bind(R.id.autoload_listview)
-    AutoLoadListView              mAutoListView;
-    private List<String>          dataList = new ArrayList<>();
-    private CommonAdapter<String> mAdapter = null;
+    AutoLoadListView                    mAutoListView;
+    @Bind(R.id.listView)
+    View                                frameLayout;
+    @Bind(R.id.ll_go_login)
+    LinearLayout                        mLinearLayout;
+    private List<AccountModel>          dataList  = new ArrayList<>();
+    private CommonAdapter<AccountModel> mAdapter  = null;
+
+    private int                         count     = 0;
+    private int                         pageSize  = 10;
+    private int                         pageIndex = 1;
 
     @Override
     protected int initLayout() {
@@ -36,34 +63,117 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        //初始化控件
-        GlpUtils.initRefresh(mSwipeRefreshLayout, mAutoListView, new ZmRefreshListener() {
-            @Override
-            public void onRefresh() {
-                T.showShort("onRefresh");
-            }
+        setOnClick(R.id.tv_login);
+        if (TextUtils.isEmpty(App.token)) {
+            frameLayout.setVisibility(View.GONE);
+            mLinearLayout.setVisibility(View.VISIBLE);
+        } else {
+            //初始化控件
+            GlpUtils.initRefresh(mSwipeRefreshLayout, mAutoListView, new ZmRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    pageIndex = 1;
+                    httpGetAccountList();
+                }
 
-            @Override
-            public void onLoadNext() {
-                T.showShort("onLoadNext");
-            }
-        });
-        mAdapter = new CommonAdapter<String>(getActivity(), dataList, R.layout.item_choice) {
-            @Override
-            public void convert(ViewHolder helper, String item) {
-                helper.setText(R.id.tv_money, item);
-            }
-        };
-        mAutoListView.setAdapter(mAdapter);
+                @Override
+                public void onLoadNext() {
+                    pageIndex++;
+                    showProgress("加载中...");
+                    httpGetAccountList();
+                }
+            });
+            mAdapter = new CommonAdapter<AccountModel>(getActivity(), dataList,
+                    R.layout.item_account) {
+                @Override
+                public void convert(ViewHolder helper, AccountModel item) {
+                    helper.setText(R.id.tv_time, item.getMATURITYDATE());
+                    helper.setText(R.id.tv_money, item.getBUSINESSSUM());
+                    helper.setText(R.id.tv_status, item.getLOANSTATUSDESC());
+                }
+            };
+            mAutoListView.setAdapter(mAdapter);
+            mAutoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    AccountModel model = dataList.get(position);
+                    Navigation.goAccountDetailPage(getActivity(), model.getPUTOUTNO());
+                }
+            });
+        }
     }
 
     @Override
     protected void initData() {
         setActionTitle(StringUtils.TAB_TAG_ACCOUNT);
-        for (int i = 0; i < 10; i++) {
-            dataList.add("item" + i);
+        if (!TextUtils.isEmpty(App.token)) {
+            showProgress("加载中...");
+            httpGetAccountList();
         }
-        mAdapter.notifyDataSetChanged();
     }
 
+    private void httpGetAccountList() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("tranCode", "queryLoanList");
+        params.put("PAGENO", pageIndex);
+        params.put("PAGEMAXNUM", pageSize);
+        params.put("PRDCODE", "");
+        params.put("LOANSTATUS", "");
+        RequestBody body = ApiFactory.get_request(params);
+        ApiFactory factory = new ApiFactory();
+        Subscription s = factory
+                .get_financing()
+                .getBaseApiSingleton()
+                .getAccountList(body)
+                .map(new Func1<AccountsModel, List<AccountModel>>() {
+                    @Override
+                    public List<AccountModel> call(AccountsModel accountsModel) {
+                        count = TypeTranUtils.str2Int(accountsModel.getResponseBody()
+                                .getDatasetSize());
+                        return accountsModel.getResponseBody().getData();
+                    }
+                }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<AccountModel>>() {
+                    @Override
+                    public void onCompleted() {
+                        hideProgress();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        hideProgress();
+                    }
+
+                    @Override
+                    public void onNext(List<AccountModel> data) {
+                        hideProgress();
+                        if (pageIndex == 1) {
+                            dataList.clear();
+                        }
+                        dataList.addAll(data);
+                        mAdapter.notifyDataSetChanged();
+                        if (dataList.size() >= count) {
+                            mAutoListView.setState(LoadingFooter.State.TheEnd);
+                        } else {
+                            mAutoListView.setState(LoadingFooter.State.Idle);
+                        }
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+        addSubscription(s);
+    }
+
+    @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_login:
+                Navigation.goPage(getActivity(), LoginActivity.class);
+                break;
+        }
+    }
 }

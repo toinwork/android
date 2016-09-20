@@ -3,25 +3,14 @@ package com.toin.glp.models;
 import java.util.List;
 
 /**
- * Created by hb on 16/4/14.
+ * Created by hb on 16/9/17.
  */
 public class UserModel extends BaseResult {
 
-    /**
-     * _input_charset : UTF-8 avaliable_balance : 0.00 common_operation :
-     * ["{\"operation_name\":\"rechage\"}"
-     * ,"{\"operation_name\":\"transfer\"}","{\"operation_name\":\"withdraw\"}"
-     * ,"{\"operation_name\":\"transactionlist\"}"] frozen_balance : 0.00
-     * is_success : T mobile_star : 18968142405 mycard_redenvelopes :
-     * ["{\"operation_name\":\"coupons\"}"
-     * ,"{\"operation_name\":\"RedEnvelopes\"}"] token :
-     * netfinworksf715d87115dd46cca2842f84d78d01b8
-     */
-
-    private String       avaliable_balance;
-    private String       frozen_balance;
-    private String       mobile_star;
-    private String       token;
+    private String       avaliable_balance;  //avaliable_balance
+    private String       frozen_balance;     //冻结余额
+    private String       mobile_star;        //手机号码
+    private String       token;              //登录 token
     private List<String> common_operation;
     private List<String> mycard_redenvelopes;
 
@@ -47,14 +36,6 @@ public class UserModel extends BaseResult {
 
     public void setFrozen_balance(String frozen_balance) {
         this.frozen_balance = frozen_balance;
-    }
-
-    public String getIs_success() {
-        return is_success;
-    }
-
-    public void setIs_success(String is_success) {
-        this.is_success = is_success;
     }
 
     public String getMobile_star() {

@@ -1,5 +1,8 @@
 package com.toin.glp.api;
 
+import com.alibaba.fastjson.JSONObject;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.RequestBody;
 import com.toin.glp.App;
 import com.toin.glp.Config;
 import com.toin.glp.utils.SystemUtils;
@@ -35,5 +38,15 @@ public class ApiFactory {
         params.put("access_channel", "WAP");
         params.put("device_id", SystemUtils.getDeviceId(App.context));
         return params;
+    }
+
+    public static RequestBody get_request(Map<String, Object> params) {
+        params.put("tranChl", "phone");
+        //        params.put("MOBILE",App.phone);
+        params.put("MOBILE", "18605914471");
+        String json = JSONObject.toJSONString(params).toString();
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
+                json);
+        return body;
     }
 }

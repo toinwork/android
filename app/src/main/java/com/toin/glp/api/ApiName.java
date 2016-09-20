@@ -5,12 +5,22 @@ package com.toin.glp.api;
  */
 public class ApiName {
     //维金相关
-    //上传图片
-    public static final String LOAD  = "load";
-    //登陆
-    public static final String LOGIN = "login";
-    //登出
-    public static final String OUT   = "out";
+    //验证短信
+    public static final String VERIFY_MESSAGE              = "verify_msg";
+    //发送短信
+    public static final String SEND_MESSAGE                = "send_msg";
+    //忘记密码
+    public static final String SET_LOGIN_PWD               = "set_loginpwd";
+    //查询企业用户信息
+    public static final String QUERY_ENTERPRISE            = "query_enterprise";
+    //会员反馈
+    public static final String MEMBER_FEEDBACK             = "member_feedback";
+    //重置密码
+    public static final String MODIFY_LOGINPWD             = "modify_loginpwd";
+    //修改企业用户信息
+    public static final String UPDATE_ENTERPRISE_USER_DATA = "update_enterprise_user_data";
+    //注册
+    public static final String CREATE_ENTERPRISE_MEMBER    = "create_enterprise_member";
     //账单相关
 
 }

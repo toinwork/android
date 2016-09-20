@@ -18,7 +18,7 @@ import java.io.File;
 import butterknife.Bind;
 
 /**
- * 个人信息 Created by hb on 16/6/26.
+ * 个人资料 Created by hb on 16/6/26.
  */
 public class MineInfoActivity extends BaseTakePhoneActivity implements View.OnClickListener,
         TakePhoto.TakeResultListener {

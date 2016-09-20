@@ -7,7 +7,10 @@ import android.text.TextUtils;
 
 import com.toin.glp.base.utils.UserCache;
 import com.toin.glp.ui.LoginActivity;
-import com.toin.glp.ui.MainActivity;
+import com.toin.glp.ui.account.AccountDetailActivity;
+import com.toin.glp.ui.account.RepaymentPlanActivity;
+import com.toin.glp.ui.home.BusinessIntroductionActivity;
+import com.toin.glp.ui.mine.EditActivity;
 
 /**
  * 负责页面间跳转参数的封装
@@ -34,41 +37,71 @@ public class Navigation {
      * @param context
      */
     public static void logout(Context context) {
-        //        JPushInterface.clearAllNotifications(context);
-        //
-        //        UserCache.logout(context);
-        //        UserCache.clearUser(context);
-        //        UserCache.clearAccount(context);
-        //        App.logout();
-        //        //停止推送
-        //        JPushInterface.stopPush(context);
-        //
         App.logout();
         UserCache.getInstance().clearUser();
         Intent intent = new Intent(context, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
-
-        //  每个接收器都会收到 调动finish（）关闭activity
     }
 
     /**
      * 检查登陆状态
-     * 
+     *
      * @param activity
      * @return
      */
     public static boolean checkLogin(Activity activity) {
-        if (TextUtils.isEmpty(App.token) || App.account == 0) {
-//            if (TextUtils.isEmpty(App.domain)) {
-                Navigation.goPage(activity, MainActivity.class);
-//            } else {
-//                Navigation.logout(activity);
-//            }
+        if (TextUtils.isEmpty(App.token)) {
+            Navigation.logout(activity);
             return false;
         } else {
             return true;
         }
     }
 
+    /**
+     * 跳转到账单详情
+     *
+     * @param activity
+     * @param id
+     */
+    public static void goAccountDetailPage(Activity activity, String id) {
+        Intent intent = new Intent(activity, AccountDetailActivity.class);
+        intent.putExtra(AccountDetailActivity.EXTRA_ID, id);
+        activity.startActivity(intent);
+    }
+
+    public static void goRepayPlanPage(Activity activity, String id) {
+        Intent intent = new Intent(activity, RepaymentPlanActivity.class);
+        intent.putExtra(AccountDetailActivity.EXTRA_ID, id);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 跳转到编辑页面
+     *
+     * @param activity
+     * @param name
+     * @param requestCodePageName
+     * @param pageTypeName
+     */
+    public static void goEditPage(Activity activity, String name, int requestCodePageName,
+                                  String pageTypeName) {
+        Intent intent = new Intent(activity, EditActivity.class);
+        intent.putExtra(EditActivity.EXTRA_CONTENT, name);
+        intent.putExtra(EditActivity.EXTRA_PAGE_TYPE, pageTypeName);
+        activity.startActivityForResult(intent, requestCodePageName);
+    }
+
+    /**
+     * 业务介绍页面
+     * 
+     * @param activity
+     * @param pageType
+     */
+    public static void goBusinessIntroPage(Activity activity, String pageType) {
+        Intent intent = new Intent(activity, BusinessIntroductionActivity.class);
+        intent.putExtra(BusinessIntroductionActivity.PAGETYPE, pageType);
+        activity.startActivity(intent);
+    }
 }

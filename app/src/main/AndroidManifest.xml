@@ -61,9 +61,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.toin.glp.ui.LoginActivity" />
+        <!--注册页面-->
+        <activity android:name=".ui.RegisterActivity" />
+        <!--登录页面-->
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <!--主页-->
-        <activity android:name="com.toin.glp.ui.MainActivity" />
+        <activity android:name=".ui.MainActivity" />
         <!--个人资料-->
         <activity android:name=".ui.mine.MineInfoActivity" />
         <!--企业资料-->
@@ -74,6 +79,16 @@
         <activity android:name=".ui.mine.AboutUsActivity" />
         <!--修改密码-->
         <activity android:name=".ui.mine.ChangePasswordActivity" />
+        <!--账单详情-->
+        <activity android:name=".ui.account.AccountDetailActivity" />
+        <!--还款计划-->
+        <activity android:name=".ui.account.RepaymentPlanActivity" />
+        <!--忘记密码-->
+        <activity android:name=".ui.ForgetPasswordActivity" />
+        <!--编辑页面-->
+        <activity android:name=".ui.mine.EditActivity" />
+        <!--业务介绍-->
+        <activity android:name=".ui.home.BusinessIntroductionActivity" />
 
     </application>
 

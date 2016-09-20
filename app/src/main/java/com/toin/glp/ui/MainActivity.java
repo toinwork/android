@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
+import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.base.BaseActivity;
@@ -22,7 +23,7 @@ import java.util.Date;
 import butterknife.Bind;
 
 /**
- * Created by hb on 16/4/6.
+ * 主页 Created by hb on 16/4/6.
  */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -102,14 +103,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tabManager.setTabSelection(TAB_ACCOUNT);
                 break;
             case R.id.rb_message:
-                tabManager.setTabSelection(TAB_MESSAGE);
+                if (Navigation.checkLogin(this)) {
+                    tabManager.setTabSelection(TAB_MESSAGE);
+                } else {
+                    checkedMain();
+                }
                 break;
             case R.id.rb_mine:
-                //                if (Navigation.checkLogin(this)) {
-                tabManager.setTabSelection(TAB_MINE);
-                //                } else {
-                //                    checkedMain();
-                //                }
+                if (Navigation.checkLogin(this)) {
+                    tabManager.setTabSelection(TAB_MINE);
+                } else {
+                    checkedMain();
+                }
                 break;
             default:
                 break;

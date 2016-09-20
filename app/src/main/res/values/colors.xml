@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- action背景 -->
-    <color name="action_color">#63B8FF</color>
-    <color name="action_color_alpha">#6663B8FF</color>
+    <color name="action_color">#1AAD19</color>
+    <color name="action_color_black">#323137</color>
+    <color name="action_color_alpha">#661AAD19</color>
     <color name="btn_white">#FFFFFF</color>
     <color name="btn_white_alpha">#66FFFFFF</color>
     <color name="action_bg_gray">#f7f7f7</color>
+    <color name="gray_hint">#CCCCCC</color>
+    <color name="gray_interest">#B3B3B3</color>
+    <color name="gray_content">#999999</color>
     <!-- 页面背景 -->
     <color name="page_bg">#f2f2f2</color>
     <!-- 页面背景 -->
@@ -251,5 +255,6 @@
     <color name="up_times_bg_red">#ffef805d</color>
     <color name="white_60_alpha">#99ffffff</color>
     <color name="white_80_alpha">#bbffffff</color>
+    <color name="red_benqi">#FB4A65</color>
 
 </resources>

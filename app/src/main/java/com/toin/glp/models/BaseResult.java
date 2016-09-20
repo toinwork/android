@@ -8,4 +8,5 @@ public class BaseResult {
     public String is_success;
     public String error_code;
     public String error_message;
+    public String verifyCode;
 }

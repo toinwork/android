@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 个人信息编辑页面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_action_title_submit" />
+
+    <EditText
+        android:id="@+id/et_content"
+        style="@style/common_edittext"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_bg"
+        android:gravity="center_vertical"
+        android:textSize="15sp">
+
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>

@@ -13,20 +13,30 @@ import android.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
 import com.toin.glp.App;
 import com.toin.glp.R;
+import com.toin.glp.widget.dialog.LoadingDialog;
 
 import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends
+        Fragment {
+    private LoadingDialog         dialog;
 
-    private CompositeSubscription      mCompositeSubscription;
+//    public T mPresenter;
+//    public E                      mInterator;
+    private CompositeSubscription mCompositeSubscription;
 
     protected abstract int initLayout();
 
     protected abstract void initView();
 
     protected abstract void initData();
+
+    /**
+     * 简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
+     */
+    public abstract void initPresenter();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +46,10 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+//        mPresenter = TUtil.getT(this, 0);
+//        mInterator = TUtil.getT(this, 1);
         initView();
+        initPresenter();
         initData();
     }
 
@@ -50,6 +63,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+//        if (mPresenter != null)
+//            mPresenter.onDestroy();
         ButterKnife.unbind(this);
         /** 内存泄露监测 */
         RefWatcher refWatcher = App.getRefWatcher();
@@ -116,7 +131,7 @@ public abstract class BaseFragment extends Fragment {
             return;
         }
         for (int i : ids) {
-            setOnClick(this.<View>findView(i));
+            setOnClick(this.<View> findView(i));
         }
     }
 
@@ -157,6 +172,25 @@ public abstract class BaseFragment extends Fragment {
                 }
             }
         }, 1000);
+    }
+
+    public void hideProgress() {
+        if (dialog != null) {
+            dialog.dismiss();
+        }
+    }
+
+    public void showProgress(String msg) {
+        if (dialog == null) {
+            dialog = new LoadingDialog(getActivity());
+        }
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setMessage(msg);
+        dialog.show();
+    }
+
+    public void finishActivity() {
     }
 
 }
