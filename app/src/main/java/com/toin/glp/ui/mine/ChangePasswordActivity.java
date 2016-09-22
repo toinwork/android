@@ -98,22 +98,23 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                         .subscribe(new Subscriber<BaseResult>() {
                             @Override
                             public void onCompleted() {
-
+                                hideProgress();
                             }
 
                             @Override
                             public void onError(Throwable e) {
-
+                                hideProgress();
                             }
 
                             @Override
                             public void onNext(BaseResult result) {
+                                hideProgress();
                                 if (result.is_success.equals("T")) {
                                     T.showShort("重置密码成功");
                                     hideProgress();
                                     finish();
                                 } else {
-                                    T.showShort(result.error_message);
+                                    T.showShort(result.getError_message());
                                 }
                             }
                         });

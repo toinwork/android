@@ -39,8 +39,10 @@ public class Navigation {
     public static void logout(Context context) {
         App.logout();
         UserCache.getInstance().clearUser();
+        UserCache.saveToken(context, "");
         Intent intent = new Intent(context, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra(LoginActivity.PAGETYPE, LoginActivity.TYPE_LOGOUT);
         context.startActivity(intent);
     }
 
@@ -95,13 +97,24 @@ public class Navigation {
 
     /**
      * 业务介绍页面
-     * 
+     *
      * @param activity
      * @param pageType
      */
     public static void goBusinessIntroPage(Activity activity, String pageType) {
         Intent intent = new Intent(activity, BusinessIntroductionActivity.class);
         intent.putExtra(BusinessIntroductionActivity.PAGETYPE, pageType);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 跳转到登录页
+     *
+     * @param activity
+     */
+    public static void goLoginPage(Activity activity) {
+        Intent intent = new Intent(activity, LoginActivity.class);
+        intent.putExtra(LoginActivity.PAGETYPE, LoginActivity.TYPE_LOGIN);
         activity.startActivity(intent);
     }
 }

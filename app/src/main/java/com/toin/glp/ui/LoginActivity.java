@@ -3,6 +3,7 @@ package com.toin.glp.ui;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,29 +13,39 @@ import android.widget.TextView;
 import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.base.BaseActivity;
+import com.toin.glp.base.utils.T;
 import com.toin.glp.contract.LoginContract;
 import com.toin.glp.interactor.LoginInteractor;
 import com.toin.glp.presenter.LoginPresenter;
+
+import java.util.Date;
 
 import butterknife.Bind;
 
 public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor> implements
         LoginContract.View, View.OnClickListener {
+    public static final String PAGETYPE      = "pagetype";
+    public static final String TYPE_LOGOUT   = "logout";
+    public static final String TYPE_LOGIN    = "login";
     @Bind(R.id.et_phone)
-    EditText       idEt;
+    EditText                   idEt;
     @Bind(R.id.et_pwd)
-    EditText       pwdEt;
+    EditText                   pwdEt;
     @Bind(R.id.et_code)
-    EditText       codeEt;
+    EditText                   codeEt;
     @Bind(R.id.ll_verify_code)
-    LinearLayout   codeLL;
+    LinearLayout               codeLL;
     @Bind(R.id.tv_code)
-    TextView       codeTv;
+    TextView                   codeTv;
     @Bind(R.id.img_cancel)
-    ImageView      cancelImg;
+    ImageView                  cancelImg;
 
-    private String userName = null;
-    private String passWord = null;
+    private String             userName      = null;
+    private String             passWord      = null;
+    private long               mLastBackTime = 0;
+    private long               TIME_DIFF     = 2 * 1000;
+
+    private String             type;
 
     @Override
     protected int initLayout() {
@@ -80,6 +91,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     @Override
     protected void initData() {
         mPresenter.getAccount();
+        type = getIntent().getStringExtra(PAGETYPE);
     }
 
     @Override
@@ -102,7 +114,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     public void showVerifyCode(String code) {
         codeLL.setVisibility(View.VISIBLE);
         codeTv.setVisibility(View.VISIBLE);
-        codeTv.setText("您已超过三次输错密码,请输入验证码:" + code);
+        codeTv.setText("请输入验证码:" + code);
     }
 
     @Override
@@ -124,4 +136,22 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
         }
     }
 
+    @Override
+    public boolean onKeyDown(final int keyCode, final KeyEvent event) {
+        if (type.equals(TYPE_LOGOUT)) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                long now = new Date().getTime();
+                if (now - mLastBackTime < TIME_DIFF) {
+                    return super.onKeyDown(keyCode, event);
+                } else {
+                    mLastBackTime = now;
+                    T.showShort("再按一次返回键退出");
+                }
+                return true;
+            }
+        } else {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

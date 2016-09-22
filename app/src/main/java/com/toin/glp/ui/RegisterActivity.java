@@ -38,7 +38,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
     EditText      pwdEt;
     @Bind(R.id.et_pwd_again)
     EditText      pwdAgainEt;
-    private Timer timer;
+    private Timer timer = null;
 
     @Override
     protected int initLayout() {
@@ -108,7 +108,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
                 Navigation.goPage(this, LoginActivity.class);
                 break;
             case R.id.btn_back:
-                timer.cancel();
+                if (timer != null) {
+                    timer.cancel();
+                }
                 finish();
                 break;
         }

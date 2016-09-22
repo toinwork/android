@@ -7,7 +7,6 @@ import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.base.BaseFragment;
-import com.toin.glp.ui.mine.CompanyInformationActivity;
 import com.toin.glp.widget.LocalImageHolderView;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        setOnClick(R.id.img_home1,R.id.img_home2,R.id.img_home3,R.id.img_home4);
+        setOnClick(R.id.img_home1, R.id.img_home2, R.id.img_home3, R.id.img_home4);
     }
 
     @Override
@@ -52,27 +51,25 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         dataList.add("http://zmall.oss-cn-hangzhou.aliyuncs.com/public/2016/09/08/57d0e1a333fef.jpg");
         convenientBanner.setPages(() -> new LocalImageHolderView(), dataList)
                 .setPageIndicator(new int[] { R.mipmap.point_focused, R.mipmap.point_unfocused })
-                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
+                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
+                .startTurning(3000);
 
-        convenientBanner.setOnItemClickListener(position -> {
-            Navigation.goPage(getActivity(), CompanyInformationActivity.class);
-        });
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.img_home1:
-                Navigation.goBusinessIntroPage(getActivity(),BusinessIntroductionActivity.PAGE_A);
+                Navigation.goBusinessIntroPage(getActivity(), BusinessIntroductionActivity.PAGE_A);
                 break;
             case R.id.img_home2:
-                Navigation.goBusinessIntroPage(getActivity(),BusinessIntroductionActivity.PAGE_B);
+                Navigation.goBusinessIntroPage(getActivity(), BusinessIntroductionActivity.PAGE_B);
                 break;
             case R.id.img_home3:
-                Navigation.goBusinessIntroPage(getActivity(),BusinessIntroductionActivity.PAGE_C);
+                Navigation.goBusinessIntroPage(getActivity(), BusinessIntroductionActivity.PAGE_C);
                 break;
             case R.id.img_home4:
-                Navigation.goBusinessIntroPage(getActivity(),BusinessIntroductionActivity.PAGE_D);
+                Navigation.goBusinessIntroPage(getActivity(), BusinessIntroductionActivity.PAGE_D);
                 break;
 
         }

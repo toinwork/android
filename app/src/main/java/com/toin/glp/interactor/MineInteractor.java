@@ -57,7 +57,7 @@ public class MineInteractor implements MineContract.Interactor {
                         if (result.is_success.equals("T")) {
                             listener.getUesrInfoSuccess(result);
                         } else {
-                            T.showShort(result.error_message);
+                            T.showShort(result.getError_message());
                             listener.onError();
                         }
                     }

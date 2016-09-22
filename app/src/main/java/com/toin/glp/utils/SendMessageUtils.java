@@ -18,10 +18,10 @@ import rx.schedulers.Schedulers;
 public class SendMessageUtils {
 
     //忘记密码
-    public static final String REFI_LOGIN_SMS = "REFI_LOGIN_SMS";
+    public static final String REFI_LOGIN_SMS  = "REFI_LOGIN_SMS";
     //注册
     public static final String REGISTER_MOBILE = "REGISTER_MOBILE";
-    public static final String ANONYMOUS      = "anonymous";
+    public static final String ANONYMOUS       = "anonymous";
 
     public static Subscription sendMessage(String phone, String token, String type,
                                            OnSendMessageFinishedListener listener) {
@@ -33,8 +33,8 @@ public class SendMessageUtils {
         params.put("template", type);
         ApiFactory factory = new ApiFactory();
         return factory.get_weijin().getBaseApiSingleton().sendMsg(params)
-                .map(baseResult -> baseResult).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResult>() {
+                .map(baseResult -> baseResult).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
 
@@ -51,7 +51,7 @@ public class SendMessageUtils {
                             T.showShort("发送成功");
                             listener.onSendSuccess();
                         } else {
-                            T.showShort(baseResult.error_message);
+                            T.showShort(baseResult.getError_message());
                             listener.onSendError();
                         }
                     }

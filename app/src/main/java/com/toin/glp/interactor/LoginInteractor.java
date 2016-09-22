@@ -3,7 +3,9 @@ package com.toin.glp.interactor;
 import android.text.TextUtils;
 
 import com.toin.glp.App;
+import com.toin.glp.R;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.base.utils.PatternUtils;
 import com.toin.glp.base.utils.SharedPreferencesUtil;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.base.utils.UserCache;
@@ -52,6 +54,11 @@ public class LoginInteractor implements LoginContract.Interactor {
     @Override
     public Subscription login(final String username, final String password, final String code,
                               final OnLoginFinishedListener listener) {
+        if (!PatternUtils.isPhoneNum(username)) {
+            T.showLong(App.context.getString(R.string.mobile_illegal));
+            listener.onError();
+            return null;
+        }
         if (TextUtils.isEmpty(username)) {
             T.showShort("用户名不能为空");
             listener.onError();
@@ -108,7 +115,7 @@ public class LoginInteractor implements LoginContract.Interactor {
                                 is_need_code = true;
                                 listener.showVerifyCode(userModel.verifyCode);
                             }
-                            T.showShort(userModel.error_message);
+                            T.showShort(userModel.getError_message());
                         }
                     }
                 });

@@ -80,12 +80,12 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
                 .subscribe(new Subscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
-
+                        listener.onError();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        listener.onError();
                     }
 
                     @Override
@@ -94,7 +94,7 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
                             T.showShort(StringUtils.API_RESET_SUCCESS);
                             listener.onSuccess();
                         } else {
-                            T.showShort(baseResult.error_message);
+                            T.showShort(baseResult.getError_message());
                             listener.onError();
                         }
                     }
@@ -157,12 +157,12 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
                 .subscribe(new Subscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
-
+                        listener.onError();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        listener.onError();
                     }
 
                     @Override
@@ -170,7 +170,7 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
                         if (flagModel.is_success.equals("T")) {
                             listener.checkCodeSuccess(phone, code, password, passwordAgain);
                         } else {
-                            T.showShort(flagModel.error_message);
+                            T.showShort(flagModel.getError_message());
                             listener.onError();
                         }
                     }

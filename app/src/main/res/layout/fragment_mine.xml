@@ -18,13 +18,13 @@
             <include layout="@layout/layout_action_title" />
 
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/rl_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,11 +74,11 @@
 
 
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/rl_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_bg">
+                android:background="@drawable/edit_bg"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/tv_mine_two"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_30"
-                android:background="@color/white"
+                android:background="@drawable/edit_bg"
                 android:divider="@drawable/vertical_line"
                 android:orientation="vertical"
                 android:showDividers="middle">

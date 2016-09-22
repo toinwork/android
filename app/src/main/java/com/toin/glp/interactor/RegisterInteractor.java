@@ -79,12 +79,12 @@ public class RegisterInteractor implements RegisterContract.Interactor {
                 .subscribe(new Subscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
-
+                        listener.onError();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        listener.onError();
                     }
 
                     @Override
@@ -93,7 +93,7 @@ public class RegisterInteractor implements RegisterContract.Interactor {
                             T.showShort(StringUtils.API_REGISTER_SUCCESS);
                             listener.onSuccess();
                         } else {
-                            T.showShort(baseResult.error_message);
+                            T.showShort(baseResult.getError_message());
                             listener.onError();
                         }
                     }
@@ -156,12 +156,12 @@ public class RegisterInteractor implements RegisterContract.Interactor {
                 .subscribe(new Subscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
-
+                        listener.onError();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        listener.onError();
                     }
 
                     @Override
@@ -169,7 +169,7 @@ public class RegisterInteractor implements RegisterContract.Interactor {
                         if (flagModel.is_success.equals("T")) {
                             listener.checkCodeSuccess(phone, code, password, passwordAgain);
                         } else {
-                            T.showShort(flagModel.error_message);
+                            T.showShort(flagModel.getError_message());
                             listener.onError();
                         }
                     }

@@ -4,6 +4,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.squareup.okhttp.RequestBody;
@@ -16,7 +17,6 @@ import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.TypeTranUtils;
 import com.toin.glp.models.account.AccountsModel;
 import com.toin.glp.models.account.AccountsModel.ResponseBodyEntity.AccountModel;
-import com.toin.glp.ui.LoginActivity;
 import com.toin.glp.utils.GlpUtils;
 import com.toin.glp.widget.ZmRefreshListener;
 import com.toin.glp.widget.adapter.CommonAdapter;
@@ -49,12 +49,16 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
     View                                frameLayout;
     @Bind(R.id.ll_go_login)
     LinearLayout                        mLinearLayout;
-    private List<AccountModel>          dataList  = new ArrayList<>();
-    private CommonAdapter<AccountModel> mAdapter  = null;
+    @Bind(R.id.swipe_refresh_empty)
+    SwipeRefreshLayout                  mEmptySwipeRefreshLayout = null;
+    @Bind(R.id.img_empty)
+    ImageView                           emptyImg                 = null;
+    private List<AccountModel>          dataList                 = new ArrayList<>();
+    private CommonAdapter<AccountModel> mAdapter                 = null;
 
-    private int                         count     = 0;
-    private int                         pageSize  = 10;
-    private int                         pageIndex = 1;
+    private int                         count                    = 0;
+    private int                         pageSize                 = 10;
+    private int                         pageIndex                = 1;
 
     @Override
     protected int initLayout() {
@@ -82,7 +86,8 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                     showProgress("加载中...");
                     httpGetAccountList();
                 }
-            });
+            }, mEmptySwipeRefreshLayout);
+            emptyImg.setImageDrawable(getResources().getDrawable(R.mipmap.blank2));
             mAdapter = new CommonAdapter<AccountModel>(getActivity(), dataList,
                     R.layout.item_account) {
                 @Override
@@ -172,7 +177,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_login:
-                Navigation.goPage(getActivity(), LoginActivity.class);
+                Navigation.goLoginPage(getActivity());
                 break;
         }
     }

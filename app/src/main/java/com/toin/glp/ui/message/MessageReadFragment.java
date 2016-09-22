@@ -13,6 +13,7 @@ import com.toin.glp.R;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.DensityUtil;
+import com.toin.glp.base.utils.T;
 import com.toin.glp.base.utils.TypeTranUtils;
 import com.toin.glp.models.account.MessageListModel;
 import com.toin.glp.models.account.MessageModel;
@@ -146,11 +147,11 @@ public class MessageReadFragment extends BaseFragment {
         RequestBody body = ApiFactory.get_request(params);
         ApiFactory factory = new ApiFactory();
         Subscription s = factory.get_financing().getBaseApiSingleton().getMessageList(body)
-                .map((Func1<MessageListModel, List<MessageModel>>) model -> {
+                .map((Func1<MessageListModel, MessageListModel.ResponseBodyEntity>) model -> {
                     count = TypeTranUtils.str2Int(model.getResponseBody().getDatasetSize());
-                    return model.getResponseBody().getData();
+                    return model.getResponseBody();
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<MessageModel>>() {
+                .subscribe(new Subscriber<MessageListModel.ResponseBodyEntity>() {
                     @Override
                     public void onCompleted() {
                         hideProgress();
@@ -162,19 +163,28 @@ public class MessageReadFragment extends BaseFragment {
                     }
 
                     @Override
-                    public void onNext(List<MessageModel> data) {
+                    public void onNext(MessageListModel.ResponseBodyEntity data) {
                         hideProgress();
+                        if (!data.getRESULTCODE().equals("000000")) {
+                            T.showShort(data.getRESULTMSG());
+                            return;
+                        }
                         if (pageIndex == 1) {
                             dataList.clear();
                         }
-                        dataList.addAll(data);
+                        dataList.addAll(data.getData());
                         mAdapter.notifyDataSetChanged();
                         if (dataList.size() >= count) {
                             mAutoLoadListView.setState(LoadingFooter.State.TheEnd);
                         } else {
                             mAutoLoadListView.setState(LoadingFooter.State.Idle);
                         }
-                        mSwipeRefreshLayout.setRefreshing(false);
+                        if (mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                        if (mEmptySwipeRefreshLayout.isRefreshing()) {
+                            mEmptySwipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 });
         addSubscription(s);

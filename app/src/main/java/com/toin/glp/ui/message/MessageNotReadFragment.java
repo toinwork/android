@@ -13,6 +13,7 @@ import com.toin.glp.R;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.DensityUtil;
+import com.toin.glp.base.utils.T;
 import com.toin.glp.base.utils.TypeTranUtils;
 import com.toin.glp.models.account.MessageListModel;
 import com.toin.glp.models.account.MessageModel;
@@ -126,7 +127,7 @@ public class MessageNotReadFragment extends BaseFragment {
                                     ViewGroup.LayoutParams.WRAP_CONTENT,
                                     ViewGroup.LayoutParams.WRAP_CONTENT);
                             lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-                            lp.setMargins(0, 0, margin, 0);
+                            lp.setMargins(0, margin, margin, 0);
                             timeTv.setLayoutParams(lp);
                         }
                         contentTv.setSingleLine(flag);
@@ -165,6 +166,10 @@ public class MessageNotReadFragment extends BaseFragment {
                     @Override
                     public void onNext(ResponseBodyEntity data) {
                         hideProgress();
+                        if (!data.getRESULTCODE().equals("000000")) {
+                            T.showShort(data.getRESULTMSG());
+                            return;
+                        }
                         if (data.getSTATUS().equals("02")) {//已读
                             contentTv.setTextColor(getResources().getColor(R.color.gray));
                         }
@@ -187,35 +192,49 @@ public class MessageNotReadFragment extends BaseFragment {
         RequestBody body = ApiFactory.get_request(params);
         ApiFactory factory = new ApiFactory();
         Subscription s = factory.get_financing().getBaseApiSingleton().getMessageList(body)
-                .map((Func1<MessageListModel, List<MessageModel>>) model -> {
-                    count = TypeTranUtils.str2Int(model.getResponseBody().getDatasetSize());
-                    return model.getResponseBody().getData();
+                .map(new Func1<MessageListModel, MessageListModel.ResponseBodyEntity>() {
+                    @Override
+                    public MessageListModel.ResponseBodyEntity call(MessageListModel model) {
+                        count = TypeTranUtils.str2Int(model.getResponseBody().getDatasetSize());
+                        return model.getResponseBody();
+                    }
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<MessageModel>>() {
+                .subscribe(new Subscriber<MessageListModel.ResponseBodyEntity>() {
                     @Override
                     public void onCompleted() {
                         hideProgress();
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         hideProgress();
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
-                    public void onNext(List<MessageModel> data) {
+                    public void onNext(MessageListModel.ResponseBodyEntity data) {
                         hideProgress();
+                        if (!data.getRESULTCODE().equals("000000")) {
+                            T.showShort(data.getRESULTMSG());
+                            return;
+                        }
                         if (pageIndex == 1) {
                             dataList.clear();
                         }
-                        dataList.addAll(data);
+                        if (mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                        if (mEmptySwipeRefreshLayout.isRefreshing()) {
+                            mEmptySwipeRefreshLayout.setRefreshing(false);
+                        }
+                        dataList.addAll(data.getData());
                         mAdapter.notifyDataSetChanged();
                         if (dataList.size() >= count) {
                             mAutoLoadListView.setState(LoadingFooter.State.TheEnd);
                         } else {
                             mAutoLoadListView.setState(LoadingFooter.State.Idle);
                         }
-                        mSwipeRefreshLayout.setRefreshing(false);
                     }
                 });
         addSubscription(s);

@@ -95,7 +95,7 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
                         if (result.is_success.equals("T")) {
                             setInfo(result.result);
                         } else {
-                            T.showShort(result.error_message);
+                            T.showShort(result.getError_message());
                         }
                     }
                 });
@@ -244,7 +244,7 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
                             T.showShort(StringUtils.API_SUCCESS);
                             setCompanyInfo(content, typeCode);
                         } else {
-                            T.showShort(baseResult.error_message);
+                            T.showShort(baseResult.getError_message());
                         }
                     }
                 });

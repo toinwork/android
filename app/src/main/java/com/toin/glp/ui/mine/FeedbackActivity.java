@@ -90,7 +90,7 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
                                     T.showShort("反馈成功");
                                     finish();
                                 } else {
-                                    T.showShort(result.error_message);
+                                    T.showShort(result.getError_message());
                                 }
                             }
                         });

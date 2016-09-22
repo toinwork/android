@@ -39,8 +39,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private long         mLastBackTime = 0;
     private long         TIME_DIFF     = 2 * 1000;
 
-    public static int    msgCount      = 0;
-
     @Override
     protected int initLayout() {
         return R.layout.activity_main;
