@@ -75,7 +75,7 @@ public class MessageReadFragment extends BaseFragment {
                 httpGetMessageList();
             }
         }, mEmptySwipeRefreshLayout);
-        emptyImg.setImageDrawable(getResources().getDrawable(R.mipmap.blank1));
+        emptyImg.setImageDrawable(getResources().getDrawable(R.mipmap.blank3));
         mAdapter = new CommonAdapter<MessageModel>(getActivity(), dataList, R.layout.item_message) {
             @Override
             public void convert(ViewHolder helper, MessageModel item) {
@@ -114,7 +114,7 @@ public class MessageReadFragment extends BaseFragment {
                             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                                     ViewGroup.LayoutParams.WRAP_CONTENT,
                                     ViewGroup.LayoutParams.WRAP_CONTENT);
-                            lp.setMargins(margin, 0, margin, margin);
+                            lp.setMargins(margin, 0, margin, 0);
                             lp.addRule(RelativeLayout.LEFT_OF, R.id.tv_time);
                             contentTv.setLayoutParams(lp);
                             lp = new RelativeLayout.LayoutParams(

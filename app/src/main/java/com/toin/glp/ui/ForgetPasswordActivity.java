@@ -1,9 +1,11 @@
 package com.toin.glp.ui;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.toin.glp.App;
 import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.base.BaseActivity;
@@ -97,6 +99,10 @@ public class ForgetPasswordActivity extends
             case R.id.tv_code:
                 //发送验证码
                 String mobile = phoneEt.getText().toString();
+                if (TextUtils.isEmpty(mobile)) {
+                    T.showLong(App.context.getString(R.string.phone_number_null));
+                    return;
+                }
                 if (!PatternUtils.isPhoneNum(mobile)) {
                     T.showLong(getString(R.string.mobile_illegal));
                     return;
@@ -109,6 +115,30 @@ public class ForgetPasswordActivity extends
                 String code = codeEt.getText().toString().trim();
                 String password = pwdEt.getText().toString().trim();
                 String passwordAgain = pwdAgainEt.getText().toString().trim();
+                if (TextUtils.isEmpty(userName)) {
+                    T.showLong(App.context.getString(R.string.phone_number_null));
+                    return;
+                }
+                if (!PatternUtils.isPhoneNum(userName)) {
+                    T.showLong(App.context.getString(R.string.mobile_illegal));
+                    return;
+                }
+                if (TextUtils.isEmpty(code)) {
+                    T.showLong(App.context.getString(R.string.check_code_cannot_be_empty));
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    T.showLong(App.context.getString(R.string.password_null));
+                    return;
+                }
+                if (password.length() < 6 || password.length() > 16) {
+                    T.showLong(App.context.getString(R.string.password_length_illegal));
+                    return;
+                }
+                if (!password.equals(passwordAgain)) {
+                    T.showLong(App.context.getString(R.string.password_is_not_equels_old_password));
+                    return;
+                }
                 mPresenter.setLoginPwd(userName, code, password, passwordAgain);
                 break;
             case R.id.tv_login:

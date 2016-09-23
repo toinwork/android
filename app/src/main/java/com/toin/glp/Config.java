@@ -35,19 +35,9 @@ public class Config {
         }
     }
 
-    /** 社会化组件 */
-    public static String        WXAppID       = "wxc145914447d24b65";                        //微信key
-    public static String        WXAppSecret   = "b455e198da81676bb68f8e3894a47a99";
-    public static String        QQAppID       = "1105253653";                                //qqkey
-    public static String        QQAppSecret   = "hQeQ62I3FjbTjYuq";
-    public static String        SINAAppID     = "3819933553";
-    public static String        SINAAppSecret = "aeef7db53666b433e31a3fdc1ea5f40d";
 
     public static String        phone         = "0571-56921002";
 
-    public static final String  STORE_DETAIL  = "http://html.isspu.com/detail.html?room_id=";
-
-    public static final String  SHARE_URL     = "http://html.isspu.com/share.html?room_id=";
 
     /**
      * 系统运行环境参数

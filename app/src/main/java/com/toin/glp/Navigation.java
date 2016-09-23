@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.toin.glp.base.utils.UserCache;
 import com.toin.glp.ui.LoginActivity;
+import com.toin.glp.ui.MainActivity;
 import com.toin.glp.ui.account.AccountDetailActivity;
 import com.toin.glp.ui.account.RepaymentPlanActivity;
 import com.toin.glp.ui.home.BusinessIntroductionActivity;
@@ -47,6 +48,17 @@ public class Navigation {
     }
 
     /**
+     * 登录
+     * 
+     * @param context
+     */
+    public static void login(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    /**
      * 检查登陆状态
      *
      * @param activity
@@ -55,6 +67,18 @@ public class Navigation {
     public static boolean checkLogin(Activity activity) {
         if (TextUtils.isEmpty(App.token)) {
             Navigation.logout(activity);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static boolean checkLoginStatus(Activity activity) {
+        if (TextUtils.isEmpty(App.token)) {
+            App.logout();
+            UserCache.getInstance().clearUser();
+            UserCache.saveToken(activity, "");
+            goLoginPage(activity);
             return false;
         } else {
             return true;
@@ -113,6 +137,9 @@ public class Navigation {
      * @param activity
      */
     public static void goLoginPage(Activity activity) {
+        UserCache.getInstance().clearUser();
+        UserCache.saveToken(activity, "");
+        App.logout();
         Intent intent = new Intent(activity, LoginActivity.class);
         intent.putExtra(LoginActivity.PAGETYPE, LoginActivity.TYPE_LOGIN);
         activity.startActivity(intent);

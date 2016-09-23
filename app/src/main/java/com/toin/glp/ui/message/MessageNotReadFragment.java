@@ -77,7 +77,7 @@ public class MessageNotReadFragment extends BaseFragment {
                 httpGetMessageList();
             }
         }, mEmptySwipeRefreshLayout);
-        emptyImg.setImageDrawable(getResources().getDrawable(R.mipmap.blank1));
+        emptyImg.setImageDrawable(getResources().getDrawable(R.mipmap.blank4));
         mAdapter = new CommonAdapter<MessageModel>(getActivity(), dataList, R.layout.item_message) {
             @Override
             public void convert(ViewHolder helper, MessageModel item) {
@@ -202,31 +202,22 @@ public class MessageNotReadFragment extends BaseFragment {
                 .subscribe(new Subscriber<MessageListModel.ResponseBodyEntity>() {
                     @Override
                     public void onCompleted() {
-                        hideProgress();
-                        mSwipeRefreshLayout.setRefreshing(false);
+                        hideProgresses();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        hideProgress();
-                        mSwipeRefreshLayout.setRefreshing(false);
+                        hideProgresses();
                     }
 
                     @Override
                     public void onNext(MessageListModel.ResponseBodyEntity data) {
-                        hideProgress();
                         if (!data.getRESULTCODE().equals("000000")) {
                             T.showShort(data.getRESULTMSG());
                             return;
                         }
                         if (pageIndex == 1) {
                             dataList.clear();
-                        }
-                        if (mSwipeRefreshLayout.isRefreshing()) {
-                            mSwipeRefreshLayout.setRefreshing(false);
-                        }
-                        if (mEmptySwipeRefreshLayout.isRefreshing()) {
-                            mEmptySwipeRefreshLayout.setRefreshing(false);
                         }
                         dataList.addAll(data.getData());
                         mAdapter.notifyDataSetChanged();
@@ -235,9 +226,21 @@ public class MessageNotReadFragment extends BaseFragment {
                         } else {
                             mAutoLoadListView.setState(LoadingFooter.State.Idle);
                         }
+                        hideProgresses();
+
                     }
                 });
         addSubscription(s);
+    }
+
+    private void hideProgresses() {
+        hideProgress();
+        if (mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
+        if (mEmptySwipeRefreshLayout.isRefreshing()) {
+            mEmptySwipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override

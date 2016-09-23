@@ -12,6 +12,7 @@
         android:background="@drawable/edit_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
@@ -58,9 +59,10 @@
 
             <TextView
                 android:id="@+id/tv_status"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp_80"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_action_btn"
+                android:gravity="center"
                 android:paddingBottom="@dimen/dp_5"
                 android:paddingLeft="@dimen/dp_10"
                 android:paddingRight="@dimen/dp_10"

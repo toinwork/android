@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.toin.glp.App;
 import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.base.BaseActivity;
@@ -81,6 +82,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
                 String checkCode = codeEt.getText().toString().trim();
                 String pwd = pwdEt.getText().toString().trim();
                 String pwdAgain = pwdAgainEt.getText().toString().trim();
+                if (TextUtils.isEmpty(mobile)) {
+                    T.showLong(App.context.getString(R.string.phone_number_null));
+                    return;
+                }
                 if (!PatternUtils.isPhoneNum(mobile)) {
                     T.showLong(getString(R.string.mobile_illegal));
                     return;

@@ -1,11 +1,13 @@
 package com.toin.glp.ui.account;
 
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.squareup.okhttp.RequestBody;
 import com.toin.glp.App;
@@ -72,6 +74,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
             frameLayout.setVisibility(View.GONE);
             mLinearLayout.setVisibility(View.VISIBLE);
         } else {
+            mLinearLayout.setVisibility(View.GONE);
             //初始化控件
             GlpUtils.initRefresh(mSwipeRefreshLayout, mAutoListView, new ZmRefreshListener() {
                 @Override
@@ -94,6 +97,18 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                 public void convert(ViewHolder helper, AccountModel item) {
                     helper.setText(R.id.tv_time, item.getMATURITYDATE());
                     helper.setText(R.id.tv_money, item.getBUSINESSSUM());
+                    TextView statusTv = helper.getView(R.id.tv_status);
+                    //1:逾期,2:正常结清,3:提前结清,4:逾期结清
+                    GradientDrawable statusShape = (GradientDrawable) statusTv.getBackground();
+                    if (item.getLOANSTATUS().equals("2")) {
+                        statusShape.setColor(getResources().getColor(R.color.gray_hint));
+                    } else if (item.getLOANSTATUS().equals("3")) {
+                        statusShape.setColor(getResources().getColor(R.color.account_green));
+                    } else if (item.getLOANSTATUS().equals("1") || item.getLOANSTATUS().equals("4")) {
+                        statusShape.setColor(getResources().getColor(R.color.account_red));
+                    } else {
+                        statusShape.setColor(getResources().getColor(R.color.account_green));
+                    }
                     helper.setText(R.id.tv_status, item.getLOANSTATUSDESC());
                 }
             };
@@ -162,7 +177,12 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                         } else {
                             mAutoListView.setState(LoadingFooter.State.Idle);
                         }
-                        mSwipeRefreshLayout.setRefreshing(false);
+                        if (mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                        if (mEmptySwipeRefreshLayout.isRefreshing()) {
+                            mEmptySwipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 });
         addSubscription(s);

@@ -1,175 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:slideswitch="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/page_bg"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_action_title" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/layout_action_title" />
-
             <RelativeLayout
-                android:id="@+id/rl_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/ll_mine"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_mine_left" />
-
-                    <TextView
-                        android:layout_width="86dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/action_color" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_mine_right" />
-                </LinearLayout>
-
-                <com.toin.glp.widget.circleImageView.CircleImageView
-                    android:id="@+id/img_header"
-                    android:layout_width="@dimen/header_img"
-                    android:layout_height="@dimen/header_img"
-                    android:layout_centerHorizontal="true"
-                    android:scaleType="centerCrop"
-                    android:src="@color/gray"
-                    slideswitch:border_color="@color/white"
-                    slideswitch:border_width="3dp" />
-
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/img_header"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/dp_20"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/comment_textSize" />
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
+                    <RelativeLayout
+                        android:id="@+id/rl_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_mine_left" />
+
+                            <TextView
+                                android:layout_width="86dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/action_color" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_mine_right" />
+                        </LinearLayout>
+
+                        <com.toin.glp.widget.circleImageView.CircleImageView
+                            android:id="@+id/img_header"
+                            android:layout_width="@dimen/header_img"
+                            android:layout_height="@dimen/header_img"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/mine_header" />
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/img_header"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/dp_20"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:textColor="@color/action_color"
+                            android:textSize="@dimen/comment_textSize" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_notification"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_bg"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/tv_mine_two"
+                            android:text="接收通知" />
+
+                        <com.toin.glp.widget.SlideSwitch
+                            android:layout_width="@dimen/dp_50"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_15"
+                            android:layout_marginTop="@dimen/dp_10"
+                            slideswitch:isOpen="false"
+                            slideswitch:shape="circle"
+                            slideswitch:themeColor="@color/action_color" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_30"
+                        android:background="@drawable/edit_bg"
+                        android:divider="@drawable/vertical_line"
+                        android:orientation="vertical"
+                        android:showDividers="middle">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_company"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_mine_two"
+                                android:drawableLeft="@mipmap/personal_icon_1"
+                                android:text="@string/company_information" />
+
+                            <ImageView style="@style/more_tag" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl_modify_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_mine_two"
+                                android:drawableLeft="@mipmap/personal_icon_2"
+                                android:text="@string/change_password" />
+
+                            <ImageView style="@style/more_tag" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl_feedback"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_mine_two"
+                                android:drawableLeft="@mipmap/personal_icon_3"
+                                android:text="@string/feedback" />
+
+                            <ImageView style="@style/more_tag" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl_about_us"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_mine_two"
+                                android:drawableLeft="@mipmap/personal_icon_4"
+                                android:text="@string/about_us" />
+
+                            <ImageView style="@style/more_tag" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_exit"
+                        style="@style/style_comment_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp_30"
+                        android:layout_marginTop="@dimen/dp_30"
+                        android:background="@drawable/edit_bg"
+                        android:gravity="center"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/safe_exit" />
+                </LinearLayout>
             </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/rl_notification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_bg"
-                android:visibility="gone">
-
-                <TextView
-                    style="@style/tv_mine_two"
-                    android:text="接收通知" />
-
-                <com.toin.glp.widget.SlideSwitch
-                    android:layout_width="@dimen/dp_50"
-                    android:layout_height="@dimen/dp_30"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:layout_marginRight="@dimen/dp_15"
-                    android:layout_marginTop="@dimen/dp_10"
-                    slideswitch:isOpen="false"
-                    slideswitch:shape="circle"
-                    slideswitch:themeColor="@color/action_color" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_30"
-                android:background="@drawable/edit_bg"
-                android:divider="@drawable/vertical_line"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:id="@+id/rl_company"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/tv_mine_two"
-                        android:drawableLeft="@mipmap/personal_icon_1"
-                        android:text="@string/company_information" />
-
-                    <ImageView style="@style/more_tag" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rl_modify_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/tv_mine_two"
-                        android:drawableLeft="@mipmap/personal_icon_2"
-                        android:text="@string/change_password" />
-
-                    <ImageView style="@style/more_tag" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rl_feedback"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/tv_mine_two"
-                        android:drawableLeft="@mipmap/personal_icon_3"
-                        android:text="@string/feedback" />
-
-                    <ImageView style="@style/more_tag" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rl_about_us"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/tv_mine_two"
-                        android:drawableLeft="@mipmap/personal_icon_4"
-                        android:text="@string/about_us" />
-
-                    <ImageView style="@style/more_tag" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_exit"
-                style="@style/style_comment_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp_30"
-                android:layout_marginTop="@dimen/dp_30"
-                android:background="@drawable/edit_bg"
-                android:gravity="center"
-                android:padding="@dimen/dp_10"
-                android:text="@string/safe_exit" />
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_go_login"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_50"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/blank1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/go_login_to_look"
+            android:textColor="@color/border_gray"
+            android:textSize="@dimen/comment_textSize" />
+
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_15"
+            android:background="@drawable/shape_login_action"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_30"
+            android:paddingRight="@dimen/dp_30"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/go_login"
+            android:textColor="@color/action_color" />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -106,10 +106,6 @@
             android:layout_marginTop="-5dp"
             android:background="@mipmap/account_info"
             android:gravity="center"
-            android:shadowColor="@color/action_color_alpha"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="1"
             android:textColor="@color/action_color" />
     </LinearLayout>
 

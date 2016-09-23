@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
-import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.base.BaseActivity;
@@ -101,18 +100,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tabManager.setTabSelection(TAB_ACCOUNT);
                 break;
             case R.id.rb_message:
-                if (Navigation.checkLogin(this)) {
-                    tabManager.setTabSelection(TAB_MESSAGE);
-                } else {
-                    checkedMain();
-                }
+                tabManager.setTabSelection(TAB_MESSAGE);
                 break;
             case R.id.rb_mine:
-                if (Navigation.checkLogin(this)) {
-                    tabManager.setTabSelection(TAB_MINE);
-                } else {
-                    checkedMain();
-                }
+                tabManager.setTabSelection(TAB_MINE);
                 break;
             default:
                 break;

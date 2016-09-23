@@ -1,13 +1,8 @@
 package com.toin.glp.interactor;
 
-import android.text.TextUtils;
-
-import com.toin.glp.App;
-import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
-import com.toin.glp.base.utils.PatternUtils;
 import com.toin.glp.base.utils.SHA256;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.contract.RegisterContract;
@@ -41,26 +36,6 @@ public class RegisterInteractor implements RegisterContract.Interactor {
     @Override
     public Subscription register(String mobile, String code, String password, String passwordAgain,
                                  OnRegisterSuccessListener listener) {
-        if (!PatternUtils.isPhoneNum(mobile)) {
-            T.showLong(App.context.getString(R.string.mobile_illegal));
-            return null;
-        }
-        if (TextUtils.isEmpty(code)) {
-            T.showLong(App.context.getString(R.string.check_code_cannot_be_empty));
-            return null;
-        }
-        if (TextUtils.isEmpty(password)) {
-            T.showLong(App.context.getString(R.string.password_null));
-            return null;
-        }
-        if (password.length() < 6 || password.length() > 16) {
-            T.showLong(App.context.getString(R.string.password_length_illegal));
-            return null;
-        }
-        if (!password.equals(passwordAgain)) {
-            T.showLong(App.context.getString(R.string.password_is_not_equels_old_password));
-            return null;
-        }
         Map<String, Object> params = ApiFactory.get_base_map();
         params.put("service", ApiName.CREATE_ENTERPRISE_MEMBER);
         params.put("partner_id", "188888888");
@@ -113,30 +88,6 @@ public class RegisterInteractor implements RegisterContract.Interactor {
     @Override
     public Subscription checkCode(String phone, String code, String password, String passwordAgain,
                                   OnRegisterSuccessListener listener) {
-        if (TextUtils.isEmpty(phone)) {
-            T.showLong(App.context.getString(R.string.phone_number_null));
-            return null;
-        }
-        if (!PatternUtils.isPhoneNum(phone)) {
-            T.showLong(App.context.getString(R.string.mobile_illegal));
-            return null;
-        }
-        if (TextUtils.isEmpty(code)) {
-            T.showLong(App.context.getString(R.string.check_code_cannot_be_empty));
-            return null;
-        }
-        if (TextUtils.isEmpty(password)) {
-            T.showLong(App.context.getString(R.string.password_null));
-            return null;
-        }
-        if (password.length() < 6 || password.length() > 16) {
-            T.showLong(App.context.getString(R.string.password_length_illegal));
-            return null;
-        }
-        if (!password.equals(passwordAgain)) {
-            T.showLong(App.context.getString(R.string.password_is_not_equels_old_password));
-            return null;
-        }
         Map<String, Object> params = ApiFactory.get_base_map();
         params.put("service", ApiName.VERIFY_MESSAGE);
         params.put("partner_id", "188888888");
@@ -178,14 +129,6 @@ public class RegisterInteractor implements RegisterContract.Interactor {
 
     @Override
     public Subscription sendCode(String phone, OnSendMessageFinishedListener listener) {
-        if (TextUtils.isEmpty(phone)) {
-            T.showLong(App.context.getString(R.string.phone_number_null));
-            return null;
-        }
-        if (!PatternUtils.isPhoneNum(phone)) {
-            T.showLong(App.context.getString(R.string.mobile_illegal));
-            return null;
-        }
         return SendMessageUtils.sendMessage(phone, SendMessageUtils.ANONYMOUS,
                 SendMessageUtils.REGISTER_MOBILE, listener);
     }

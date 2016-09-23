@@ -16,7 +16,6 @@ public class BusinessIntroductionActivity extends BaseActivity implements View.O
     public static final String PAGE_A   = "a";
     public static final String PAGE_B   = "b";
     public static final String PAGE_C   = "c";
-    public static final String PAGE_D   = "d";
     private String             pageType;
     @Bind(R.id.tv_content)
     TextView                   contentTv;

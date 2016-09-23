@@ -101,7 +101,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
 
     @Override
     public void navigateToHome() {
-        Navigation.goPage(this, MainActivity.class);
+        Navigation.login(this);
     }
 
     @Override
@@ -150,7 +150,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
                 return true;
             }
         } else {
-            finish();
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                finish();
+            }
         }
         return super.onKeyDown(keyCode, event);
     }

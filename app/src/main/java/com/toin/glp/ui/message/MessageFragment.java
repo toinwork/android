@@ -1,8 +1,13 @@
 package com.toin.glp.ui.message;
 
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
+import com.toin.glp.App;
+import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.widget.adapter.ContentViewPagerAdater;
@@ -13,11 +18,14 @@ import cn.bingoogolapple.bgabanner.BGAViewPager;
 /**
  * 消息 Created by hb on 16/6/26.
  */
-public class MessageFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener{
+public class MessageFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener,
+        View.OnClickListener {
     @Bind(R.id.title_group)
-    RadioGroup                         mRadioGroup;
+    RadioGroup   mRadioGroup;
     @Bind(R.id.viewpager)
-    BGAViewPager                       mViewPager;
+    BGAViewPager mViewPager;
+    @Bind(R.id.ll_go_login)
+    LinearLayout mLinearLayout;
 
     @Override
     protected int initLayout() {
@@ -26,8 +34,14 @@ public class MessageFragment extends BaseFragment implements RadioGroup.OnChecke
 
     @Override
     protected void initView() {
+        setOnClick(R.id.tv_login);
         mRadioGroup.setOnCheckedChangeListener(this);
-        setUpViewPager();
+        if (TextUtils.isEmpty(App.token)) {
+            mViewPager.setVisibility(View.GONE);
+            mLinearLayout.setVisibility(View.VISIBLE);
+        } else {
+            setUpViewPager();
+        }
     }
 
     private void setUpViewPager() {
@@ -75,6 +89,15 @@ public class MessageFragment extends BaseFragment implements RadioGroup.OnChecke
                 break;
             case R.id.rb_msg_read://已读
                 mViewPager.setCurrentItem(1, false);
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_login:
+                Navigation.goLoginPage(getActivity());
                 break;
         }
     }

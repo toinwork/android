@@ -5,12 +5,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bigkoo.convenientbanner.holder.Holder;
-import com.toin.glp.tools.singleFactory.MoreManager;
 
 /**
  * Created by hb on 16/9/9.
  */
-public class LocalImageHolderView implements Holder<String> {
+public class LocalImageHolderView implements Holder<Integer> {
     private ImageView imageView;
 
     @Override
@@ -21,8 +20,8 @@ public class LocalImageHolderView implements Holder<String> {
     }
 
     @Override
-    public void UpdateUI(Context context, final int position, String data) {
-        //        imageView.setImageResource(data);
-        MoreManager.getImageLoader().displayImage(data, imageView);
+    public void UpdateUI(Context context, final int position, Integer data) {
+                imageView.setImageResource(data);
+//        MoreManager.getImageLoader().displayImage(data, imageView);
     }
 }
