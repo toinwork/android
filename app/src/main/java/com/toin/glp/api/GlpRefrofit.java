@@ -14,14 +14,14 @@ import retrofit.RxJavaCallAdapterFactory;
  */
 public class GlpRefrofit {
 
-    private static OkHttpClient client        = null;
+    private static OkHttpClient client = null;
 
     public static Retrofit init_financing() {
         client = new OkHttpClient();
-        client.setReadTimeout(12, TimeUnit.SECONDS);
+        client.setConnectTimeout(10, TimeUnit.SECONDS);
+        client.setReadTimeout(20, TimeUnit.SECONDS);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Config.API_FINANCING)
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Config.API_FINANCING)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).client(client).build();
         return retrofit;
@@ -29,10 +29,10 @@ public class GlpRefrofit {
 
     public static Retrofit init_weijin() {
         client = new OkHttpClient();
-        client.setReadTimeout(12, TimeUnit.SECONDS);
+        client.setConnectTimeout(10, TimeUnit.SECONDS);
+        client.setReadTimeout(20, TimeUnit.SECONDS);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Config.API_WEIJIN)
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Config.API_WEIJIN)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).client(client).build();
         return retrofit;

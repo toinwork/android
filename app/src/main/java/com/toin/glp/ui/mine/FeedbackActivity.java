@@ -9,6 +9,7 @@ import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseActivity;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.models.BaseResult;
@@ -16,7 +17,6 @@ import com.toin.glp.models.BaseResult;
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -70,21 +70,24 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
                 params.put("token", App.token);
                 params.put("content", content);
                 Subscription s = factory.get_weijin().getBaseApiSingleton().feedback(params)
-                        .map(baseResult -> baseResult).subscribeOn(Schedulers.newThread())
+                        .map(baseResult -> {
+                            return baseResult;
+                        }).subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Subscriber<BaseResult>() {
+                        .subscribe(new BaseSubscriber<BaseResult>() {
                             @Override
                             public void onCompleted() {
-
+                                hideProgress();
                             }
 
                             @Override
                             public void onError(Throwable e) {
-
+                                hideProgress();
+                                super.onError(e);
                             }
 
                             @Override
-                            public void onNext(BaseResult result) {
+                            public void get_model(BaseResult result) {
                                 if (result.is_success.equals("T")) {
                                     hideProgress();
                                     T.showShort("反馈成功");

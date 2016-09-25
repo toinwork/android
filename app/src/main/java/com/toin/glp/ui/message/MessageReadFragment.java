@@ -33,7 +33,6 @@ import butterknife.Bind;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -147,10 +146,10 @@ public class MessageReadFragment extends BaseFragment {
         RequestBody body = ApiFactory.get_request(params);
         ApiFactory factory = new ApiFactory();
         Subscription s = factory.get_financing().getBaseApiSingleton().getMessageList(body)
-                .map((Func1<MessageListModel, MessageListModel.ResponseBodyEntity>) model -> {
+                .map(model -> {
                     count = TypeTranUtils.str2Int(model.getResponseBody().getDatasetSize());
                     return model.getResponseBody();
-                }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<MessageListModel.ResponseBodyEntity>() {
                     @Override
                     public void onCompleted() {
@@ -164,30 +163,36 @@ public class MessageReadFragment extends BaseFragment {
 
                     @Override
                     public void onNext(MessageListModel.ResponseBodyEntity data) {
-                        hideProgress();
+                        hideProgresses();
                         if (!data.getRESULTCODE().equals("000000")) {
                             T.showShort(data.getRESULTMSG());
                             return;
                         }
-                        if (pageIndex == 1) {
-                            dataList.clear();
-                        }
-                        dataList.addAll(data.getData());
-                        mAdapter.notifyDataSetChanged();
-                        if (dataList.size() >= count) {
-                            mAutoLoadListView.setState(LoadingFooter.State.TheEnd);
-                        } else {
-                            mAutoLoadListView.setState(LoadingFooter.State.Idle);
-                        }
-                        if (mSwipeRefreshLayout.isRefreshing()) {
-                            mSwipeRefreshLayout.setRefreshing(false);
-                        }
-                        if (mEmptySwipeRefreshLayout.isRefreshing()) {
-                            mEmptySwipeRefreshLayout.setRefreshing(false);
+                        if (data.getData() != null) {
+                            if (pageIndex == 1) {
+                                dataList.clear();
+                            }
+                            dataList.addAll(data.getData());
+                            mAdapter.notifyDataSetChanged();
+                            if (dataList.size() >= count) {
+                                mAutoLoadListView.setState(LoadingFooter.State.TheEnd);
+                            } else {
+                                mAutoLoadListView.setState(LoadingFooter.State.Idle);
+                            }
                         }
                     }
                 });
         addSubscription(s);
+    }
+
+    private void hideProgresses() {
+        hideProgress();
+        if (mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
+        if (mEmptySwipeRefreshLayout.isRefreshing()) {
+            mEmptySwipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override

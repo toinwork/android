@@ -152,7 +152,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
             } else if (PAGE_TYPE_MODEL.equals(pageType)) {
                 title = "规模";
                 hint = title;
-                editType = EditorInfo.TYPE_CLASS_NUMBER;
+                editType = EditorInfo.TYPE_CLASS_TEXT;
                 contentEt.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
                 checkState = new CheckState() {
 
@@ -162,10 +162,10 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                             T.showShort("规模不能为空！");
                             return false;
                         }
-                        if (!content.matches("^[0-9]+$")) {
-                            T.showShort("规模必须由数字组成");
-                            return false;
-                        }
+//                        if (!content.matches("^[0-9]+$")) {
+//                            T.showShort("规模必须由数字组成");
+//                            return false;
+//                        }
                         return true;
                     }
                 };
@@ -188,7 +188,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
             } else if (PAGE_TYPE_CONTACT.equals(pageType)) {
                 title = "联系方式";
                 hint = title;
-                editType = EditorInfo.TYPE_CLASS_TEXT;
+                editType = EditorInfo.TYPE_CLASS_PHONE;
                 contentEt.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
                 checkState = new CheckState() {
 
@@ -235,6 +235,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                     return;
                 }
                 if (content.equals(defaultContent)) {
+                    T.showShort("修改内容不能和原来相同");
                     return;
                 }
                 if (checkState != null && !checkState.check(content)) {

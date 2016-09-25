@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_name"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_organize_code"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"
@@ -82,6 +84,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_tax_number"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"
@@ -107,6 +110,7 @@
 
                 <TextView
                     android:id="@+id/_tv_address"
+                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"
                     android:text="@string/address" />
@@ -131,6 +135,7 @@
 
                 <TextView
                     android:id="@+id/_tv_corporate"
+                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"
                     android:text="@string/corporate" />
@@ -155,6 +160,7 @@
 
                 <TextView
                     android:id="@+id/_tv_model"
+                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"
                     android:text="@string/model" />
@@ -179,6 +185,7 @@
 
                 <TextView
                     android:id="@+id/_tv_industry"
+                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"
                     android:text="@string/industry" />
@@ -202,6 +209,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_contact"
                     style="@style/style_company_info"
                     android:layout_alignParentLeft="true"

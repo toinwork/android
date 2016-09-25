@@ -42,8 +42,8 @@ public class ApiFactory {
 
     public static RequestBody get_request(Map<String, Object> params) {
         params.put("tranChl", "phone");
-//                params.put("MOBILE",App.phone);
-        params.put("MOBILE", "18605914471");
+        params.put("MOBILE", App.phone);
+        //        params.put("MOBILE", "18605914471");
         String json = JSONObject.toJSONString(params).toString();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
                 json);

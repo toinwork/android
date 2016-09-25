@@ -9,6 +9,7 @@ import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseActivity;
 import com.toin.glp.base.utils.SHA256;
 import com.toin.glp.base.utils.T;
@@ -17,7 +18,6 @@ import com.toin.glp.models.BaseResult;
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -95,7 +95,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                         .map(baseResult -> baseResult)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Subscriber<BaseResult>() {
+                        .subscribe(new BaseSubscriber<BaseResult>() {
                             @Override
                             public void onCompleted() {
                                 hideProgress();
@@ -103,11 +103,12 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
 
                             @Override
                             public void onError(Throwable e) {
+                                super.onError(e);
                                 hideProgress();
                             }
 
                             @Override
-                            public void onNext(BaseResult result) {
+                            public void get_model(BaseResult result) {
                                 hideProgress();
                                 if (result.is_success.equals("T")) {
                                     T.showShort("重置密码成功");

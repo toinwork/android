@@ -62,6 +62,8 @@ public interface ForgetPasswordContract {
 
         void startTimer();
 
+        void closeTimer();
+
     }
 
     abstract class Presenter extends BasePresenter<Interactor, View> {

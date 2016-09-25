@@ -1,6 +1,7 @@
 package com.toin.glp.ui;
 
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -110,12 +111,11 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
                 break;
             case R.id.tv_login:
                 //已有账号,登录
+                closeTimer();
                 Navigation.goPage(this, LoginActivity.class);
                 break;
             case R.id.btn_back:
-                if (timer != null) {
-                    timer.cancel();
-                }
+                closeTimer();
                 finish();
                 break;
         }
@@ -123,6 +123,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
 
     @Override
     public void navigateToHome() {
+        closeTimer();
         Navigation.goPage(this, LoginActivity.class);
     }
 
@@ -142,7 +143,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
                         if (count == 0) {
                             checkCodeTv.setEnabled(true);
                             checkCodeTv.setText(getString(R.string.get_code));
-                            timer.cancel();
+                            closeTimer();
                         } else {
                             String text = String.format("%d秒", count);
                             checkCodeTv.setText(text);
@@ -152,5 +153,22 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
             }
         };
         timer.schedule(timerTask, 0, 1000);
+    }
+
+    @Override
+    public void closeTimer() {
+        if (timer != null) {
+            timer.cancel();
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(final int keyCode, final KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            closeTimer();
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

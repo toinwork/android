@@ -22,7 +22,7 @@ import retrofit.Retrofit;
  * Created by hb on 16/3/8.
  */
 public class GlpWeiJinFactory {
-    private volatile Retrofit mRetrofit;
+    private volatile Retrofit    mRetrofit;
 
     //接口参数不变
     public BaseApi getBaseApiSingleton() {

@@ -9,6 +9,7 @@ import com.squareup.okhttp.RequestBody;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseExitActivity;
 import com.toin.glp.base.utils.DensityUtil;
 import com.toin.glp.models.account.RepayPlanModel.ResponseBodyEntity.PlanModel;
@@ -25,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -133,7 +133,7 @@ public class RepaymentPlanActivity extends BaseExitActivity implements View.OnCl
                     count = model.getResponseBody().getSUMCOUNT();
                     return model.getResponseBody().getPAYMENTLIST();
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<PlanModel>>() {
+                .subscribe(new BaseSubscriber<List<PlanModel>>() {
                     @Override
                     public void onCompleted() {
 
@@ -141,20 +141,22 @@ public class RepaymentPlanActivity extends BaseExitActivity implements View.OnCl
 
                     @Override
                     public void onError(Throwable e) {
-
+                        super.onError(e);
                     }
 
                     @Override
-                    public void onNext(List<PlanModel> data) {
-                        if (pageIndex == 1) {
-                            dataList.clear();
-                        }
-                        dataList.addAll(data);
-                        mAdapter.notifyDataSetChanged();
-                        if (dataList.size() >= count) {
-                            mAutoListView.setState(LoadingFooter.State.TheEnd);
-                        } else {
-                            mAutoListView.setState(LoadingFooter.State.Idle);
+                    public void get_model(List<PlanModel> data) {
+                        if (data != null) {
+                            if (pageIndex == 1) {
+                                dataList.clear();
+                            }
+                            dataList.addAll(data);
+                            mAdapter.notifyDataSetChanged();
+                            if (dataList.size() >= count) {
+                                mAutoListView.setState(LoadingFooter.State.TheEnd);
+                            } else {
+                                mAutoListView.setState(LoadingFooter.State.Idle);
+                            }
                         }
                         mSwipeRefreshLayout.setRefreshing(false);
                     }

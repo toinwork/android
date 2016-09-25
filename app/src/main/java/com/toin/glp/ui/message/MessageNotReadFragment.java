@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.squareup.okhttp.RequestBody;
 import com.toin.glp.R;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.DensityUtil;
 import com.toin.glp.base.utils.T;
@@ -150,9 +151,9 @@ public class MessageNotReadFragment extends BaseFragment {
         RequestBody body = ApiFactory.get_request(params);
         ApiFactory factory = new ApiFactory();
         Subscription s = factory.get_financing().getBaseApiSingleton().setMessageRead(body)
-                .map(result -> result.getResponseBody()).subscribeOn(Schedulers.newThread())
+                .map(result -> result.getResponseBody()).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ResponseBodyEntity>() {
+                .subscribe(new BaseSubscriber<ResponseBodyEntity>() {
                     @Override
                     public void onCompleted() {
                         hideProgress();
@@ -160,11 +161,12 @@ public class MessageNotReadFragment extends BaseFragment {
 
                     @Override
                     public void onError(Throwable e) {
+                        super.onError(e);
                         hideProgress();
                     }
 
                     @Override
-                    public void onNext(ResponseBodyEntity data) {
+                    public void get_model(ResponseBodyEntity data) {
                         hideProgress();
                         if (!data.getRESULTCODE().equals("000000")) {
                             T.showShort(data.getRESULTMSG());
@@ -212,21 +214,23 @@ public class MessageNotReadFragment extends BaseFragment {
 
                     @Override
                     public void onNext(MessageListModel.ResponseBodyEntity data) {
+                        hideProgresses();
                         if (!data.getRESULTCODE().equals("000000")) {
                             T.showShort(data.getRESULTMSG());
                             return;
                         }
-                        if (pageIndex == 1) {
-                            dataList.clear();
+                        if (data.getData() != null) {
+                            if (pageIndex == 1) {
+                                dataList.clear();
+                            }
+                            dataList.addAll(data.getData());
+                            mAdapter.notifyDataSetChanged();
+                            if (dataList.size() >= count) {
+                                mAutoLoadListView.setState(LoadingFooter.State.TheEnd);
+                            } else {
+                                mAutoLoadListView.setState(LoadingFooter.State.Idle);
+                            }
                         }
-                        dataList.addAll(data.getData());
-                        mAdapter.notifyDataSetChanged();
-                        if (dataList.size() >= count) {
-                            mAutoLoadListView.setState(LoadingFooter.State.TheEnd);
-                        } else {
-                            mAutoLoadListView.setState(LoadingFooter.State.Idle);
-                        }
-                        hideProgresses();
 
                     }
                 });

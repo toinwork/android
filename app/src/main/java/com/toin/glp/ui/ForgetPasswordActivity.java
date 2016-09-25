@@ -1,6 +1,7 @@
 package com.toin.glp.ui;
 
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.base.BaseActivity;
 import com.toin.glp.base.utils.PatternUtils;
+import com.toin.glp.base.utils.SharedPreferencesUtil;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.contract.ForgetPasswordContract;
 import com.toin.glp.interactor.ForgetPasswordInteractor;
@@ -59,6 +61,15 @@ public class ForgetPasswordActivity extends
         loginTv.setVisibility(View.VISIBLE);
         setActionTitle(TITLE);
         registerTv.setText(BTNCONTENT);
+        setAccount();
+    }
+
+    private void setAccount() {
+        String account = SharedPreferencesUtil.getStringValue(App.context, "phone");
+        if (!TextUtils.isEmpty(account)) {
+            phoneEt.setText(account);
+            phoneEt.setSelection(account.length());
+        }
     }
 
     @Override
@@ -81,7 +92,7 @@ public class ForgetPasswordActivity extends
                         if (count == 0) {
                             checkCodeTv.setEnabled(true);
                             checkCodeTv.setText(getString(R.string.get_code));
-                            timer.cancel();
+                            closeTimer();
                         } else {
                             String text = String.format("%d秒", count);
                             checkCodeTv.setText(text);
@@ -91,6 +102,13 @@ public class ForgetPasswordActivity extends
             }
         };
         timer.schedule(timerTask, 0, 1000);
+    }
+
+    @Override
+    public void closeTimer() {
+        if (timer != null) {
+            timer.cancel();
+        }
     }
 
     @Override
@@ -143,12 +161,11 @@ public class ForgetPasswordActivity extends
                 break;
             case R.id.tv_login:
                 //已有账号,登录
+                closeTimer();
                 Navigation.goPage(this, LoginActivity.class);
                 break;
             case R.id.btn_back:
-                if (timer != null) {
-                    timer.cancel();
-                }
+                closeTimer();
                 finish();
                 break;
         }
@@ -156,6 +173,17 @@ public class ForgetPasswordActivity extends
 
     @Override
     public void navigateToLogin() {
+        closeTimer();
         Navigation.goPage(this, LoginActivity.class);
+    }
+
+    @Override
+    public boolean onKeyDown(final int keyCode, final KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            closeTimer();
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

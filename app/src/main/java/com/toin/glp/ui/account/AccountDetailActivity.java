@@ -8,6 +8,7 @@ import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseActivity;
 import com.toin.glp.models.account.AccountsDetailModel;
 import com.toin.glp.models.account.AccountsDetailModel.AccountDetailModel;
@@ -16,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
@@ -72,7 +72,7 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
                         return model.getResponseBody();
                     }
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<AccountDetailModel>() {
+                .subscribe(new BaseSubscriber<AccountDetailModel>() {
                     @Override
                     public void onCompleted() {
                         hideProgress();
@@ -80,11 +80,12 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
 
                     @Override
                     public void onError(Throwable e) {
+                        super.onError(e);
                         hideProgress();
                     }
 
                     @Override
-                    public void onNext(AccountDetailModel accountDetailModel) {
+                    public void get_model(AccountDetailModel accountDetailModel) {
                         hideProgress();
                         setAccountDetailInfo(accountDetailModel);
                     }

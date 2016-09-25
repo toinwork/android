@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.toin.glp.App;
 import com.toin.glp.R;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.utils.PatternUtils;
 import com.toin.glp.base.utils.SharedPreferencesUtil;
 import com.toin.glp.base.utils.T;
@@ -14,7 +15,6 @@ import com.toin.glp.models.UserModel;
 
 import java.util.Map;
 
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -89,7 +89,7 @@ public class LoginInteractor implements LoginContract.Interactor {
         ApiFactory factory = new ApiFactory();
         return factory.get_weijin().getBaseApiSingleton().login(params).map(userModel -> userModel)
                 .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<UserModel>() {
+                .subscribe(new BaseSubscriber<UserModel>() {
                     @Override
                     public void onCompleted() {
                         listener.onFinish();
@@ -97,15 +97,17 @@ public class LoginInteractor implements LoginContract.Interactor {
 
                     @Override
                     public void onError(Throwable e) {
+                        super.onError(e);
                         listener.onError();
                     }
 
                     @Override
-                    public void onNext(UserModel userModel) {
+                    public void get_model(UserModel userModel) {
                         if (userModel.is_success.equals("T")) {
                             is_need_code = false;
                             T.showShort("登录成功");
                             App.token = userModel.getToken();
+                            App.phone = userModel.getMobile_star();
                             SharedPreferencesUtil.saveStringValue(App.context, "phone",
                                     userModel.getMobile_star());
                             UserCache.saveToken(App.context, userModel.getToken());

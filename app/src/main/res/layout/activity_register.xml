@@ -215,7 +215,7 @@
 
     <TextView
         android:id="@+id/tv_register"
-        style="@style/common_button_two"
+        style="@style/common_button"
         android:layout_below="@+id/line"
         android:layout_marginLeft="@dimen/dp_20"
         android:layout_marginRight="@dimen/dp_20"

@@ -13,8 +13,11 @@ import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseFragment;
+import com.toin.glp.base.utils.RxBus.RxBus;
 import com.toin.glp.base.utils.T;
+import com.toin.glp.event.CompanyInfoEvent;
 import com.toin.glp.models.CompanyInfoModel;
 import com.toin.glp.models.UserInfoModel;
 
@@ -63,18 +66,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             httpGetCompanyInfo();
         }
 
-    }
-
-    private void httpGetCompanyInfo() {
-        ApiFactory factory = new ApiFactory();
-        Map<String, Object> params = ApiFactory.get_base_map();
-        params.put("service", ApiName.QUERY_ENTERPRISE);
-        params.put("partner_id", "188888888");
-        params.put("token", App.token);
-        Subscription s = factory.get_weijin().getBaseApiSingleton().getUserInfo(params)
-                .map(model -> model).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<UserInfoModel>() {
+        Subscription rx = RxBus.getDefault().toObserverable(CompanyInfoEvent.class)
+                .subscribe(new Subscriber<CompanyInfoEvent>() {
                     @Override
                     public void onCompleted() {
 
@@ -86,13 +79,37 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                     }
 
                     @Override
-                    public void onNext(UserInfoModel result) {
+                    public void onNext(CompanyInfoEvent event) {
+                        nameTv.setText("欢迎您," + event.name);
+                    }
+                });
+        addSubscription(rx);
+    }
+
+    private void httpGetCompanyInfo() {
+        ApiFactory factory = new ApiFactory();
+        Map<String, Object> params = ApiFactory.get_base_map();
+        params.put("service", ApiName.QUERY_ENTERPRISE);
+        params.put("partner_id", "188888888");
+        params.put("token", App.token);
+        Subscription s = factory.get_weijin().getBaseApiSingleton().getUserInfo(params)
+                .map(model -> model).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseSubscriber<UserInfoModel>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void get_model(UserInfoModel result) {
                         if (result.is_success.equals("T")) {
                             setInfo(result.result);
                         } else {
                             T.showShort(result.getError_message());
                         }
                     }
+
                 });
         addSubscription(s);
     }

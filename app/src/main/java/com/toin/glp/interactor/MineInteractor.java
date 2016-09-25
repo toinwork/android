@@ -3,13 +3,13 @@ package com.toin.glp.interactor;
 import com.toin.glp.App;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.contract.MineContract;
 import com.toin.glp.models.UserInfoModel;
 
 import java.util.Map;
 
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
@@ -41,19 +41,20 @@ public class MineInteractor implements MineContract.Interactor {
                         return model;
                     }
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<UserInfoModel>() {
+                .subscribe(new BaseSubscriber<UserInfoModel>() {
                     @Override
                     public void onCompleted() {
-
+                        listener.onError();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        super.onError(e);
+                        listener.onError();
                     }
 
                     @Override
-                    public void onNext(UserInfoModel result) {
+                    public void get_model(UserInfoModel result) {
                         if (result.is_success.equals("T")) {
                             listener.getUesrInfoSuccess(result);
                         } else {

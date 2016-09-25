@@ -91,6 +91,7 @@ public class MessageFragment extends BaseFragment implements RadioGroup.OnChecke
                 mViewPager.setCurrentItem(1, false);
                 break;
         }
+
     }
 
     @Override
@@ -101,4 +102,5 @@ public class MessageFragment extends BaseFragment implements RadioGroup.OnChecke
                 break;
         }
     }
+
 }

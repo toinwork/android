@@ -3,6 +3,7 @@ package com.toin.glp.interactor;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.utils.SHA256;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.contract.ForgetPasswordContract;
@@ -12,7 +13,6 @@ import com.toin.glp.utils.SendMessageUtils;
 
 import java.util.Map;
 
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
@@ -52,7 +52,7 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
                         return baseResult;
                     }
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResult>() {
+                .subscribe(new BaseSubscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
                         listener.onError();
@@ -60,11 +60,12 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
 
                     @Override
                     public void onError(Throwable e) {
+                        super.onError(e);
                         listener.onError();
                     }
 
                     @Override
-                    public void onNext(BaseResult baseResult) {
+                    public void get_model(BaseResult baseResult) {
                         if (baseResult.is_success.equals("T")) {
                             T.showShort(StringUtils.API_RESET_SUCCESS);
                             listener.onSuccess();
@@ -105,7 +106,7 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
                         return baseResult;
                     }
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResult>() {
+                .subscribe(new BaseSubscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
                         listener.onError();
@@ -113,11 +114,12 @@ public class ForgetPasswordInteractor implements ForgetPasswordContract.Interact
 
                     @Override
                     public void onError(Throwable e) {
+                        super.onError(e);
                         listener.onError();
                     }
 
                     @Override
-                    public void onNext(BaseResult flagModel) {
+                    public void get_model(BaseResult flagModel) {
                         if (flagModel.is_success.equals("T")) {
                             listener.checkCodeSuccess(phone, code, password, passwordAgain);
                         } else {

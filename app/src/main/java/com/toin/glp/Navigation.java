@@ -43,7 +43,6 @@ public class Navigation {
         UserCache.saveToken(context, "");
         Intent intent = new Intent(context, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra(LoginActivity.PAGETYPE, LoginActivity.TYPE_LOGOUT);
         context.startActivity(intent);
     }
 
@@ -141,7 +140,6 @@ public class Navigation {
         UserCache.saveToken(activity, "");
         App.logout();
         Intent intent = new Intent(activity, LoginActivity.class);
-        intent.putExtra(LoginActivity.PAGETYPE, LoginActivity.TYPE_LOGIN);
         activity.startActivity(intent);
     }
 }

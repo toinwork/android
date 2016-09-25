@@ -2,12 +2,12 @@ package com.toin.glp.utils;
 
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.utils.T;
 import com.toin.glp.models.BaseResult;
 
 import java.util.Map;
 
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -34,19 +34,20 @@ public class SendMessageUtils {
         ApiFactory factory = new ApiFactory();
         return factory.get_weijin().getBaseApiSingleton().sendMsg(params)
                 .map(baseResult -> baseResult).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<BaseResult>() {
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new BaseSubscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
-
+                        listener.onSendError();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        super.onError(e);
+                        listener.onSendError();
                     }
 
                     @Override
-                    public void onNext(BaseResult baseResult) {
+                    public void get_model(BaseResult baseResult) {
                         if (baseResult.is_success.equals("T")) {
                             T.showShort("发送成功");
                             listener.onSendSuccess();

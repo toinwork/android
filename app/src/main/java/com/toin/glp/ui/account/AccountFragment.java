@@ -1,6 +1,7 @@
 package com.toin.glp.ui.account;
 
 import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,9 +16,9 @@ import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.TypeTranUtils;
-import com.toin.glp.models.account.AccountsModel;
 import com.toin.glp.models.account.AccountsModel.ResponseBodyEntity.AccountModel;
 import com.toin.glp.utils.GlpUtils;
 import com.toin.glp.widget.ZmRefreshListener;
@@ -32,10 +33,8 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -101,13 +100,17 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                     //1:逾期,2:正常结清,3:提前结清,4:逾期结清
                     GradientDrawable statusShape = (GradientDrawable) statusTv.getBackground();
                     if (item.getLOANSTATUS().equals("2")) {
-                        statusShape.setColor(getResources().getColor(R.color.gray_hint));
+                        statusShape.setColor(ContextCompat.getColor(getActivity(),
+                                R.color.gray_hint));
                     } else if (item.getLOANSTATUS().equals("3")) {
-                        statusShape.setColor(getResources().getColor(R.color.account_green));
+                        statusShape.setColor(ContextCompat.getColor(getActivity(),
+                                R.color.account_green));
                     } else if (item.getLOANSTATUS().equals("1") || item.getLOANSTATUS().equals("4")) {
-                        statusShape.setColor(getResources().getColor(R.color.account_red));
+                        statusShape.setColor(ContextCompat.getColor(getActivity(),
+                                R.color.account_red));
                     } else {
-                        statusShape.setColor(getResources().getColor(R.color.account_green));
+                        statusShape.setColor(ContextCompat.getColor(getActivity(),
+                                R.color.account_green));
                     }
                     helper.setText(R.id.tv_status, item.getLOANSTATUSDESC());
                 }
@@ -145,15 +148,11 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                 .get_financing()
                 .getBaseApiSingleton()
                 .getAccountList(body)
-                .map(new Func1<AccountsModel, List<AccountModel>>() {
-                    @Override
-                    public List<AccountModel> call(AccountsModel accountsModel) {
-                        count = TypeTranUtils.str2Int(accountsModel.getResponseBody()
-                                .getDatasetSize());
-                        return accountsModel.getResponseBody().getData();
-                    }
+                .map(accountsModel -> {
+                    count = TypeTranUtils.str2Int(accountsModel.getResponseBody().getDatasetSize());
+                    return accountsModel.getResponseBody().getData();
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<AccountModel>>() {
+                .subscribe(new BaseSubscriber<List<AccountModel>>() {
                     @Override
                     public void onCompleted() {
                         hideProgress();
@@ -161,31 +160,38 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
 
                     @Override
                     public void onError(Throwable e) {
+                        super.onError(e);
                         hideProgress();
                     }
 
                     @Override
-                    public void onNext(List<AccountModel> data) {
-                        hideProgress();
-                        if (pageIndex == 1) {
-                            dataList.clear();
-                        }
-                        dataList.addAll(data);
-                        mAdapter.notifyDataSetChanged();
-                        if (dataList.size() >= count) {
-                            mAutoListView.setState(LoadingFooter.State.TheEnd);
-                        } else {
-                            mAutoListView.setState(LoadingFooter.State.Idle);
-                        }
-                        if (mSwipeRefreshLayout.isRefreshing()) {
-                            mSwipeRefreshLayout.setRefreshing(false);
-                        }
-                        if (mEmptySwipeRefreshLayout.isRefreshing()) {
-                            mEmptySwipeRefreshLayout.setRefreshing(false);
+                    public void get_model(List<AccountModel> data) {
+                        hideProgresses();
+                        if (data != null) {
+                            if (pageIndex == 1) {
+                                dataList.clear();
+                            }
+                            dataList.addAll(data);
+                            mAdapter.notifyDataSetChanged();
+                            if (dataList.size() >= count) {
+                                mAutoListView.setState(LoadingFooter.State.TheEnd);
+                            } else {
+                                mAutoListView.setState(LoadingFooter.State.Idle);
+                            }
                         }
                     }
                 });
         addSubscription(s);
+    }
+
+    private void hideProgresses() {
+        hideProgress();
+        if (mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
+        if (mEmptySwipeRefreshLayout.isRefreshing()) {
+            mEmptySwipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override

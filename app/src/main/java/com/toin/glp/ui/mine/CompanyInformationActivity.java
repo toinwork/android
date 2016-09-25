@@ -12,8 +12,11 @@ import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
+import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseActivity;
+import com.toin.glp.base.utils.RxBus.RxBus;
 import com.toin.glp.base.utils.T;
+import com.toin.glp.event.CompanyInfoEvent;
 import com.toin.glp.models.BaseResult;
 import com.toin.glp.models.CompanyInfoModel;
 import com.toin.glp.models.UserInfoModel;
@@ -21,7 +24,6 @@ import com.toin.glp.models.UserInfoModel;
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -79,7 +81,7 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
         Subscription s = factory.get_weijin().getBaseApiSingleton().getUserInfo(params)
                 .map(model -> model).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<UserInfoModel>() {
+                .subscribe(new BaseSubscriber<UserInfoModel>() {
                     @Override
                     public void onCompleted() {
 
@@ -87,11 +89,11 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
 
                     @Override
                     public void onError(Throwable e) {
-
+                        super.onError(e);
                     }
 
                     @Override
-                    public void onNext(UserInfoModel result) {
+                    public void get_model(UserInfoModel result) {
                         if (result.is_success.equals("T")) {
                             setInfo(result.result);
                         } else {
@@ -178,6 +180,7 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
         if (requestCode == REQUEST_CODE_PAGE_NAME && resultCode == RESULT_OK) {
             String name = data.getStringExtra(EditActivity.EXTRA_CONTENT);
             modifyCompanyInfo(name, REQUEST_CODE_PAGE_NAME);
+            RxBus.getDefault().post(new CompanyInfoEvent(name));
         } else if (requestCode == REQUEST_CODE_PAGE_ORGANIZE_CODE && resultCode == RESULT_OK) {
             String name = data.getStringExtra(EditActivity.EXTRA_CONTENT);
             modifyCompanyInfo(name, REQUEST_CODE_PAGE_ORGANIZE_CODE);
@@ -227,7 +230,8 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
         ApiFactory factory = new ApiFactory();
         Subscription s = factory.get_weijin().getBaseApiSingleton().modifyUserInfo(params)
                 .map(baseResult -> baseResult).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<BaseResult>() {
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseSubscriber<BaseResult>() {
                     @Override
                     public void onCompleted() {
 
@@ -235,11 +239,11 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
 
                     @Override
                     public void onError(Throwable e) {
-
+                        super.onError(e);
                     }
 
                     @Override
-                    public void onNext(BaseResult baseResult) {
+                    public void get_model(BaseResult baseResult) {
                         if (baseResult.is_success.equals("T")) {
                             T.showShort(StringUtils.API_SUCCESS);
                             setCompanyInfo(content, typeCode);

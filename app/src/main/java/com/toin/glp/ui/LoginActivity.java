@@ -13,39 +13,31 @@ import android.widget.TextView;
 import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.base.BaseActivity;
-import com.toin.glp.base.utils.T;
 import com.toin.glp.contract.LoginContract;
 import com.toin.glp.interactor.LoginInteractor;
 import com.toin.glp.presenter.LoginPresenter;
-
-import java.util.Date;
 
 import butterknife.Bind;
 
 public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor> implements
         LoginContract.View, View.OnClickListener {
-    public static final String PAGETYPE      = "pagetype";
-    public static final String TYPE_LOGOUT   = "logout";
-    public static final String TYPE_LOGIN    = "login";
     @Bind(R.id.et_phone)
-    EditText                   idEt;
+    EditText       idEt;
     @Bind(R.id.et_pwd)
-    EditText                   pwdEt;
+    EditText       pwdEt;
     @Bind(R.id.et_code)
-    EditText                   codeEt;
+    EditText       codeEt;
     @Bind(R.id.ll_verify_code)
-    LinearLayout               codeLL;
+    LinearLayout   codeLL;
     @Bind(R.id.tv_code)
-    TextView                   codeTv;
+    TextView       codeTv;
     @Bind(R.id.img_cancel)
-    ImageView                  cancelImg;
+    ImageView      cancelImg;
+    @Bind(R.id.tv_login)
+    TextView       loginTv;
 
-    private String             userName      = null;
-    private String             passWord      = null;
-    private long               mLastBackTime = 0;
-    private long               TIME_DIFF     = 2 * 1000;
-
-    private String             type;
+    private String userName = null;
+    private String passWord = null;
 
     @Override
     protected int initLayout() {
@@ -57,6 +49,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
         setOnClick(R.id.tv_login, R.id.tv_register, R.id.tv_forget_password, R.id.img_cancel);
         setTextWatcher(1, idEt);
         setTextWatcher(2, pwdEt);
+        loginTv.setBackgroundResource(R.drawable.btn_selector_blue);
     }
 
     private void setTextWatcher(int type, EditText idEt) {
@@ -91,7 +84,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     @Override
     protected void initData() {
         mPresenter.getAccount();
-        type = getIntent().getStringExtra(PAGETYPE);
     }
 
     @Override
@@ -138,21 +130,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
 
     @Override
     public boolean onKeyDown(final int keyCode, final KeyEvent event) {
-        if (type.equals(TYPE_LOGOUT)) {
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                long now = new Date().getTime();
-                if (now - mLastBackTime < TIME_DIFF) {
-                    return super.onKeyDown(keyCode, event);
-                } else {
-                    mLastBackTime = now;
-                    T.showShort("再按一次返回键退出");
-                }
-                return true;
-            }
-        } else {
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                finish();
-            }
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }
