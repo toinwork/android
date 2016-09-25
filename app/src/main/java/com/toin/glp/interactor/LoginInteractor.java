@@ -26,8 +26,6 @@ import static com.toin.glp.contract.LoginContract.Interactor;
  */
 public class LoginInteractor implements LoginContract.Interactor {
 
-    private boolean is_need_code = false;
-
     @Override
     public void checkLogin(String userName, String password,
                            Interactor.OnLoginFinishedListener listener) {
@@ -52,7 +50,7 @@ public class LoginInteractor implements LoginContract.Interactor {
     }
 
     @Override
-    public Subscription login(final String username, final String password, final String code,
+    public Subscription login(final String username, final String password,
                               final OnLoginFinishedListener listener) {
         if (!PatternUtils.isPhoneNum(username)) {
             T.showLong(App.context.getString(R.string.mobile_illegal));
@@ -73,13 +71,6 @@ public class LoginInteractor implements LoginContract.Interactor {
             T.showShort("密码长度为6-16位");
             listener.onError();
             return null;
-        }
-        if (is_need_code) {
-            if (TextUtils.isEmpty(code)) {
-                T.showShort("验证码不能为空");
-                listener.onError();
-                return null;
-            }
         }
         Map<String, Object> params = ApiFactory.get_base_map();
         params.put("service", "login_member");
@@ -104,7 +95,6 @@ public class LoginInteractor implements LoginContract.Interactor {
                     @Override
                     public void get_model(UserModel userModel) {
                         if (userModel.is_success.equals("T")) {
-                            is_need_code = false;
                             T.showShort("登录成功");
                             App.token = userModel.getToken();
                             App.phone = userModel.getMobile_star();
@@ -113,11 +103,7 @@ public class LoginInteractor implements LoginContract.Interactor {
                             UserCache.saveToken(App.context, userModel.getToken());
                             listener.onSuccess();
                         } else {
-                            if (!TextUtils.isEmpty(userModel.verifyCode)) {
-                                is_need_code = true;
-                                listener.showVerifyCode(userModel.verifyCode);
-                            }
-                            T.showShort(userModel.getError_message());
+                            T.showShort("用户名或密码错误");
                         }
                     }
                 });

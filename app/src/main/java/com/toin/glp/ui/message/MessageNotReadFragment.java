@@ -95,6 +95,23 @@ public class MessageNotReadFragment extends BaseFragment {
                 contentTv.setText(item.getDETAIL());
                 int margin = DensityUtil.dip2px(getActivity(), 10);
                 RelativeLayout messageRl = helper.getView(R.id.rl_message);
+
+                //默认设置收缩状态
+                contentTv.setEllipsize(TextUtils.TruncateAt.END);//收缩
+                RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(margin, 0, margin, 0);
+                lp.addRule(RelativeLayout.LEFT_OF, R.id.tv_time);
+                lp.addRule(RelativeLayout.RIGHT_OF, R.id.tv_red_point);
+                contentTv.setLayoutParams(lp);
+                lp = new RelativeLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                lp.setMargins(0, margin, margin, 0);
+                timeTv.setLayoutParams(lp);
+
                 messageRl.setOnClickListener(new View.OnClickListener() {
                     boolean flag = true;
 

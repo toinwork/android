@@ -153,12 +153,12 @@ public class MessageReadFragment extends BaseFragment {
                 .subscribe(new Subscriber<MessageListModel.ResponseBodyEntity>() {
                     @Override
                     public void onCompleted() {
-                        hideProgress();
+                        hideProgresses();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        hideProgress();
+                        hideProgresses();
                     }
 
                     @Override

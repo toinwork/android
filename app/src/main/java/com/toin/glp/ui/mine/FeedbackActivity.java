@@ -25,8 +25,6 @@ import rx.schedulers.Schedulers;
  * 反馈 Created by hb on 16/6/26.
  */
 public class FeedbackActivity extends BaseActivity implements View.OnClickListener {
-    @Bind(R.id.et_email)
-    EditText emailEt;
     @Bind(R.id.et_content)
     EditText contentEt;
 

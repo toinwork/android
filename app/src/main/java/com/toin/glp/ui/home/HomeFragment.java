@@ -50,7 +50,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         dataList.add(R.mipmap.banner3);
         convenientBanner.setPages(() -> new LocalImageHolderView(), dataList)
                 .setPageIndicator(new int[] { R.mipmap.point_focused, R.mipmap.point_unfocused })
-                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
+                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                 .startTurning(3000);
 
     }

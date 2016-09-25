@@ -116,7 +116,7 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
         corporateTv.setText(companyInfoModel.companyMemberInfo.legalPerson);
         modelTv.setText(companyInfoModel.companyMemberInfo.scale);
         industryTv.setText(companyInfoModel.companyMemberInfo.businessScope);
-        contactTv.setText(companyInfoModel.companyMemberInfo.contactPhone);
+        contactTv.setText(companyInfoModel.companyMemberInfo.telephone);
 
     }
 

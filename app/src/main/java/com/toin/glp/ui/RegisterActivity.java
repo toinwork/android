@@ -55,7 +55,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
     @Override
     protected void initData() {
         String TITLE = getResources().getString(R.string.register);
-        loginTv.setVisibility(View.GONE);
+        loginTv.setVisibility(View.VISIBLE);
         setActionTitle(TITLE);
         registerTv.setText(TITLE);
     }

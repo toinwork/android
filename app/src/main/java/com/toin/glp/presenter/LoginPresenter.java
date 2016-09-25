@@ -12,11 +12,11 @@ public class LoginPresenter extends LoginContract.Presenter implements
         LoginContract.Interactor.OnLoginFinishedListener {
 
     @Override
-    public void login(String userName, String password, String code) {
+    public void login(String userName, String password) {
         if (mView != null) {
             mView.showProgress(StringUtils.API_LOGIN);
         }
-        Subscription s = mInterator.login(userName, password, code, this);
+        Subscription s = mInterator.login(userName, password, this);
         if (s != null) {
             mRxManage.add(s);
         }
@@ -48,12 +48,6 @@ public class LoginPresenter extends LoginContract.Presenter implements
         }
     }
 
-    @Override
-    public void showVerifyCode(String code) {
-        if (mView != null) {
-            mView.showVerifyCode(code);
-        }
-    }
 
     @Override
     public void onSuccess() {

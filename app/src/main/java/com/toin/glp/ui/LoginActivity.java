@@ -7,8 +7,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.toin.glp.Navigation;
 import com.toin.glp.R;
@@ -25,16 +23,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     EditText       idEt;
     @Bind(R.id.et_pwd)
     EditText       pwdEt;
-    @Bind(R.id.et_code)
-    EditText       codeEt;
-    @Bind(R.id.ll_verify_code)
-    LinearLayout   codeLL;
-    @Bind(R.id.tv_code)
-    TextView       codeTv;
     @Bind(R.id.img_cancel)
     ImageView      cancelImg;
-    @Bind(R.id.tv_login)
-    TextView       loginTv;
 
     private String userName = null;
     private String passWord = null;
@@ -46,10 +36,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
 
     @Override
     protected void initView() {
-        setOnClick(R.id.tv_login, R.id.tv_register, R.id.tv_forget_password, R.id.img_cancel);
+        setOnClick(R.id.btn_back, R.id.tv_login, R.id.tv_register, R.id.tv_forget_password,
+                R.id.img_cancel);
         setTextWatcher(1, idEt);
         setTextWatcher(2, pwdEt);
-        loginTv.setBackgroundResource(R.drawable.btn_selector_blue);
     }
 
     private void setTextWatcher(int type, EditText idEt) {
@@ -62,6 +52,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (type == 1) {//name
+
                     userName = s.toString();
                     if (!TextUtils.isEmpty(userName)) {
                         cancelImg.setVisibility(View.VISIBLE);
@@ -103,18 +94,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     }
 
     @Override
-    public void showVerifyCode(String code) {
-        codeLL.setVisibility(View.VISIBLE);
-        codeTv.setVisibility(View.VISIBLE);
-        codeTv.setText("请输入验证码:" + code);
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_login:
                 mPresenter.login(idEt.getText().toString().trim(), pwdEt.getText().toString()
-                        .trim(), codeEt.getText().toString().trim());
+                        .trim());
                 break;
             case R.id.tv_register:
                 Navigation.goPage(this, RegisterActivity.class);
@@ -124,6 +108,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
                 break;
             case R.id.img_cancel:
                 idEt.setText("");
+                break;
+            case R.id.btn_back:
+                finish();
                 break;
         }
     }

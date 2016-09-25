@@ -30,8 +30,6 @@ public class ForgetPasswordActivity extends
         ForgetPasswordContract.View, View.OnClickListener {
     @Bind(R.id.tv_register)
     TextView      registerTv;
-    @Bind(R.id.tv_login)
-    TextView      loginTv;
     @Bind(R.id.tv_code)
     TextView      checkCodeTv;
     @Bind(R.id.et_phone)
@@ -56,9 +54,8 @@ public class ForgetPasswordActivity extends
 
     @Override
     protected void initData() {
-        String TITLE = getResources().getString(R.string.forget_password);
+        String TITLE = getResources().getString(R.string.reset_password);
         String BTNCONTENT = getResources().getString(R.string.sure);
-        loginTv.setVisibility(View.VISIBLE);
         setActionTitle(TITLE);
         registerTv.setText(BTNCONTENT);
         setAccount();

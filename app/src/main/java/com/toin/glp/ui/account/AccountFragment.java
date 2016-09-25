@@ -1,7 +1,5 @@
 package com.toin.glp.ui.account;
 
-import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.View;
@@ -98,19 +96,14 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                     helper.setText(R.id.tv_money, item.getBUSINESSSUM());
                     TextView statusTv = helper.getView(R.id.tv_status);
                     //1:逾期,2:正常结清,3:提前结清,4:逾期结清
-                    GradientDrawable statusShape = (GradientDrawable) statusTv.getBackground();
                     if (item.getLOANSTATUS().equals("2")) {
-                        statusShape.setColor(ContextCompat.getColor(getActivity(),
-                                R.color.gray_hint));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_account_btn_hint));
                     } else if (item.getLOANSTATUS().equals("3")) {
-                        statusShape.setColor(ContextCompat.getColor(getActivity(),
-                                R.color.account_green));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_action_btn));
                     } else if (item.getLOANSTATUS().equals("1") || item.getLOANSTATUS().equals("4")) {
-                        statusShape.setColor(ContextCompat.getColor(getActivity(),
-                                R.color.account_red));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_account_btn_red));
                     } else {
-                        statusShape.setColor(ContextCompat.getColor(getActivity(),
-                                R.color.account_green));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_action_btn));
                     }
                     helper.setText(R.id.tv_status, item.getLOANSTATUSDESC());
                 }
@@ -155,13 +148,13 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                 .subscribe(new BaseSubscriber<List<AccountModel>>() {
                     @Override
                     public void onCompleted() {
-                        hideProgress();
+                        hideProgresses();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
-                        hideProgress();
+                        hideProgresses();
                     }
 
                     @Override

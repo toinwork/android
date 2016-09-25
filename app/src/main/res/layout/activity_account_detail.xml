@@ -148,27 +148,27 @@
                     android:layout_height="wrap_content" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_loan_contract"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_loan_contract"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/dp_10"
-                    android:text="@string/loan_contract"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/comment_textSize" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_margin="@dimen/dp_10"-->
+                    <!--android:text="@string/loan_contract"-->
+                    <!--android:textColor="@color/black"-->
+                    <!--android:textSize="@dimen/comment_textSize" />-->
 
 
-                <ImageView
-                    style="@style/more_tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
+                <!--<ImageView-->
+                    <!--style="@style/more_tag"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</RelativeLayout>-->
 
         </LinearLayout>
     </LinearLayout>

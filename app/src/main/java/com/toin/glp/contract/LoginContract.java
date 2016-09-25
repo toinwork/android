@@ -17,16 +17,13 @@ public interface LoginContract {
             void setClickable();
 
             void setUnClickable();
-
-            void showVerifyCode(String code);
         }
 
         void checkLogin(String userName, String password, OnLoginFinishedListener listener);
 
         String getAccount();
 
-        Subscription login(String userName, String password, String code,
-                           OnLoginFinishedListener listener);
+        Subscription login(String userName, String password, OnLoginFinishedListener listener);
     }
 
     interface View extends BaseView {
@@ -34,12 +31,10 @@ public interface LoginContract {
         void navigateToHome();
 
         void setAccountInfo(String account);
-
-        void showVerifyCode(String code);
     }
 
     abstract class Presenter extends BasePresenter<Interactor, View> {
-        public abstract void login(String userName, String password, String code);
+        public abstract void login(String userName, String password);
 
         public abstract void checkLogin(String userName, String password);
 
