@@ -15,8 +15,8 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/edit_bg"
         android:divider="@drawable/vertical_line"
-        android:showDividers="middle"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:showDividers="middle">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,9 +34,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_name"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/designation" />
 
@@ -59,9 +59,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_organize_code"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/organize_code" />
 
@@ -84,9 +84,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_tax_number"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/tax_number" />
 
@@ -106,12 +106,13 @@
             <RelativeLayout
                 android:id="@+id/rl_address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/_tv_address"
-                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/address" />
 
@@ -135,8 +136,8 @@
 
                 <TextView
                     android:id="@+id/_tv_corporate"
-                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/corporate" />
 
@@ -160,8 +161,8 @@
 
                 <TextView
                     android:id="@+id/_tv_model"
-                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/model" />
 
@@ -185,8 +186,8 @@
 
                 <TextView
                     android:id="@+id/_tv_industry"
-                    android:layout_width="@dimen/dp_100"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/industry" />
 
@@ -209,9 +210,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="@dimen/dp_100"
                     android:id="@+id/_tv_contact"
                     style="@style/style_company_info"
+                    android:layout_width="@dimen/dp_100"
                     android:layout_alignParentLeft="true"
                     android:text="@string/contact" />
 

@@ -74,6 +74,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
 
     @Override
     protected void initData() {
+        setActionTitle("账户登录");
         mPresenter.getAccount();
     }
 

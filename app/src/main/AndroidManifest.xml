@@ -64,9 +64,7 @@
         <!--注册页面-->
         <activity android:name=".ui.RegisterActivity" />
         <!--登录页面-->
-        <activity
-            android:name=".ui.LoginActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name=".ui.LoginActivity" />
         <!--主页-->
         <activity android:name=".ui.MainActivity" />
         <!--个人资料-->
@@ -89,6 +87,8 @@
         <activity android:name=".ui.mine.EditActivity" />
         <!--业务介绍-->
         <activity android:name=".ui.home.BusinessIntroductionActivity" />
+        <!--注册协议-->
+        <activity android:name=".ui.UserAgreementActivity" />
 
     </application>
 

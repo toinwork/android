@@ -92,8 +92,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                 params.put("orgin_pwd", oldPwd);
                 params.put("login_pwd", SHA256.encryptPassword(newPwd, "SHA-256"));
                 Subscription s = factory.get_weijin().getBaseApiSingleton().modifyPassword(params)
-                        .map(baseResult -> baseResult)
-                        .subscribeOn(Schedulers.newThread())
+                        .map(baseResult -> baseResult).subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new BaseSubscriber<BaseResult>() {
                             @Override
@@ -115,7 +114,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                                     hideProgress();
                                     finish();
                                 } else {
-                                    T.showShort(result.getError_message());
+                                    T.showShort("重置密码失败");
                                 }
                             }
                         });

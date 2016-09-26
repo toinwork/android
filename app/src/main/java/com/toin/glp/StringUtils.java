@@ -4,26 +4,80 @@ package com.toin.glp;
  * Created by hb on 16/6/25.
  */
 public class StringUtils {
-    public static final String TAB_TAG_HOME         = "首页";
-    public static final String TAB_TAG_ACCOUNT      = "账单";
-    public static final String TAB_TAG_MESSAGE      = "消息";
-    public static final String TAB_TAG_MINE         = "我的";
-    public static final String TITLE_COMPANY_INFO   = "企业资料";
-    public static final String TITLE_INFO           = "个人资料";
-    public static final String TITLE_USER_CENTER    = "个人中心";
-    public static final String TITLE_SETTING        = "设置";
-    public static final String TITLE_FEEDBACK       = "反馈我们";
-    public static final String TITLE_HELP_CENTER    = "帮助中心";
-    public static final String TITLE_ABOUT_US       = "关于我们";
-    public static final String TITLE_CHANGE_PWD     = "修改密码";
+    public static final String TAB_TAG_HOME = "首页";
+    public static final String TAB_TAG_ACCOUNT = "账单";
+    public static final String TAB_TAG_MESSAGE = "消息";
+    public static final String TAB_TAG_MINE = "我的";
+    public static final String TITLE_COMPANY_INFO = "企业资料";
+    public static final String TITLE_INFO = "个人资料";
+    public static final String TITLE_USER_CENTER = "个人中心";
+    public static final String TITLE_SETTING = "设置";
+    public static final String TITLE_FEEDBACK = "反馈我们";
+    public static final String TITLE_HELP_CENTER = "帮助中心";
+    public static final String TITLE_ABOUT_US = "关于我们";
+    public static final String TITLE_CHANGE_PWD = "修改密码";
     public static final String TITLE_ACCOUNT_DETAIL = "借款详情";
-    public static final String TITLE_REPAY_PLAN     = "还款计划";
+    public static final String TITLE_REPAY_PLAN = "还款计划";
+    public static final String TITLE_USER_AGREEMENT = "用户协议";
 
     //访问接口时显示文案
-    public static final String API_RESET_SUCCESS    = "重置密码成功,请登录...";
+    public static final String API_RESET_SUCCESS = "重置密码成功,请登录...";
     public static final String API_REGISTER_SUCCESS = "注册成功";
-    public static final String API_LOGIN            = "登录中...";
-    public static final String API_SEND             = "发送中...";
-    public static final String API_SURE             = "确认中...";
-    public static final String API_SUCCESS          = "设置成功";
+    public static final String API_LOGIN = "登录中...";
+    public static final String API_SEND = "发送中...";
+    public static final String API_SURE = "确认中...";
+    public static final String API_SUCCESS = "设置成功";
+    public static final String CONTENT_USER_AGREEMENT = "本《用户注册协议》（以下简称“协议”）系普洛斯金融控股（重庆）有限公司及其关联公司（以下简称“普洛斯公司”）与用户（以下称为“您”）之间关于注册、登录或使用普洛斯金融APP/WEB等计算机系统的权利义务的约定。请您仔细阅读并充分理解。除非您接受本协议条款，否则您无权注册、登录或使用本协议所涉及的相关服务。您一旦注册、登录、使用或以任何方式使用本协议所涉及的相关服务的行为将视为对本协议的接受，即表示您同意接受本协议各项条款的约束。如果您不同意本协议中的条款，请不要注册、登录或使用本协议相关服务。  \n" +
+            "\n" +
+            "1. 服务内容\n" +
+            "1.1普洛斯公司为您提供融资及供应链管理的服务，该服务将通过线上普洛斯金融APP／WEB等相关计算机系统完成。您成功注册及提交融资申请资料并不意味着您一定能通过普洛斯公司的审核并拿到融资款。\n" +
+            "1.2 您一旦注册成功成为普洛斯金融APP／WEB等计算机系统的用户，您将得到一个账号和密码，您需要对自己在帐户中的所有活动和事件负全责。同时，请您仔细保管您的账号和密码，如果由于您的原因导致您的账号或密码泄露，则由此导致的针对您、或任何第三方造成的损害，您将承担全部责任。\n" +
+            "1.3 您理解并接受普洛斯公司仅提供相关的网络服务，除此之外与相关网络服务有关的设备（如个人电脑、手机、及其他与接入互联网或移动互联网有关的装置）及所需的费用（如为接入互联网而支付的电话费及上网费、为使用移动网而支付的手机费）均应由您自行负担。\n" +
+            "\n" +
+            "\n" +
+            "2. 使用规则\n" +
+            "2.1 您在申请使用普洛斯金融APP/WEB等计算机系统服务时，必须向普洛斯公司提供准确的信息，如公司名／姓名、联系方式、银行账号等等。因您提供的资料不准确、不真实而引发的一切后果由您全部承担。\n" +
+            "2.2 您应妥善保存账号、密码，避免以任何脱离您控制的形式交由他人使用。如您发现账号遭他人非法使用，应立即通知普洛斯公司。\n" +
+            "2.3 您理解并接受普洛斯公司提供的服务中可能包括广告，您同意在使用过程中显示普洛斯公司和第三方供应商、合作伙伴提供的广告。\n" +
+            "2.4您在使用普洛斯公司APP/WEB等计算机系统时，必须遵循以下原则：\n" +
+            "2.4.1 遵守中国有关的法律和法规；\n" +
+            "2.4.2 遵守所有与网络服务有关的网络协议、规定和程序；\n" +
+            "2.4.3 不得为任何非法目的而使用 ；\n" +
+            "2.4.4 不得利用普洛斯公司APP/WEB等计算机系统进行任何可能对互联网或移动互联网的正常运转造成不利影响的行为；\n" +
+            "2.4.5 不得利用普洛斯公司提供的网络服务上传、展示或传播任何虚假的、骚扰性的、中伤他人的、辱骂性的、恐吓性的、庸俗淫秽的或其他任何非法的信息资料；\n" +
+            "2.4.6 不得侵犯普洛斯公司和其他任何第三方的专利权、著作权、商标权、名誉权或其他任何合法权益；\n" +
+            "2.5 如您在使用中违反任何上述规定，普洛斯公司或其授权的人有权要求您改正或直接采取一切必要的措施（包括但不限于暂停或终止用户使用普洛斯金融APP/WEB等计算机系统服务的权利）以减轻您不当行为造成的影响。\n" +
+            "\n" +
+            "\n" +
+            "3. 服务变更、中断或终止\n" +
+            "3.1 鉴于网络系统服务的特殊性，您同意普洛斯公司有权根据业务发展情况随时变更、中断或终止部分或全部的服务而无需通知用户，也无需对您承担任何责任；\n" +
+            "3.2 您理解并同意，普洛斯公司需要定期或不定期地对普洛斯金融APP/WEB等计算机系统或相关的设备进行升级、更新、检修或者维护，如因此而造成网络系统服务的中断，普洛斯公司无需为此承担任何责任，但普洛斯公司应尽可能事先进行通告。\n" +
+            "3.3 如发生下列任何一种情形，普洛斯公司有权随时中断或终止向您提供本协议项下的网络系统服务（包括收费网络服务）而无需对您承担任何责任：\n" +
+            "3.3.1 您提供的信息不真实；\n" +
+            "3.3.2 您违反本协议中规定的使用规则；\n" +
+            "3.3.3 发生任何不可抗力之事件。\n" +
+            "4. 知识产权\n" +
+            "4.1 普洛斯金融APP/WEB等计算机系统中包含的任何文本、图片、图形、音频和/或视频资料均属于普洛斯公司所有，受版权、商标和/或其它财产所有权法律的保护，未经普洛斯公司同意，您不得将上述资料用于任何商业目的。\n" +
+            "5. 隐私保护\n" +
+            "5.1 保护您的隐私是普洛斯公司的一项基本政策，普洛斯公司保证不对外公开或向第三方提供您的注册资料及您在使用过程中存储在普洛斯公司的非公开内容，但下列情况除外：\n" +
+            "5.1.1 事先获得您的明确授权；\n" +
+            "5.1.2 根据有关的法律法规要求；\n" +
+            "5.1.3 按照相关政府主管部门的要求；\n" +
+            "5.1.4 为维护社会公众的利益；\n" +
+            "5.1.5 为维护普洛斯公司的合法权益。\n" +
+            "5.2 普洛斯公司可能会与第三方合作向用户提供相关的融资服务，在此情况下，普洛斯公司有权将您的注册资料等提供给该第三方。\n" +
+            "5.3 在不透露您隐私资料的前提下，出于为您提供更好的服务的前提下，普洛斯公司有权对您的资料进行分析并进行商业上的利用。\n" +
+            "6. 免责声明\n" +
+            "6.1 普洛斯公司不担保网络系统服务一定能满足您的要求，也不担保网络系统服务不会中断，对网络系统服务的及时性、安全性、准确性也都不作担保。\n" +
+            "6.2对于因电信系统或互联网网络故障、计算机故障或病毒、信息损坏或丢失、计算机系统问题或其它任何不可抗力原因而产生损失，普洛斯公司不承担任何责任，但将尽力减少因此而给您造成的损失和影响。\n" +
+            " 7. 授权申明\n" +
+            "您充分理解并同意：为了向您提供融资服务，普洛斯公司有权自行或委托第三方合作伙伴（包括但不限于金融机构、第三方支付公司、社会征信机构或其他商业合作伙伴）调查、咨询、审核、评估您的资信状况，财务状况和其他有关信息，有权索取、留存和使用您的个人资料，同时有权向协议规定的有关方披露与您相关的任何信息。\n" +
+            "8. 法律及争议解决\n" +
+            "8.1 本协议适用中华人民共和国法律。\n" +
+            "8.2 因本协议引起的或与本协议有关的任何争议，各方应友好协商解决；协商不成的，任何一方均可将有关争议提交至上海仲裁委员会并按照其届时有效的仲裁规则仲裁；仲裁裁决是终局的，对各方均有约束力。\n" +
+            "\n" +
+            "9. 其他条款\n" +
+            "9.1 如果本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，或违反任何适用的法律，则该条款被视为删除，但本协议的其余条款仍应有效并且有约束力。\n" +
+            "9.2 普洛斯公司有权随时根据有关法律、法规的变化以及公司经营状况和经营策略的调整等修改本协议，而无需另行单独通知您。您可随时通过网站浏览最新的协议条款。当发生有关争议时，以最新的协议文本为准。如果不同意普洛斯公司对本协议相关条款所做的修改，您有权停止使用。如果您继续使用，则视为您接受普洛斯公司对本协议相关条款所做的修改。\n" +
+            "9.3 普洛斯公司在法律允许最大范围对本协议拥有解释权与修改权。\n";
 }

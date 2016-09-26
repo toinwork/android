@@ -58,7 +58,7 @@ public class ForgetPasswordActivity extends
         String BTNCONTENT = getResources().getString(R.string.sure);
         setActionTitle(TITLE);
         registerTv.setText(BTNCONTENT);
-        setAccount();
+//        setAccount();
     }
 
     private void setAccount() {

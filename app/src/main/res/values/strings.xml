@@ -104,4 +104,6 @@
     <string name="auto_repay">自动还款</string>
     <string name="sure_money">请确保卡上有充足的余额</string>
     <string name="benqi">本期</string>
+    <string name="user_agreement">同意用户协议</string>
+    <string name="user_agreement_illegal">请勾选协议</string>
 </resources>

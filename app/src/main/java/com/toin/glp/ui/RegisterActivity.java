@@ -3,6 +3,7 @@ package com.toin.glp.ui;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -41,6 +42,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
     @Bind(R.id.et_pwd_again)
     EditText      pwdAgainEt;
     private Timer timer = null;
+    @Bind(R.id.check_user_agreement)
+    CheckBox      userAgreementCheckBox;
 
     @Override
     protected int initLayout() {
@@ -49,7 +52,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
 
     @Override
     protected void initView() {
-        setOnClick(R.id.tv_code, R.id.btn_back, R.id.tv_register, R.id.tv_login);
+        setOnClick(R.id.tv_code, R.id.btn_back, R.id.tv_register, R.id.tv_login,
+                R.id.tv_user_agreement);
     }
 
     @Override
@@ -107,6 +111,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
                     T.showLong(getString(R.string.password_is_not_equels_old_password));
                     return;
                 }
+                if (!userAgreementCheckBox.isChecked()) {
+                    T.showShort(getString(R.string.user_agreement_illegal));
+                    return;
+                }
                 mPresenter.register(mobile, checkCode, pwd, pwdAgain);
                 break;
             case R.id.tv_login:
@@ -117,6 +125,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
             case R.id.btn_back:
                 closeTimer();
                 finish();
+                break;
+            case R.id.tv_user_agreement:
+                Navigation.goPage(this, UserAgreementActivity.class);
                 break;
         }
     }

@@ -258,5 +258,6 @@
     <color name="red_benqi">#FB4A65</color>
     <color name="account_green">#4BD663</color>
     <color name="account_red">#FB4A65</color>
+    <color name="user_agreement">#336699</color>
 
 </resources>

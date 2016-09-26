@@ -98,18 +98,17 @@ public class MessageNotReadFragment extends BaseFragment {
 
                 //默认设置收缩状态
                 contentTv.setEllipsize(TextUtils.TruncateAt.END);//收缩
+                contentTv.setSingleLine(true);
                 RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 lp.setMargins(margin, 0, margin, 0);
                 lp.addRule(RelativeLayout.LEFT_OF, R.id.tv_time);
                 lp.addRule(RelativeLayout.RIGHT_OF, R.id.tv_red_point);
                 contentTv.setLayoutParams(lp);
-                lp = new RelativeLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
                 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-                lp.setMargins(0, margin, margin, 0);
+                lp.setMargins(0, 0, margin, 0);
                 timeTv.setLayoutParams(lp);
 
                 messageRl.setOnClickListener(new View.OnClickListener() {
