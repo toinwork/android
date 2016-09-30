@@ -8,8 +8,10 @@ import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.ApiName;
 import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseActivity;
+import com.toin.glp.base.utils.T;
 import com.toin.glp.models.account.AccountsDetailModel;
 import com.toin.glp.models.account.AccountsDetailModel.AccountDetailModel;
 
@@ -61,7 +63,7 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
     private void httpGetAccountDetail() {
         showProgress("加载中...");
         Map<String, Object> params = new HashMap<>();
-        params.put("tranCode", "queryPutoutApplyDetail");
+        params.put("tranCode", ApiName.QUERY_PUTOUT_APPLY_DETAIL);
         params.put("APPLYNO", id);
         RequestBody body = ApiFactory.get_request(params);
         ApiFactory factory = new ApiFactory();
@@ -87,6 +89,12 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
                     @Override
                     public void get_model(AccountDetailModel accountDetailModel) {
                         hideProgress();
+                        if (!accountDetailModel.getRESULTCODE().equals("000000")) {
+                            if (accountDetailModel.getIs_valid_token().equals("F")) {
+                                T.showShort("登陆过期请重新登陆");
+                                Navigation.logout(AccountDetailActivity.this);
+                            }
+                        }
                         setAccountDetailInfo(accountDetailModel);
                     }
                 });

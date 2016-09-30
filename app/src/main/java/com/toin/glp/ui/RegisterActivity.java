@@ -5,6 +5,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.toin.glp.App;
@@ -44,6 +45,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
     private Timer timer = null;
     @Bind(R.id.check_user_agreement)
     CheckBox      userAgreementCheckBox;
+    @Bind(R.id.ll_user_agreement)
+    LinearLayout  userAgreementLL;
 
     @Override
     protected int initLayout() {
@@ -60,6 +63,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
     protected void initData() {
         String TITLE = getResources().getString(R.string.register);
         loginTv.setVisibility(View.VISIBLE);
+        userAgreementLL.setVisibility(View.VISIBLE);
         setActionTitle(TITLE);
         registerTv.setText(TITLE);
     }

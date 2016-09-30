@@ -24,6 +24,7 @@ public class SetMessageModel {
         private String RESULTCODE;
         private String RESULTMSG;
         private String STATUS;
+        private String is_valid_token;
         private int    datasetSize;
 
         public String getMOBILE() {
@@ -64,6 +65,14 @@ public class SetMessageModel {
 
         public void setDatasetSize(int datasetSize) {
             this.datasetSize = datasetSize;
+        }
+
+        public String getIs_valid_token() {
+            return is_valid_token;
+        }
+
+        public void setIs_valid_token(String is_valid_token) {
+            this.is_valid_token = is_valid_token;
         }
     }
 }

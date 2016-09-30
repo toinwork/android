@@ -8,14 +8,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.utils.L;
 import com.squareup.okhttp.RequestBody;
 import com.toin.glp.App;
 import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.ApiName;
 import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseFragment;
+import com.toin.glp.base.utils.T;
 import com.toin.glp.base.utils.TypeTranUtils;
 import com.toin.glp.models.account.AccountsModel.ResponseBodyEntity.AccountModel;
 import com.toin.glp.utils.GlpUtils;
@@ -97,13 +100,17 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                     TextView statusTv = helper.getView(R.id.tv_status);
                     //1:逾期,2:正常结清,3:提前结清,4:逾期结清
                     if (item.getLOANSTATUS().equals("2")) {
-                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_account_btn_hint));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(
+                                R.drawable.shape_account_btn_hint));
                     } else if (item.getLOANSTATUS().equals("3")) {
-                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_action_btn));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(
+                                R.drawable.shape_action_btn));
                     } else if (item.getLOANSTATUS().equals("1") || item.getLOANSTATUS().equals("4")) {
-                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_account_btn_red));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(
+                                R.drawable.shape_account_btn_red));
                     } else {
-                        statusTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_action_btn));
+                        statusTv.setBackgroundDrawable(getResources().getDrawable(
+                                R.drawable.shape_action_btn));
                     }
                     helper.setText(R.id.tv_status, item.getLOANSTATUSDESC());
                 }
@@ -130,7 +137,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
 
     private void httpGetAccountList() {
         Map<String, Object> params = new HashMap<>();
-        params.put("tranCode", "queryLoanList");
+        params.put("tranCode", ApiName.QUERY_LOAN_LIST);
         params.put("PAGENO", pageIndex);
         params.put("PAGEMAXNUM", pageSize);
         params.put("PRDCODE", "");
@@ -142,7 +149,14 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                 .getBaseApiSingleton()
                 .getAccountList(body)
                 .map(accountsModel -> {
+                    if (!accountsModel.getResponseBody().getRESULTCODE().equals("000000")) {
+                        if (accountsModel.getResponseBody().getIs_valid_token().equals("F")) {
+                            T.showShort("登陆过期请重新登陆");
+                            Navigation.logout(getActivity());
+                        }
+                    }
                     count = TypeTranUtils.str2Int(accountsModel.getResponseBody().getDatasetSize());
+                    L.i(accountsModel.getResponseBody().getCUSTNO());
                     return accountsModel.getResponseBody().getData();
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseSubscriber<List<AccountModel>>() {

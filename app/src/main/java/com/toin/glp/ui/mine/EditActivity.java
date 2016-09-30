@@ -162,10 +162,10 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                             T.showShort("规模不能为空！");
                             return false;
                         }
-//                        if (!content.matches("^[0-9]+$")) {
-//                            T.showShort("规模必须由数字组成");
-//                            return false;
-//                        }
+                        //                        if (!content.matches("^[0-9]+$")) {
+                        //                            T.showShort("规模必须由数字组成");
+                        //                            return false;
+                        //                        }
                         return true;
                     }
                 };
@@ -188,7 +188,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
             } else if (PAGE_TYPE_CONTACT.equals(pageType)) {
                 title = "联系方式";
                 hint = title;
-                editType = EditorInfo.TYPE_CLASS_PHONE;
+                editType = EditorInfo.TYPE_CLASS_TEXT;
                 contentEt.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
                 checkState = new CheckState() {
 

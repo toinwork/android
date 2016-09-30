@@ -23,4 +23,15 @@ public class ApiName {
     public static final String CREATE_ENTERPRISE_MEMBER    = "create_enterprise_member";
     //账单相关
 
+    //账单列表
+    public static final String QUERY_LOAN_LIST             = "queryLoanList";
+    //账单详情
+    public static final String QUERY_PUTOUT_APPLY_DETAIL   = "queryPutoutApplyDetail";
+    //还款计划
+    public static final String REPAY_PLAN                  = "repayPlan";
+    //获取消息
+    public static final String BUSINESS_NOTIFICATION       = "businessNotification";
+    //消息设置为已读
+    public static final String CHANGE_INFO_STATUS          = "changeInfoStatus";
+
 }

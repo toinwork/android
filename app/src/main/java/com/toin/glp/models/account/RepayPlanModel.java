@@ -8,20 +8,31 @@ import java.util.List;
 public class RepayPlanModel {
 
     /**
-     * PAYMENTLIST : [{"ACTUALPAYCOMPDINTEAMT":"0.0","ACTUALPAYFINEAMT":"0.0","ACTUALPAYINTEAMT":"0.0","ACTUALPAYPRINCIPALAMT":"84000.0","ACTUALRECIEVEAMOUNT":"840.0","PAYCOMPDINTEAMT":"0.0","PAYDATE":"2016/10/05","PAYFINEAMT":"0.0","PAYINTEAMT":"0.0","PAYPRINCIPALAMT":"84000.0","SEQID":"0","TOTALAMOUNT":"840.0"}]
-     * RESULTCODE : 000000
-     * RESULTMSG : 操作成功
-     * SUMCOUNT : 1
-     * SUMPAGENUM : 1
+     * PAYMENTLIST : [{"ACTUALPAYCOMPDINTEAMT":"0.0","ACTUALPAYFINEAMT":"0.0",
+     * "ACTUALPAYINTEAMT"
+     * :"0.0","ACTUALPAYPRINCIPALAMT":"84000.0","ACTUALRECIEVEAMOUNT"
+     * :"840.0","PAYCOMPDINTEAMT"
+     * :"0.0","PAYDATE":"2016/10/05","PAYFINEAMT":"0.0"
+     * ,"PAYINTEAMT":"0.0","PAYPRINCIPALAMT"
+     * :"84000.0","SEQID":"0","TOTALAMOUNT":"840.0"}] RESULTCODE : 000000
+     * RESULTMSG : 操作成功 SUMCOUNT : 1 SUMPAGENUM : 1
      */
 
     private ResponseBodyEntity responseBody;
     /**
-     * responseBody : {"PAYMENTLIST":[{"ACTUALPAYCOMPDINTEAMT":"0.0","ACTUALPAYFINEAMT":"0.0","ACTUALPAYINTEAMT":"0.0","ACTUALPAYPRINCIPALAMT":"84000.0","ACTUALRECIEVEAMOUNT":"840.0","PAYCOMPDINTEAMT":"0.0","PAYDATE":"2016/10/05","PAYFINEAMT":"0.0","PAYINTEAMT":"0.0","PAYPRINCIPALAMT":"84000.0","SEQID":"0","TOTALAMOUNT":"840.0"}],"RESULTCODE":"000000","RESULTMSG":"操作成功","SUMCOUNT":1,"SUMPAGENUM":1}
-     * responseType : ENTITY
+     * responseBody :
+     * {"PAYMENTLIST":[{"ACTUALPAYCOMPDINTEAMT":"0.0","ACTUALPAYFINEAMT"
+     * :"0.0","ACTUALPAYINTEAMT"
+     * :"0.0","ACTUALPAYPRINCIPALAMT":"84000.0","ACTUALRECIEVEAMOUNT"
+     * :"840.0","PAYCOMPDINTEAMT"
+     * :"0.0","PAYDATE":"2016/10/05","PAYFINEAMT":"0.0"
+     * ,"PAYINTEAMT":"0.0","PAYPRINCIPALAMT"
+     * :"84000.0","SEQID":"0","TOTALAMOUNT":
+     * "840.0"}],"RESULTCODE":"000000","RESULTMSG"
+     * :"操作成功","SUMCOUNT":1,"SUMPAGENUM":1} responseType : ENTITY
      */
 
-    private String responseType;
+    private String             responseType;
 
     public ResponseBodyEntity getResponseBody() {
         return responseBody;
@@ -40,23 +51,17 @@ public class RepayPlanModel {
     }
 
     public static class ResponseBodyEntity {
-        private String RESULTCODE;
-        private String RESULTMSG;
-        private int SUMCOUNT;
-        private int SUMPAGENUM;
+        private String          RESULTCODE;
+        private String          RESULTMSG;
+        private String          is_valid_token;
+        private int             SUMCOUNT;
+        private int             SUMPAGENUM;
         /**
-         * ACTUALPAYCOMPDINTEAMT : 0.0
-         * ACTUALPAYFINEAMT : 0.0
-         * ACTUALPAYINTEAMT : 0.0
-         * ACTUALPAYPRINCIPALAMT : 84000.0
-         * ACTUALRECIEVEAMOUNT : 840.0
-         * PAYCOMPDINTEAMT : 0.0
-         * PAYDATE : 2016/10/05
-         * PAYFINEAMT : 0.0
-         * PAYINTEAMT : 0.0
-         * PAYPRINCIPALAMT : 84000.0
-         * SEQID : 0
-         * TOTALAMOUNT : 840.0
+         * ACTUALPAYCOMPDINTEAMT : 0.0 ACTUALPAYFINEAMT : 0.0 ACTUALPAYINTEAMT :
+         * 0.0 ACTUALPAYPRINCIPALAMT : 84000.0 ACTUALRECIEVEAMOUNT : 840.0
+         * PAYCOMPDINTEAMT : 0.0 PAYDATE : 2016/10/05 PAYFINEAMT : 0.0
+         * PAYINTEAMT : 0.0 PAYPRINCIPALAMT : 84000.0 SEQID : 0 TOTALAMOUNT :
+         * 840.0
          */
 
         private List<PlanModel> PAYMENTLIST;
@@ -99,6 +104,14 @@ public class RepayPlanModel {
 
         public void setPAYMENTLIST(List<PlanModel> PAYMENTLIST) {
             this.PAYMENTLIST = PAYMENTLIST;
+        }
+
+        public String getIs_valid_token() {
+            return is_valid_token;
+        }
+
+        public void setIs_valid_token(String is_valid_token) {
+            this.is_valid_token = is_valid_token;
         }
 
         public static class PlanModel {

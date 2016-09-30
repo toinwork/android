@@ -7,7 +7,6 @@ import java.util.List;
  */
 public class AccountsDetailModel {
 
-
     private AccountDetailModel responseBody;
     /**
      * responseBody :
@@ -88,6 +87,7 @@ public class AccountsDetailModel {
         private String  INTERESTRATE;
         private String  INTFLOATTYPE;
         private String  INTFLOATTYPENAME;
+        private String  is_valid_token;
         private String  ISENTRUSTPAYNAME;
         private String  LOANACCNO;
         private String  LOANOWNAMT;
@@ -508,6 +508,14 @@ public class AccountsDetailModel {
 
         public void setPAYEELIST(List<?> PAYEELIST) {
             this.PAYEELIST = PAYEELIST;
+        }
+
+        public String getIs_valid_token() {
+            return is_valid_token;
+        }
+
+        public void setIs_valid_token(String is_valid_token) {
+            this.is_valid_token = is_valid_token;
         }
     }
 }

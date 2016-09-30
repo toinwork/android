@@ -246,12 +246,14 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_user_agreement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_login"
                 android:layout_marginBottom="@dimen/dp_30"
                 android:layout_marginTop="@dimen/dp_10"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <CheckBox

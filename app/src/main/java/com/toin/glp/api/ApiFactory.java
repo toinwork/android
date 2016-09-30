@@ -31,6 +31,11 @@ public class ApiFactory {
         return weiJinFactory;
     }
 
+    /**
+     * 维金接口
+     * 
+     * @return
+     */
     public static Map<String, Object> get_base_map() {
         Map<String, Object> params = new HashMap<>();
         params.put("_input_charset", "UTF-8");
@@ -40,10 +45,20 @@ public class ApiFactory {
         return params;
     }
 
+    /**
+     * 账单接口
+     * 
+     * @param params
+     * @return
+     */
     public static RequestBody get_request(Map<String, Object> params) {
         params.put("tranChl", "phone");
         params.put("MOBILE", App.phone);
-        //        params.put("MOBILE", "18605914471");
+        String token = App.token;
+//        if (!TextUtils.isEmpty(App.token)) {
+//            token = token.substring(11, token.length());
+//        }
+        params.put("Token", token);
         String json = JSONObject.toJSONString(params).toString();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
                 json);

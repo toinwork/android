@@ -148,6 +148,7 @@ public class MessageListModel {
         private String             RESULTCODE;
         private String             RESULTMSG;
         private String             SUMPAGENUM;
+        private String             is_valid_token;
         private String             datasetSize;
         /**
          * CUSTNAME : 普洛斯测试01 CUSTNO : 2016082320802214 DETAIL :
@@ -196,6 +197,14 @@ public class MessageListModel {
 
         public void setData(List<MessageModel> data) {
             this.data = data;
+        }
+
+        public String getIs_valid_token() {
+            return is_valid_token;
+        }
+
+        public void setIs_valid_token(String is_valid_token) {
+            this.is_valid_token = is_valid_token;
         }
     }
 }

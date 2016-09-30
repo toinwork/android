@@ -6,12 +6,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.okhttp.RequestBody;
+import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.ApiName;
 import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseExitActivity;
 import com.toin.glp.base.utils.DensityUtil;
+import com.toin.glp.base.utils.T;
 import com.toin.glp.models.account.RepayPlanModel.ResponseBodyEntity.PlanModel;
 import com.toin.glp.utils.GlpUtils;
 import com.toin.glp.widget.ZmRefreshListener;
@@ -122,7 +125,7 @@ public class RepaymentPlanActivity extends BaseExitActivity implements View.OnCl
 
     private void httpRepayPlan() {
         Map<String, Object> params = new HashMap<>();
-        params.put("tranCode", "repayPlan");
+        params.put("tranCode", ApiName.REPAY_PLAN);
         params.put("PAGENO", pageIndex);
         params.put("PAGEMAXNUM", pageSize);
         params.put("APPLYNO", id);
@@ -130,6 +133,12 @@ public class RepaymentPlanActivity extends BaseExitActivity implements View.OnCl
         ApiFactory factory = new ApiFactory();
         Subscription s = factory.get_financing().getBaseApiSingleton().getRepayPlan(body)
                 .map(model -> {
+                    if (!model.getResponseBody().getRESULTCODE().equals("000000")) {
+                        if (model.getResponseBody().getIs_valid_token().equals("F")) {
+                            T.showShort("登陆过期请重新登陆");
+                            Navigation.logout(RepaymentPlanActivity.this);
+                        }
+                    }
                     count = model.getResponseBody().getSUMCOUNT();
                     return model.getResponseBody().getPAYMENTLIST();
                 }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())

@@ -9,8 +9,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.okhttp.RequestBody;
+import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.ApiName;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.DensityUtil;
 import com.toin.glp.base.utils.T;
@@ -139,7 +141,7 @@ public class MessageReadFragment extends BaseFragment {
 
     private void httpGetMessageList() {
         Map<String, Object> params = new HashMap<>();
-        params.put("tranCode", "businessNotification");
+        params.put("tranCode", ApiName.BUSINESS_NOTIFICATION);
         params.put("STATUS", "02");//已读
         params.put("PAGENO", pageIndex);
         params.put("PAGEMAXNUM", pageSize);
@@ -165,8 +167,11 @@ public class MessageReadFragment extends BaseFragment {
                     public void onNext(MessageListModel.ResponseBodyEntity data) {
                         hideProgresses();
                         if (!data.getRESULTCODE().equals("000000")) {
-                            T.showShort(data.getRESULTMSG());
-                            return;
+                            if (data.getIs_valid_token().equals("F")) {
+                                T.showShort("登陆过期请重新登陆");
+                                Navigation.logout(getActivity());
+                                return;
+                            }
                         }
                         if (data.getData() != null) {
                             if (pageIndex == 1) {

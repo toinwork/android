@@ -36,6 +36,7 @@ public class AccountsModel{
         private String RESULTCODE;
         private String RESULTMSG;
         private String datasetSize;
+        private String is_valid_token;
         /**
          * BALANCE : 0.0
          * BUSINESSSUM : 60000.0
@@ -93,6 +94,14 @@ public class AccountsModel{
 
         public void setData(List<AccountModel> data) {
             this.data = data;
+        }
+
+        public String getIs_valid_token() {
+            return is_valid_token;
+        }
+
+        public void setIs_valid_token(String is_valid_token) {
+            this.is_valid_token = is_valid_token;
         }
 
         public static class AccountModel {

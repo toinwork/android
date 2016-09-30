@@ -21,7 +21,7 @@
     <string name="corporate">法人</string>
     <string name="model">规模</string>
     <string name="industry">行业</string>
-    <string name="contact">联系方式</string>
+    <string name="contact">联系电话</string>
     <string name="register">注册</string>
     <string name="no_register">还没有账号,立即注册</string>
     <string name="action_settings">Settings</string>

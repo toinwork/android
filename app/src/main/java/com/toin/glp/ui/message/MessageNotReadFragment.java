@@ -9,8 +9,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.okhttp.RequestBody;
+import com.toin.glp.Navigation;
 import com.toin.glp.R;
 import com.toin.glp.api.ApiFactory;
+import com.toin.glp.api.ApiName;
 import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.DensityUtil;
@@ -18,6 +20,7 @@ import com.toin.glp.base.utils.T;
 import com.toin.glp.base.utils.TypeTranUtils;
 import com.toin.glp.models.account.MessageListModel;
 import com.toin.glp.models.account.MessageModel;
+import com.toin.glp.models.account.SetMessageModel;
 import com.toin.glp.models.account.SetMessageModel.ResponseBodyEntity;
 import com.toin.glp.utils.GlpUtils;
 import com.toin.glp.widget.ZmRefreshListener;
@@ -162,13 +165,17 @@ public class MessageNotReadFragment extends BaseFragment {
 
     private void httpSetMessageRead(String id, TextView contentTv) {
         Map<String, Object> params = new HashMap<>();
-        params.put("tranCode", "changeInfoStatus");
+        params.put("tranCode", ApiName.CHANGE_INFO_STATUS);
         params.put("ID", id);
         RequestBody body = ApiFactory.get_request(params);
         ApiFactory factory = new ApiFactory();
         Subscription s = factory.get_financing().getBaseApiSingleton().setMessageRead(body)
-                .map(result -> result.getResponseBody()).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Func1<SetMessageModel, ResponseBodyEntity>() {
+                    @Override
+                    public ResponseBodyEntity call(SetMessageModel model) {
+                        return model.getResponseBody();
+                    }
+                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseSubscriber<ResponseBodyEntity>() {
                     @Override
                     public void onCompleted() {
@@ -185,8 +192,11 @@ public class MessageNotReadFragment extends BaseFragment {
                     public void get_model(ResponseBodyEntity data) {
                         hideProgress();
                         if (!data.getRESULTCODE().equals("000000")) {
-                            T.showShort(data.getRESULTMSG());
-                            return;
+                            if (data.getIs_valid_token().equals("F")) {
+                                T.showShort("登陆过期请重新登陆");
+                                Navigation.logout(getActivity());
+                                return;
+                            }
                         }
                         if (data.getSTATUS().equals("02")) {//已读
                             contentTv.setTextColor(getResources().getColor(R.color.gray));
@@ -203,7 +213,7 @@ public class MessageNotReadFragment extends BaseFragment {
 
     private void httpGetMessageList() {
         Map<String, Object> params = new HashMap<>();
-        params.put("tranCode", "businessNotification");
+        params.put("tranCode", ApiName.BUSINESS_NOTIFICATION);
         params.put("STATUS", "01");//未读
         params.put("PAGENO", pageIndex);
         params.put("PAGEMAXNUM", pageSize);
@@ -232,8 +242,11 @@ public class MessageNotReadFragment extends BaseFragment {
                     public void onNext(MessageListModel.ResponseBodyEntity data) {
                         hideProgresses();
                         if (!data.getRESULTCODE().equals("000000")) {
-                            T.showShort(data.getRESULTMSG());
-                            return;
+                            if (data.getIs_valid_token().equals("F")) {
+                                T.showShort("登陆过期请重新登陆");
+                                Navigation.logout(getActivity());
+                                return;
+                            }
                         }
                         if (data.getData() != null) {
                             if (pageIndex == 1) {
