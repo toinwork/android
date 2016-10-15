@@ -67,13 +67,17 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
         params.put("APPLYNO", id);
         RequestBody body = ApiFactory.get_request(params);
         ApiFactory factory = new ApiFactory();
-        Subscription s = factory.get_financing().getBaseApiSingleton().getAccountDetail(body)
+        Subscription s = factory.get_financing()
+                .getBaseApiSingleton()
+                .getAccountDetail(body)
                 .map(new Func1<AccountsDetailModel, AccountDetailModel>() {
                     @Override
                     public AccountDetailModel call(AccountsDetailModel model) {
                         return model.getResponseBody();
                     }
-                }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                })
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseSubscriber<AccountDetailModel>() {
                     @Override
                     public void onCompleted() {
@@ -108,11 +112,6 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
         contractTimeTv.setText(detailModel.getBEGINDATE() + "-" + detailModel.getENDDATE());
         repayWayTv.setText(detailModel.getDEDUCTINTTYPENAME());
         allInterestTv.setText(detailModel.getTOTALAMOUNT());
-    }
-
-    @Override
-    public void initPresenter() {
-
     }
 
     @Override

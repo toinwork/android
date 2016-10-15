@@ -8,15 +8,22 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.toin.glp.App;
 import com.toin.glp.Navigation;
 import com.toin.glp.R;
+import com.toin.glp.StringUtils;
 import com.toin.glp.base.BaseActivity;
+import com.toin.glp.base.utils.PatternUtils;
+import com.toin.glp.base.utils.T;
 import com.toin.glp.contract.LoginContract;
 import com.toin.glp.interactor.LoginInteractor;
 import com.toin.glp.presenter.LoginPresenter;
 
 import butterknife.Bind;
 
+/**
+ * 登录页
+ */
 public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor> implements
         LoginContract.View, View.OnClickListener {
     @Bind(R.id.et_phone)
@@ -27,7 +34,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     ImageView      cancelImg;
 
     private String userName = null;
-    private String passWord = null;
 
     @Override
     protected int initLayout() {
@@ -52,17 +58,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (type == 1) {//name
-
                     userName = s.toString();
                     if (!TextUtils.isEmpty(userName)) {
                         cancelImg.setVisibility(View.VISIBLE);
                     } else {
                         cancelImg.setVisibility(View.GONE);
                     }
-                } else if (type == 2) {
-                    passWord = s.toString();
                 }
-                mPresenter.checkLogin(userName, passWord);
             }
 
             @Override
@@ -74,13 +76,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
 
     @Override
     protected void initData() {
-        setActionTitle("账户登录");
+        setActionTitle(StringUtils.TITLE_LOGIN);
         mPresenter.getAccount();
-    }
-
-    @Override
-    public void initPresenter() {
-        mPresenter.setVM(this, mInterator);
     }
 
     @Override
@@ -98,8 +95,25 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginInteractor>
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_login:
-                mPresenter.login(idEt.getText().toString().trim(), pwdEt.getText().toString()
-                        .trim());
+                String username = idEt.getText().toString().trim();
+                if (!PatternUtils.isPhoneNum(username)) {
+                    T.showLong(App.context.getString(R.string.mobile_illegal));
+                    return;
+                }
+                if (TextUtils.isEmpty(username)) {
+                    T.showLong(App.context.getString(R.string.phone_number_null));
+                    return;
+                }
+                String password = pwdEt.getText().toString().trim();
+                if (TextUtils.isEmpty(password)) {
+                    T.showLong(getString(R.string.password_null));
+                    return;
+                }
+                if (password.length() < 6 || password.length() > 16) {
+                    T.showLong(getString(R.string.password_input_hint));
+                    return;
+                }
+                mPresenter.login(username, password);
                 break;
             case R.id.tv_register:
                 Navigation.goPage(this, RegisterActivity.class);

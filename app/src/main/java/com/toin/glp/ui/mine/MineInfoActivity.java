@@ -41,11 +41,6 @@ public class MineInfoActivity extends BaseTakePhoneActivity implements View.OnCl
     }
 
     @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:

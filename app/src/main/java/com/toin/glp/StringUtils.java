@@ -27,6 +27,7 @@ public class StringUtils {
     public static final String API_SEND = "发送中...";
     public static final String API_SURE = "确认中...";
     public static final String API_SUCCESS = "设置成功";
+    public static final String TITLE_LOGIN = "账户登录";
     public static final String CONTENT_USER_AGREEMENT = "本《用户注册协议》（以下简称“协议”）系普洛斯金融控股（重庆）有限公司及其关联公司（以下简称“普洛斯公司”）与用户（以下称为“您”）之间关于注册、登录或使用普洛斯金融APP/WEB等计算机系统的权利义务的约定。请您仔细阅读并充分理解。除非您接受本协议条款，否则您无权注册、登录或使用本协议所涉及的相关服务。您一旦注册、登录、使用或以任何方式使用本协议所涉及的相关服务的行为将视为对本协议的接受，即表示您同意接受本协议各项条款的约束。如果您不同意本协议中的条款，请不要注册、登录或使用本协议相关服务。  \n" +
             "\n" +
             "1. 服务内容\n" +
@@ -80,4 +81,6 @@ public class StringUtils {
             "9.1 如果本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，或违反任何适用的法律，则该条款被视为删除，但本协议的其余条款仍应有效并且有约束力。\n" +
             "9.2 普洛斯公司有权随时根据有关法律、法规的变化以及公司经营状况和经营策略的调整等修改本协议，而无需另行单独通知您。您可随时通过网站浏览最新的协议条款。当发生有关争议时，以最新的协议文本为准。如果不同意普洛斯公司对本协议相关条款所做的修改，您有权停止使用。如果您继续使用，则视为您接受普洛斯公司对本协议相关条款所做的修改。\n" +
             "9.3 普洛斯公司在法律允许最大范围对本协议拥有解释权与修改权。\n";
+    public static final String SEND_SUCCESS = App.getInstance().getResources().getString(R.string.send_success);
+    public static final String LOGIN_SUCCESS = App.getInstance().getResources().getString(R.string.login_success);
 }

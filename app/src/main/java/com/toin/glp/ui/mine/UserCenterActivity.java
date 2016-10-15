@@ -23,8 +23,4 @@ public class UserCenterActivity extends BaseActivity {
         setActionTitle(StringUtils.TITLE_USER_CENTER);
     }
 
-    @Override
-    public void initPresenter() {
-
-    }
 }

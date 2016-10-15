@@ -12,26 +12,24 @@ import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
-import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseActivity;
 import com.toin.glp.base.utils.RxBus.RxBus;
-import com.toin.glp.base.utils.T;
+import com.toin.glp.contract.mine.CompanyInformationContract;
 import com.toin.glp.event.CompanyInfoEvent;
-import com.toin.glp.models.BaseResult;
+import com.toin.glp.interactor.mine.CompanyInformationInteractor;
 import com.toin.glp.models.CompanyInfoModel;
-import com.toin.glp.models.UserInfoModel;
+import com.toin.glp.presenter.mine.CompanyInformationPresenter;
 
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * 企业资料 Created by hb on 16/9/5.
  */
-public class CompanyInformationActivity extends BaseActivity implements View.OnClickListener {
+public class CompanyInformationActivity extends
+        BaseActivity<CompanyInformationPresenter, CompanyInformationInteractor> implements
+        View.OnClickListener, CompanyInformationContract.View {
     private static final int REQUEST_CODE_PAGE_NAME          = 100;
     private static final int REQUEST_CODE_PAGE_ORGANIZE_CODE = 101;
     private static final int REQUEST_CODE_PAGE_TAX_NUMBER    = 102;
@@ -57,6 +55,8 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
     @Bind(R.id.tv_contact)
     TextView                 contactTv;
     private ApiFactory       factory;
+    private String           content;
+    private int              code;
 
     @Override
     protected int initLayout() {
@@ -78,34 +78,11 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
         params.put("service", ApiName.QUERY_ENTERPRISE);
         params.put("partner_id", "188888888");
         params.put("token", App.token);
-        Subscription s = factory.get_weijin().getBaseApiSingleton().getUserInfo(params)
-                .map(model -> model).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseSubscriber<UserInfoModel>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        super.onError(e);
-                    }
-
-                    @Override
-                    public void get_model(UserInfoModel result) {
-                        if (result.is_success.equals("T")) {
-                            setInfo(result.result);
-                        } else {
-                            T.showShort(result.getError_message());
-                        }
-                    }
-                });
-        addSubscription(s);
+        mPresenter.getUserInfo(params);
     }
 
     //渲染数据
-    private void setInfo(String result) {
+    public void setInfo(String result) {
         JSONObject obj = JSON.parseObject(result);
         CompanyInfoModel companyInfoModel = new CompanyInfoModel();
         companyInfoModel.parse(obj);
@@ -117,11 +94,6 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
         modelTv.setText(companyInfoModel.companyMemberInfo.scale);
         industryTv.setText(companyInfoModel.companyMemberInfo.businessScope);
         contactTv.setText(companyInfoModel.companyMemberInfo.telephone);
-
-    }
-
-    @Override
-    public void initPresenter() {
 
     }
 
@@ -206,6 +178,8 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
     }
 
     public void modifyCompanyInfo(String content, int typeCode) {
+        this.content = content;
+        code = typeCode;
         Map<String, Object> params = ApiFactory.get_base_map();
         params.put("service", ApiName.UPDATE_ENTERPRISE_USER_DATA);
         params.put("partner_id", "188888888");
@@ -227,57 +201,39 @@ public class CompanyInformationActivity extends BaseActivity implements View.OnC
         } else if (typeCode == REQUEST_CODE_PAGE_CONTACT) {//联系方式
             params.put("telephone", content);
         }
-        ApiFactory factory = new ApiFactory();
-        Subscription s = factory.get_weijin().getBaseApiSingleton().modifyUserInfo(params)
-                .map(baseResult -> baseResult).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseSubscriber<BaseResult>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        super.onError(e);
-                    }
-
-                    @Override
-                    public void get_model(BaseResult baseResult) {
-                        if (baseResult.is_success.equals("T")) {
-                            T.showShort(StringUtils.API_SUCCESS);
-                            setCompanyInfo(content, typeCode);
-                        } else {
-                            T.showShort(baseResult.getError_message());
-                        }
-                    }
-                });
-        addSubscription(s);
+        mPresenter.modifyUserInfo(params);
     }
 
     /**
      * 设置信息
-     * 
-     * @param content
-     * @param typeCode
      */
-    private void setCompanyInfo(String content, int typeCode) {
-        if (typeCode == REQUEST_CODE_PAGE_NAME) {//名字
-            nameTv.setText(content);
-        } else if (typeCode == REQUEST_CODE_PAGE_ORGANIZE_CODE) {//组织机构代码
-            organizeCodeTv.setText(content);
-        } else if (typeCode == REQUEST_CODE_PAGE_TAX_NUMBER) {//税务号
-            taxNumberTv.setText(content);
-        } else if (typeCode == REQUEST_CODE_PAGE_ADDRESS) {//地址
-            addressTv.setText(content);
-        } else if (typeCode == REQUEST_CODE_PAGE_CORPORATE) {//法人
-            corporateTv.setText(content);
-        } else if (typeCode == REQUEST_CODE_PAGE_MODEL) {//规模
-            modelTv.setText(content);
-        } else if (typeCode == REQUEST_CODE_PAGE_INDUSTRY) {//行业
-            industryTv.setText(content);
-        } else if (typeCode == REQUEST_CODE_PAGE_CONTACT) {//联系方式
-            contactTv.setText(content);
+    @Override
+    public void setCompanyInfo() {
+        switch (code) {
+            case REQUEST_CODE_PAGE_NAME://名字
+                nameTv.setText(content);
+                break;
+            case REQUEST_CODE_PAGE_ORGANIZE_CODE://组织机构代码
+                organizeCodeTv.setText(content);
+                break;
+            case REQUEST_CODE_PAGE_TAX_NUMBER: //税务号
+                taxNumberTv.setText(content);
+                break;
+            case REQUEST_CODE_PAGE_ADDRESS://地址
+                addressTv.setText(content);
+                break;
+            case REQUEST_CODE_PAGE_CORPORATE://法人
+                corporateTv.setText(content);
+                break;
+            case REQUEST_CODE_PAGE_MODEL://规模
+                modelTv.setText(content);
+                break;
+            case REQUEST_CODE_PAGE_INDUSTRY://行业
+                industryTv.setText(content);
+                break;
+            case REQUEST_CODE_PAGE_CONTACT://联系方式
+                contactTv.setText(content);
+                break;
         }
     }
 }

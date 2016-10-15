@@ -39,10 +39,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         initBanner();
     }
 
-    @Override
-    public void initPresenter() {
-
-    }
 
     private void initBanner() {
         dataList.add(R.mipmap.banner1);

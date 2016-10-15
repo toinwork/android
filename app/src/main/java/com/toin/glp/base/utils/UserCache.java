@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.toin.glp.App;
 import com.toin.glp.models.UserModel;
 
 import java.io.ByteArrayOutputStream;
@@ -57,10 +58,11 @@ public class UserCache {
             return;
         }
         this.userModel = userModel;
-        //        SharedPreferencesUtil.saveIntValue(appContext, ACCOUNT, userModel.getAccount());
-        //        SharedPreferencesUtil.saveStringValue(appContext, TOKEN, userModel.getToken());
-        //        SharedPreferencesUtil.saveStringValue(appContext, MOBILE, userModel.getMobile());
-        //        SharedPreferencesUtil.saveStringValue(appContext, UNAME, userModel.getUname());
+        App.token = userModel.getToken();
+        App.phone = userModel.getMobile_star();
+        SharedPreferencesUtil.saveStringValue(App.context, "phone",
+                userModel.getMobile_star());
+        UserCache.saveToken(App.context, userModel.getToken());
     }
 
     /**

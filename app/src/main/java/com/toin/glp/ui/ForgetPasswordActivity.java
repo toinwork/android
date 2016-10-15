@@ -69,11 +69,6 @@ public class ForgetPasswordActivity extends
         }
     }
 
-    @Override
-    public void initPresenter() {
-        mPresenter.setVM(this, mInterator);
-    }
-
     public void startTimer() {
         checkCodeTv.setEnabled(false);
         timer = new Timer();
@@ -154,7 +149,7 @@ public class ForgetPasswordActivity extends
                     T.showLong(App.context.getString(R.string.password_is_not_equels_old_password));
                     return;
                 }
-                mPresenter.setLoginPwd(userName, code, password, passwordAgain);
+                mPresenter.setLoginPwd(userName, code, password);
                 break;
             case R.id.tv_login:
                 //已有账号,登录

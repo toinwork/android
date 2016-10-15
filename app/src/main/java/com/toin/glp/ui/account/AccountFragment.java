@@ -201,10 +201,6 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
         }
     }
 
-    @Override
-    public void initPresenter() {
-
-    }
 
     @Override
     public void onClick(View v) {

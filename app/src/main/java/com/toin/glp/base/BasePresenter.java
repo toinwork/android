@@ -5,10 +5,10 @@ import android.content.Context;
 /**
  * Created by hb on 16/4/22.
  */
-public abstract class BasePresenter<E extends BaseInterator, T extends BaseView> {
-    public Context context;
-    public E mInterator;
-    public T mView;
+public abstract class BasePresenter<E extends BaseInterator, T extends BaseViews> {
+    public Context  context;
+    public E        mInterator;
+    public T        mView;
     public RxManage mRxManage = new RxManage();
 
     public void setVM(T v, E m) {
@@ -23,15 +23,16 @@ public abstract class BasePresenter<E extends BaseInterator, T extends BaseView>
         mRxManage.clear();
     }
 
-    public void onFinish() {
+    public void showProgress(String msg) {
+        if (mView != null) {
+            mView.showProgress(msg);
+        }
+    }
+
+    public void hideProgress() {
         if (mView != null) {
             mView.hideProgress();
         }
     }
 
-    public void onError() {
-        if (mView != null) {
-            mView.hideProgress();
-        }
-    }
 }

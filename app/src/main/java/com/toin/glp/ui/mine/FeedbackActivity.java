@@ -44,11 +44,6 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:

@@ -26,11 +26,6 @@ public class HelpCenterActivity extends BaseActivity implements View.OnClickList
     }
 
     @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:

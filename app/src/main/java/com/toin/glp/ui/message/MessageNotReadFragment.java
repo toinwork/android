@@ -276,8 +276,4 @@ public class MessageNotReadFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public void initPresenter() {
-
-    }
 }

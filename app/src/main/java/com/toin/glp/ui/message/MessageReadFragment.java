@@ -200,8 +200,4 @@ public class MessageReadFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public void initPresenter() {
-
-    }
 }

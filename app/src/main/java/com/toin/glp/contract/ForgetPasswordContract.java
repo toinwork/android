@@ -1,12 +1,13 @@
 package com.toin.glp.contract;
 
-import com.toin.glp.api.BaseApiFinishListener;
 import com.toin.glp.base.BaseInterator;
 import com.toin.glp.base.BasePresenter;
 import com.toin.glp.base.BaseView;
-import com.toin.glp.utils.OnSendMessageFinishedListener;
+import com.toin.glp.models.BaseResult;
 
-import rx.Subscription;
+import java.util.Map;
+
+import rx.Observable;
 
 /**
  * 忘记密码 Created by hb on 16/6/17.
@@ -14,46 +15,28 @@ import rx.Subscription;
 public interface ForgetPasswordContract {
     interface Interactor extends BaseInterator {
 
-        interface OnSetPasswordFinishedListener extends BaseApiFinishListener {
-            void setClickable();
-
-            void setUnClickable();
-
-            void checkCodeSuccess(String phone, String code, String password, String passwordAgain);
-
-        }
-
         /**
          * 设置登录密码
-         * 
-         * @param phone
-         * @param code
-         * @param password
-         * @param passwordAgain
+         * @param params
          * @return
          */
-        Subscription setLoginPwd(String phone, String code, String password, String passwordAgain,
-                                 OnSetPasswordFinishedListener listener);
+        Observable<BaseResult> setLoginPwd(Map<String, Object> params);
 
         /**
          * 验证短信
          *
-         * @param phone
-         * @param code
-         * @param listener
+         * @param params
          * @return
          */
-        Subscription checkCode(String phone, String code, String password, String passwordAgain,
-                               OnSetPasswordFinishedListener listener);
+        Observable<BaseResult> checkCode(Map<String, Object> params);
 
         /**
          * 发送验证码
          * 
          * @param phone
-         * @param listener
          * @return
          */
-        Subscription sendCode(String phone, OnSendMessageFinishedListener listener);
+        Observable<BaseResult> sendCode(String phone);
     }
 
     interface View extends BaseView {
@@ -67,8 +50,7 @@ public interface ForgetPasswordContract {
     }
 
     abstract class Presenter extends BasePresenter<Interactor, View> {
-        public abstract void setLoginPwd(String userName, String code, String password,
-                                         String passwordAgain);
+        public abstract void setLoginPwd(String userName, String code, String password);
 
         public abstract void sendCode(String phone);
 

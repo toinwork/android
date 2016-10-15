@@ -49,11 +49,6 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
     }
 
     @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:

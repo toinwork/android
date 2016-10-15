@@ -34,11 +34,6 @@ public class UserAgreementActivity extends BaseActivity implements View.OnClickL
     }
 
     @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:

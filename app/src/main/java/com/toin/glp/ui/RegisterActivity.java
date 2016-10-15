@@ -69,11 +69,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
     }
 
     @Override
-    public void initPresenter() {
-        mPresenter.setVM(this, mInterator);
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_code:
@@ -119,7 +114,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterIn
                     T.showShort(getString(R.string.user_agreement_illegal));
                     return;
                 }
-                mPresenter.register(mobile, checkCode, pwd, pwdAgain);
+                mPresenter.register(mobile, checkCode, pwd);
                 break;
             case R.id.tv_login:
                 //已有账号,登录

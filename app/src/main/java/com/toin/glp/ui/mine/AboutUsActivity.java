@@ -43,11 +43,6 @@ public class AboutUsActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:

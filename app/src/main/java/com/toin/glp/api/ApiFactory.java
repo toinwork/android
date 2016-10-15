@@ -14,8 +14,10 @@ import java.util.Map;
  * Created by hb on 16/9/12.
  */
 public class ApiFactory {
-    public GlpWeiJinFactory    weiJinFactory    = null;
-    public GlpFinancingFactory financingFactory = null;
+    public static GlpWeiJinFactory weiJinFactory    = null;
+    public static BaseApi          weijinApi        = null;
+    public static BaseApi          financingApi     = null;
+    public GlpFinancingFactory     financingFactory = null;
 
     public GlpFinancingFactory get_financing() {
         if (financingFactory == null) {
@@ -29,6 +31,20 @@ public class ApiFactory {
             weiJinFactory = new GlpWeiJinFactory();
         }
         return weiJinFactory;
+    }
+
+    public static BaseApi weijin() {
+        if (weijinApi == null) {
+            weijinApi = GlpWeiJinFactory.getInstance();
+        }
+        return weijinApi;
+    }
+
+    public static BaseApi financing() {
+        if (financingApi == null) {
+            financingApi = GlpFinancingFactory.getInstance();
+        }
+        return financingApi;
     }
 
     /**
@@ -55,9 +71,6 @@ public class ApiFactory {
         params.put("tranChl", "phone");
         params.put("MOBILE", App.phone);
         String token = App.token;
-//        if (!TextUtils.isEmpty(App.token)) {
-//            token = token.substring(11, token.length());
-//        }
         params.put("Token", token);
         String json = JSONObject.toJSONString(params).toString();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),

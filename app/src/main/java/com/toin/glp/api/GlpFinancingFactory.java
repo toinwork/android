@@ -46,23 +46,12 @@ public class GlpFinancingFactory {
         return mRetrofit.create(BaseApi.class);
     }
 
-    //接口参数不变
-    public BaseApi getBaseApiSingleton1() {
-        if (mRetrofit == null) {
-            synchronized (Retrofit.class) {
-                if (mRetrofit == null) {
-                    mRetrofit = GlpRefrofit.init_financing();
-                }
-            }
-        }
-        mRetrofit.client().interceptors().clear();
-        mRetrofit.client().interceptors().add(chain -> {
-            Request.Builder request = chain.request().newBuilder();
-            Request newRequest = request.build();
-            Response response = filter(chain.proceed(newRequest));
-            return response;
-        });
-        return mRetrofit.create(BaseApi.class);
+    private static class SingletonHolder {
+        private static final BaseApi INSTANCE = new GlpFinancingFactory().getBaseApiSingleton();
+    }
+
+    public static BaseApi getInstance() {
+        return SingletonHolder.INSTANCE;
     }
 
     //接口参数不变

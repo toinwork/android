@@ -12,6 +12,7 @@ import rx.Subscriber;
 public abstract class BaseSubscriber<T> extends Subscriber {
     @Override
     public void onCompleted() {
+
     }
 
     @Override

@@ -13,26 +13,24 @@ import com.toin.glp.R;
 import com.toin.glp.StringUtils;
 import com.toin.glp.api.ApiFactory;
 import com.toin.glp.api.ApiName;
-import com.toin.glp.api.BaseSubscriber;
 import com.toin.glp.base.BaseFragment;
 import com.toin.glp.base.utils.RxBus.RxBus;
-import com.toin.glp.base.utils.T;
+import com.toin.glp.contract.mine.MineContract;
 import com.toin.glp.event.CompanyInfoEvent;
+import com.toin.glp.interactor.mine.MineInteractor;
 import com.toin.glp.models.CompanyInfoModel;
 import com.toin.glp.models.UserInfoModel;
+import com.toin.glp.presenter.mine.MinePresenter;
 
 import java.util.Map;
 
 import butterknife.Bind;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * 我的 Created by hb on 16/6/26.
  */
-public class MineFragment extends BaseFragment implements View.OnClickListener {
+public class MineFragment extends BaseFragment<MinePresenter, MineInteractor> implements
+        View.OnClickListener, MineContract.View {
 
     @Bind(R.id.tv_name)
     TextView     nameTv;
@@ -63,55 +61,16 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     protected void initData() {
         setActionTitle(StringUtils.TAB_TAG_MINE);
         if (!TextUtils.isEmpty(App.token)) {
-            httpGetCompanyInfo();
+            Map<String, Object> params = ApiFactory.get_base_map();
+            params.put("service", ApiName.QUERY_ENTERPRISE);
+            params.put("partner_id", "188888888");
+            params.put("token", App.token);
+            mPresenter.getUserInfo(params);
         }
-
-        Subscription rx = RxBus.getDefault().toObserverable(CompanyInfoEvent.class)
-                .subscribe(new Subscriber<CompanyInfoEvent>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(CompanyInfoEvent event) {
-                        nameTv.setText("欢迎您," + event.name);
-                    }
-                });
-        addSubscription(rx);
-    }
-
-    private void httpGetCompanyInfo() {
-        ApiFactory factory = new ApiFactory();
-        Map<String, Object> params = ApiFactory.get_base_map();
-        params.put("service", ApiName.QUERY_ENTERPRISE);
-        params.put("partner_id", "188888888");
-        params.put("token", App.token);
-        Subscription s = factory.get_weijin().getBaseApiSingleton().getUserInfo(params)
-                .map(model -> model).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseSubscriber<UserInfoModel>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void get_model(UserInfoModel result) {
-                        if (result.is_success.equals("T")) {
-                            setInfo(result.result);
-                        } else {
-                            T.showShort(result.getError_message());
-                        }
-                    }
-
-                });
-        addSubscription(s);
+        addSubscription(RxBus.getDefault().toObserverable(CompanyInfoEvent.class)
+                .subscribe(event -> {
+                    nameTv.setText("欢迎您," + event.name);
+                }));
     }
 
     //渲染数据
@@ -132,10 +91,6 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             }
         }
         nameTv.setText(content);
-    }
-
-    @Override
-    public void initPresenter() {
     }
 
     @Override
@@ -162,4 +117,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void setUserInfo(UserInfoModel model) {
+        setInfo(model.result);
+    }
 }

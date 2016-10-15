@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.leakcanary.RefWatcher;
 import com.toin.glp.App;
@@ -27,7 +28,7 @@ import rx.subscriptions.CompositeSubscription;
  * Created by hb on 16/3/29.
  */
 public abstract class BaseActivity<T extends BasePresenter, E extends BaseInterator> extends
-        FragmentActivity {
+        FragmentActivity implements BaseViews {
     private CompositeSubscription mCompositeSubscription;
     public T                      mPresenter;
     public E                      mInterator;
@@ -39,33 +40,19 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseIntera
 
     protected abstract void initData();
 
-    /**
-     * 简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
-     */
-    public abstract void initPresenter();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //全部禁止横屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
-        //        小米沉浸式状态栏
-        //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        //            //状态栏透明 需要在创建SystemBarTintManager 之前调用。
-        //            setTranslucentStatus(true);
-        //        }
-        //        mTintManager = new SystemBarTintManager(this);
-        //        mTintManager.setStatusBarTintEnabled(true);
-        //        //使StatusBarTintView 和 actionbar的颜色保持一致，风格统一。
-        //        mTintManager.setStatusBarTintResource(R.color.white);
-        //        // 设置状态栏的文字颜色
-        //        mTintManager.setStatusBarDarkMode(true, this);
         setContentView(initLayout());
         ButterKnife.bind(this);
         mPresenter = TUtil.getT(this, 0);
         mInterator = TUtil.getT(this, 1);
         initView();
-        initPresenter();
+        if (this instanceof BaseView) {
+            mPresenter.setVM(this, mInterator);
+        }
         initData();
     }
 
@@ -224,6 +211,10 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseIntera
 
     public void finishActivity() {
         finish();
+    }
+
+    public void showMsg(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 }

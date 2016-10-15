@@ -215,11 +215,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_back:

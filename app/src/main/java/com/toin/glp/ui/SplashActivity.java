@@ -33,9 +33,4 @@ public class SplashActivity extends BaseActivity {
     protected void initData() {
 
     }
-
-    @Override
-    public void initPresenter() {
-
-    }
 }
